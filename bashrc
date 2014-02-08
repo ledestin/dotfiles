@@ -110,7 +110,7 @@ if [ -n "$PS1" ]; then
   # Program settings.
 
   # ls(1)
-  eval `dircolors -b`
+  type dircolors &>/dev/null && eval `dircolors -b`
   alias ls='ls --color=auto --show-control-chars -h' 
   alias ll='ls -l'
   alias la='ls -A'
