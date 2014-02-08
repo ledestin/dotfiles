@@ -1,0 +1,27 @@
+#!/bin/sh
+export http_proxy=http://proxy:3128
+
+if [ -n "$PS1" ]; then
+  # Mail
+  alias imutt='mutt -f imap://dmaks@mail'
+
+  # AFS
+  alias afs='kinit -R || kinit -l7d && aklog'
+  alias a2ps='a2ps -s2 -MA4'
+
+  # SVN
+  export SVNROOT="svn+k5://svn@svn/var/lib/svn"
+  export user="$SVNROOT/user/dmaks"
+  export branch="$SVNROOT/branch"
+  export tag="$SVNROOT/tag"
+  alias vrename='/usr/local/ntais2/devel/install-ver.rb --rename'
+
+  # Buildenv
+  if [ -f /etc/BUILDENV ]; then
+    LANG=C
+    buildenvVer=`cat /etc/BUILDENV`
+    buildenv="[$buildenvVer]"
+    PS1='\[\033[32m\]$buildenv \[\033[33m\w\033[0m\]\n$'
+    xttitle "$buildenvVer"
+  fi
+fi

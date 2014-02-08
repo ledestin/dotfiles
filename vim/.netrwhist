@@ -1,0 +1,11 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='/var/lib/gems/1.9.1/gems/monotonic-0.0.1/lib'
+let g:netrw_dirhist_2='/var/lib/gems/1.9.1/gems/monotonic-0.0.1/lib/monotonic'
+let g:netrw_dirhist_3='/var/lib/gems/1.9.1/gems/monotonic-0.0.1/lib'
+let g:netrw_dirhist_4='/var/lib/gems/1.9.1/gems/monotonic-0.0.1'
+let g:netrw_dirhist_5='/var/lib/gems/1.9.1/gems/monotonic-0.0.1/ext'
+let g:netrw_dirhist_6='/var/lib/gems/1.9.1/gems/monotonic-0.0.1/ext/monotonic'
+let g:netrw_dirhist_7='/var/lib/gems/1.9.1/gems/bsearch-1.5.0'
+let g:netrw_dirhist_8='/var/lib/gems/1.9.1/gems/bsearch-1.5.0/lib'
+let g:netrw_dirhist_9='/home/ledestin/work/fun'

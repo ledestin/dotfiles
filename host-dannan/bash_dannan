@@ -1,0 +1,2 @@
+#!/bin/sh
+export http_proxy=http://localhost:3128

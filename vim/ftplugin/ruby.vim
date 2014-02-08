@@ -1,0 +1,1 @@
+setl softtabstop=2
