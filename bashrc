@@ -13,12 +13,11 @@ fi
 OS=`uname`
 case "$OS" in
   Linux)
-    if [ "$HOSTNAME" != 'karn' ]; then
-      ulimit -u 10000
-    else
+    ulimit -u 2000
+
+    if [ "$HOSTNAME" = 'karn' ]; then
       # Was unable to build ruby 1.9, wasn't enough allowed processes and POSIX
       # message queues.
-      ulimit -u 2000
       ulimit -q 281921
     fi
     ;;
