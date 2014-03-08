@@ -110,7 +110,12 @@ if [ -n "$PS1" ]; then
 
   # ls(1)
   type dircolors &>/dev/null && eval `dircolors -b`
-  alias ls='ls --color=auto --show-control-chars -h' 
+  if [ "$OS" = 'Darwin' ]; then
+    ls_opts='-G';
+  else
+    ls_opts='--color=auto --show-control-chars'
+  fi
+  alias ls="ls $ls_opts -h"
   alias ll='ls -l'
   alias la='ls -A'
 
