@@ -8,7 +8,6 @@ set autoindent
 set foldmethod=marker
 set viminfo='20,f1,%
 set hidden
-syntax enable
 set showcmd
 set laststatus=2
 set smartcase
@@ -17,6 +16,10 @@ set modelines=5
 filetype plugin on
 filetype plugin indent on
 colorscheme desert
+syntax enable
+highlight ExtraWhitespace ctermbg=red guibg=red
+" Show trailing whitepace and spaces before a tab:
+autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/
 noremap <F1> :help <cword><CR>
 
 imap <C-h> <Left>
