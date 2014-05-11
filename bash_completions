@@ -4,7 +4,7 @@ complete -f -X '!*.+(gif|jpg|jpeg|png|tif)' -o plusdirs gqview
 complete -f -X '!*.+(pdf|PDF)' -o plusdirs acroread xpdf
 complete -f -X '!*.+(mp3|mpc|ogg|flac|ape|tta|wav)' -o plusdirs xmms p
 complete -f -X '!*.mp3' -o plusdirs mpg321
-complete -f -X '!*.+(ass|ssa|asf|avi|flv|iso|mkv|mp4|mov|mpg|mpeg|ogm|rm|rmvb|srt|sub|ts|vob|wmv)' -o plusdirs mp
+complete -f -X '!*.+(ass|ssa|asf|avi|flv|iso|m4v|mkv|mp4|mov|mpg|mpeg|ogm|rm|rmvb|srt|sub|ts|vob|wmv)' -o plusdirs mp
 complete -f awk cat file sed vi
 complete -d cd mkdir rmdir pushd
 complete -j fg
