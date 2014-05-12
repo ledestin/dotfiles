@@ -205,6 +205,10 @@ if [ -n "$PS1" ]; then
   alias acroread='nice -n19 acroread'
 fi
 
+if `type rbenv &>/dev/null`; then
+  eval "$(rbenv init -)";
+fi
+
 # Load host-local config.
 LOCAL_CONFIG=~/".bash_$HOSTNAME"
 if [ -f "$LOCAL_CONFIG" ]; then . "$LOCAL_CONFIG"; fi
