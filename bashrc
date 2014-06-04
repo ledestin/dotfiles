@@ -9,6 +9,8 @@ if [ -z "$LANG" ]; then
   export LANG=ru_RU.UTF-8
 fi
 
+export NODE_PATH=/usr/local/lib/node_modules
+
 # OS-related settings.
 OS=`uname`
 case "$OS" in
