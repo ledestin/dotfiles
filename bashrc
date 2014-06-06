@@ -157,6 +157,7 @@ if [ -n "$PS1" ]; then
   alias gd='git diff'
   alias gl='git log'
   alias gs='git show'
+  alias gpr='git pull --rebase'
 
   # svn(1)
   export svn=file:///var/lib/svn
