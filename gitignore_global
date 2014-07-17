@@ -1,4 +1,5 @@
 .AppleDouble
+Gemfile.lock
 *.o
 *.so
 *.swp
