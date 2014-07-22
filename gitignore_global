@@ -1,5 +1,6 @@
 .AppleDouble
 Gemfile.lock
+*.gem
 *.o
 *.so
 *.swp
