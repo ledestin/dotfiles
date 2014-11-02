@@ -106,6 +106,7 @@ if [ -n "$PS1" ]; then
   shopt -s nocaseglob
   shopt -s extglob
   . ~/.bash_completions
+  . ~/.bundler-exec.sh
 
 
   # Program settings.
