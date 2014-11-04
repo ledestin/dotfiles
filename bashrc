@@ -152,6 +152,9 @@ if [ -n "$PS1" ]; then
   # ssh(1)
   alias scid='ssh-copy-id -i ~/.ssh/id_dsa.pub'
 
+  # bundler(1)
+  alias be='bundle exec'
+
   # git(1)
   alias ga='git add'
   alias gc='git commit'
