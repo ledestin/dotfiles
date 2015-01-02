@@ -107,6 +107,7 @@ if [ -n "$PS1" ]; then
   shopt -s extglob
   . ~/.bash_completions
   . ~/.bundler-exec.sh
+  alias rake='run-with-bundler xvfb-run rake'
 
 
   # Program settings.
