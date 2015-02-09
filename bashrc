@@ -108,6 +108,7 @@ if [ -n "$PS1" ]; then
   . ~/.bash_completions
   . ~/.bundler-exec.sh
   alias rake='run-with-bundler xvfb-run rake'
+  alias rspec='run-with-bundler xvfb-run rspec'
 
 
   # Program settings.
