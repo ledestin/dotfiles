@@ -99,8 +99,14 @@ if [ -n "$PS1" ]; then
   esac                                                                    
 
   # Shell settings.
-  PS1='\[\033[32m\]\u@\h \[\033[33m\w\033[0m\]\n\$'
+
+  # Git branch in prompt.
+  export GITAWAREPROMPT=~/.bash/git-aware-prompt
+  source "${GITAWAREPROMPT}/main.sh"
+
+  PS1='\[\033[32m\]\u@\h \[\033[33m\w\033[0m\] \[\033[33m$git_branch\033[0m\]\[$txtred\]$git_dirty\[$txtrst\]\n\$'
   MAIL="~/Mail/mbox"
+
   # don't put duplicate lines in the history. See bash(1) for more options
   HISTCONTROL=ignoredups
   shopt -s nocaseglob
