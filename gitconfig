@@ -16,3 +16,5 @@ email = ledestin@gmail.com
 	excludesfile = ~/.gitignore_global
 [push]
 	default = simple
+[rebase]
+	autosquash = true
