@@ -112,6 +112,7 @@ if [ -n "$PS1" ]; then
   shopt -s nocaseglob
   shopt -s extglob
   . ~/.bash_completions
+  . ~/.bash/git-completion.bash
   . ~/.bundler-exec.sh
   alias rake='run-with-bundler xvfb-run rake'
   alias rspec='run-with-bundler xvfb-run rspec'
