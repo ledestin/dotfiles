@@ -3,6 +3,7 @@ call pathogen#infect()
 set textwidth=80
 set colorcolumn=+1
 set softtabstop=2
+set expandtab
 set sw=2
 set autoindent
 set foldmethod=marker
@@ -13,6 +14,7 @@ set laststatus=2
 set smartcase
 set modeline
 set modelines=5
+set runtimepath^=~/.vim/bundle/ctrlp.vim
 filetype plugin on
 filetype plugin indent on
 colorscheme desert
@@ -28,6 +30,13 @@ map <F9>  :w<CR> :make<CR>
 map <F11> :update<CR> : execute("! ./" . bufname(""))<CR>
 map <F10> :update<CR> :!ruby -w -c %<CR>
 map <Tab> :!ri <cword><CR>
+
+" Rspec
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>
+let g:rspec_command = "!./bin/rspec {spec}"
 
 :map \q mz^"zyf>`z:set comments+=n:<C-R>z<CR>gq
 :set formatoptions+=cq

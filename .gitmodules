@@ -1,3 +1,6 @@
 [submodule "git-aware-prompt"]
 	path = bash/git-aware-prompt
 	url = https://github.com/jimeh/git-aware-prompt.git
+[submodule "vim/bundle/vim-rspec"]
+	path = vim/bundle/vim-rspec
+	url = https://github.com/thoughtbot/vim-rspec.git
