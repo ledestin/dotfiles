@@ -172,6 +172,7 @@ if [ -n "$PS1" ]; then
   alias gs='git show'
   alias gst='git st'
   alias gpr='git pull --rebase'
+  alias gm='git branch --merged master'
 
   # svn(1)
   export svn=file:///var/lib/svn
