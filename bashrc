@@ -217,7 +217,6 @@ if [ -n "$PS1" ]; then
   alias mplq='mp -framedrop -nobps -vfm ffmpeg' #-lavdopts lowres=1:fast:skiploopfilter=all'
   alias mps='mp -vf-add expand=0:-75:0:0'
   alias mpr='mp -af resample=45056'
-  alias mpv='mp vcd://1 -cdrom-device /dev/cdrom'
 
   # News
   export NNTPSERVER=localhost
