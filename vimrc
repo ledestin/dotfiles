@@ -15,6 +15,8 @@ set smartcase
 set modeline
 set modelines=5
 set runtimepath^=~/.vim/bundle/ctrlp.vim
+" Accomodate for file watchers.
+set backupcopy=yes
 filetype plugin on
 filetype plugin indent on
 colorscheme desert
