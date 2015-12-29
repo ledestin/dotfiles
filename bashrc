@@ -165,6 +165,7 @@ if [ -n "$PS1" ]; then
   alias be='bundle exec'
 
   # git(1)
+  alias g='git'
   alias ga='git add'
   alias gc='git commit'
   alias gd='git diff'
