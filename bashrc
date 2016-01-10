@@ -117,6 +117,8 @@ if [ -n "$PS1" ]; then
   alias rake='run-with-bundler xvfb-run rake'
   alias rspec='run-with-bundler xvfb-run rspec'
 
+  # Rails/Easil
+  export DEV_HOST=dannan
 
   # Program settings.
 
