@@ -237,6 +237,10 @@ function init_ssh_agent {
   ssh-add
 }
 
+function last_migration {
+  "$VISUAL" db/migrate/$(ls db/migrate/ | sort | tail -1)
+}
+
 # Load host-local config.
 LOCAL_CONFIG=~/".bash_$HOSTNAME"
 if [ -f "$LOCAL_CONFIG" ]; then . "$LOCAL_CONFIG"; fi
