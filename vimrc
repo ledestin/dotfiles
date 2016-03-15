@@ -38,7 +38,12 @@ map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
-let g:rspec_command = "!xvfb-run ./bin/rspec {spec}"
+
+:if filereadable('./bin/rspec')
+:let g:rspec_command = "!xvfb-run ./bin/rspec {spec}"
+:else
+:let g:rspec_command = "!xvfb-run bundle exec rspec {spec}"
+:endif
 
 :map \q mz^"zyf>`z:set comments+=n:<C-R>z<CR>gq
 :set formatoptions+=cq
