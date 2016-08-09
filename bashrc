@@ -146,8 +146,6 @@ if [ -n "$PS1" ]; then
   # Debian
   alias ac='apt-cache'
   alias acs='apt-cache search'
-  alias ag='apt-get'
-  alias agi='ag install'
 
   # Mail
   alias gmail='mutt -F ~/.muttrc-gmail'
