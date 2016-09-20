@@ -177,6 +177,13 @@ if [ -n "$PS1" ]; then
   alias gm='git branch --merged master'
   alias git-remove-commit='git reset --soft HEAD^'
 
+  # Rails
+  rails="./bin/rails"
+
+  alias rc="$rails console"
+  alias rcs='rc --sandbox'
+  alias rs="$rails server"
+
   # svn(1)
   export svn=file:///var/lib/svn
   alias svn='LANG=C svn'
