@@ -169,11 +169,13 @@ if [ -n "$PS1" ]; then
   alias ga='git add'
   alias gc='git commit'
   alias gd='git diff'
+  alias gdc='gd --cached'
   alias gl='git log'
   alias gs='git show'
   alias gst='git st'
   alias gpr='git pull --rebase'
   alias gm='git branch --merged master'
+  alias git-remove-commit='git reset --soft HEAD^'
 
   # svn(1)
   export svn=file:///var/lib/svn
