@@ -180,9 +180,10 @@ if [ -n "$PS1" ]; then
   # Rails
   rails="./bin/rails"
 
-  alias rc="$rails console"
+  alias r="$rails"
+  alias rc="r console"
   alias rcs='rc --sandbox'
-  alias rs="$rails server"
+  alias rs="r server"
 
   # svn(1)
   export svn=file:///var/lib/svn
