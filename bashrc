@@ -147,6 +147,9 @@ if [ -n "$PS1" ]; then
   alias ac='apt-cache'
   alias acs='apt-cache search'
 
+  # Hardware
+  alias motherboard='dmidecode -t 2'
+
   # Mail
   alias gmail='mutt -F ~/.muttrc-gmail'
 
