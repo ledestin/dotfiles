@@ -75,6 +75,12 @@ if [ -n "$PS1" ]; then
   # Terminal title.
   case "$TERM" in                                                         
     screen|xterm*)                                                             
+      if [ -e /usr/share/terminfo/x/xterm+256color ]; then
+        export TERM='xterm-256color'
+      else
+        export TERM='xterm-color'
+      fi
+
       # If this is an xterm set the title to "WindowName (hostname)".
       if [ -z "$WINDOWID" ]; then
 	# FIXME: Ugly hack because WINDOWID gets purged by sudo. Need to
