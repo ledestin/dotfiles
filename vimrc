@@ -19,7 +19,7 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 set backupcopy=yes
 filetype plugin on
 filetype plugin indent on
-colorscheme desert
+colorscheme mydesert
 syntax enable
 highlight ExtraWhitespace ctermbg=red guibg=red
 " Show trailing whitepace and spaces before a tab:
