@@ -15,6 +15,7 @@ set smartcase
 set modeline
 set modelines=5
 set runtimepath^=~/.vim/bundle/ctrlp.vim
+set tags=.git/tags
 " Accomodate for file watchers.
 set backupcopy=yes
 filetype plugin on
