@@ -32,7 +32,6 @@ imap <C-l> <Right>
 map <F9>  :w<CR> :make<CR>
 map <F11> :update<CR> : execute("! ./" . bufname(""))<CR>
 map <F10> :update<CR> :!ruby -w -c %<CR>
-map <Tab> :!ri <cword><CR>
 
 " Rspec
 map <Leader>t :call RunCurrentSpecFile()<CR>
