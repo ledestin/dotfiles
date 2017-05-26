@@ -12,9 +12,12 @@ email = ledestin@gmail.com
   hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
   type = cat-file -t
   dump = cat-file -p
+  ctags = !.git/hooks/ctags
 [core]
 	excludesfile = ~/.gitignore_global
 [push]
 	default = simple
 [rebase]
 	autosquash = true
+[init]
+	templatedir = ~/.git_template
