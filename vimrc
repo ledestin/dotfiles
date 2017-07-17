@@ -15,7 +15,14 @@ set smartcase
 set modeline
 set modelines=5
 set runtimepath^=~/.vim/bundle/ctrlp.vim
-set tags=.git/tags
+
+let git_root = system('git rev-parse --show-toplevel')
+let git_root = substitute(git_root, '\n$', '', '')
+if !empty(git_root)
+  let tags_file = git_root . '/.git/tags'
+  exec 'set tags='.tags_file
+endif
+
 " Accomodate for file watchers.
 set backupcopy=yes
 filetype plugin on
