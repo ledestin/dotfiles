@@ -7,3 +7,6 @@
 [submodule "vim/bundle/bufexplorer"]
 	path = vim/bundle/bufexplorer
 	url = https://github.com/jlanzarotta/bufexplorer.git
+[submodule "asdf"]
+	path = asdf
+	url = ./asdf/
