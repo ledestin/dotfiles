@@ -23,6 +23,14 @@ if !empty(git_root)
   exec 'set tags='.tags_file
 endif
 
+" Gemfile
+let gemfile = ''
+if filereadable('./Gemfile')
+  let gemfile = './Gemfile'
+elseif !empty(git_root) && filereadable(git_root . '/Gemfile')
+  let gemfile = git_root . '/Gemfile'
+endif
+
 " Accomodate for file watchers.
 set backupcopy=yes
 filetype plugin on
@@ -46,11 +54,13 @@ map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
 
-:if filereadable('./bin/rspec')
-:let g:rspec_command = "!xvfb-run ./bin/rspec {spec}"
-:else
-:let g:rspec_command = "!xvfb-run bundle exec rspec {spec}"
-:endif
+if filereadable('./bin/rspec')
+  let g:rspec_command = "!xvfb-run ./bin/rspec {spec}"
+elseif !empty(gemfile)
+  let g:rspec_command = "!xvfb-run bundle exec rspec {spec}"
+else
+  let g:rspec_command = "!xvfb-run rspec {spec}"
+endif
 
 :map \q mz^"zyf>`z:set comments+=n:<C-R>z<CR>gq
 :set formatoptions+=cq
