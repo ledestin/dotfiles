@@ -263,6 +263,8 @@ function last_migration {
 LOCAL_CONFIG=~/".bash_$HOSTNAME"
 if [ -f "$LOCAL_CONFIG" ]; then . "$LOCAL_CONFIG"; fi
 
-. $HOME/.asdf/asdf.sh
+if [ -d ~/.asdf ]; then
+  . $HOME/.asdf/asdf.sh
 
-. $HOME/.asdf/completions/asdf.bash
+  . $HOME/.asdf/completions/asdf.bash
+fi
