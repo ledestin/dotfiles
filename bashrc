@@ -110,6 +110,9 @@ if [ -n "$PS1" ]; then
   export GITAWAREPROMPT=~/.bash/git-aware-prompt
   source "${GITAWAREPROMPT}/main.sh"
 
+  if [ "$OS" = "Darwin" ]; then
+    txtrst="$txtwht"
+  fi
   PS1='\[\033[33m\]\u\e[90m@\e[35m\h \[\033[33m\w\033[0m\] \[\033[32m$git_branch\033[0m\]\[$txtred\]$git_dirty\[$txtrst\]\n\$'
   MAIL="~/Mail/mbox"
 
