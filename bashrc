@@ -271,3 +271,5 @@ if [ -d ~/.asdf ]; then
 
   . $HOME/.asdf/completions/asdf.bash
 fi
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
