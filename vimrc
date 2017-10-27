@@ -16,6 +16,10 @@ set modeline
 set modelines=5
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+
 let git_root = system('git rev-parse --show-toplevel')
 let git_root = substitute(git_root, '\n$', '', '')
 if !empty(git_root)
