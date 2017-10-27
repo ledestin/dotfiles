@@ -101,7 +101,7 @@ if [ -n "$PS1" ]; then
 	windowName=`xprop -notype -id $WINDOWID WM_CLASS | \
 	  sed 's/^[^"]\+"//; s/".\+$//; s/-/ /g'`
       fi
-      PROMPT_COMMAND='echo -ne "\033]2; ${HOSTNAME}\007"' ;;
+      PROMPT_COMMAND='echo -ne "\033]2; [${HOSTNAME}]\007"' ;;
   esac                                                                    
 
   # Shell settings.
