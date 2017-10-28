@@ -3,6 +3,11 @@ call plug#begin('~/.vim/plugged')
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
   Plug 'mileszs/ack.vim'
+  Plug 'airblade/vim-gitgutter'
+  Plug 'sheerun/vim-polyglot'
+  Plug 'tmhedberg/matchit'
+  Plug 'joker1007/vim-ruby-heredoc-syntax'
+  Plug 'wakatime/vim-wakatime'
 call plug#end()
 
 set textwidth=80
