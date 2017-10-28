@@ -2,6 +2,7 @@ call pathogen#infect()
 call plug#begin('~/.vim/plugged')
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
+  Plug 'mileszs/ack.vim'
 call plug#end()
 
 set textwidth=80

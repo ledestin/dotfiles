@@ -10,6 +10,3 @@
 [submodule "asdf"]
 	path = asdf
 	url = ./asdf/
-[submodule "vim/bundle/ack.vim"]
-	path = vim/bundle/ack.vim
-	url = https://github.com/mileszs/ack.vim.git
