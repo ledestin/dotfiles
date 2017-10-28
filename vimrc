@@ -1,5 +1,6 @@
 call pathogen#infect()
 call plug#begin('~/.vim/plugged')
+  Plug 'w0rp/ale'
   Plug 'jlanzarotta/bufexplorer'
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
