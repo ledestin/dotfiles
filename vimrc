@@ -8,6 +8,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'sheerun/vim-polyglot'
   Plug 'tmhedberg/matchit'
   Plug 'joker1007/vim-ruby-heredoc-syntax'
+  Plug 'thoughtbot/vim-rspec'
   Plug 'wakatime/vim-wakatime'
 call plug#end()
 
