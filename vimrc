@@ -38,7 +38,7 @@ let git_root = system('git rev-parse --show-toplevel')
 let git_root = substitute(git_root, '\n$', '', '')
 if !empty(git_root)
   let tags_file = git_root . '/.git/tags'
-  exec 'set tags='.tags_file
+  exec 'set tags='.fnameescape(tags_file)
 endif
 
 " Gemfile
