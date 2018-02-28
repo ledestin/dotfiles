@@ -1,0 +1,32 @@
+CTX_GIT_ORIGIN="${CTX_GIT_ORIGIN:-origin}"
+CTX_GIT_BRANCH="${CTX_GIT_BRANCH:-branch}"
+
+function .update() {
+    git pull --autostash --rebase \
+        "${1:-${CTX_GIT_ORIGIN}}" "${2:-${CTX_GIT_BRANCH}}"
+}
+
+function .squash() {
+    if [ $# -ne 1 ]; then
+        _error "Usage: .squash <number of commits>"
+        return 1
+    fi
+    if [ $1 -le 1 ]; then
+        _error "must squash at least 2 commits"
+        return 1
+    fi
+
+    git rebase -i "HEAD~$1"
+}
+
+function .amend() {
+    git commit --amend -v
+}
+
+function .fix() {
+    git commit -a --amend -C HEAD
+}
+
+function .commit() {
+    git commit -m "$1"
+}

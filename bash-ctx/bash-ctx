@@ -1,0 +1,229 @@
+#!/usr/bin/env bash
+
+# PUBLIC VARIABLES AND FUNCTIONS
+# ==============================
+
+CTX_BASE="${HOME}/.bash-ctx" # The top-most directory.
+CTX_BIN="${CTX_BASE}/bash-ctx" # The binary to source from .bashrc.
+CTX_ROOT="${CTX_BASE}/ctx" # The directory containing the contexts.
+CTX_LIB="${CTX_BASE}/lib" # The directory containing libraries.
+
+# Context management. Call `ctx help` for details.
+ctx() {
+    local command="$1"
+
+    shift
+
+    case "${command}" in
+        "new") _ctx_new $@ ;;
+        "delete") _ctx_delete $@ ;;
+        "enter") _ctx_enter $@ ;;
+        "edit") _ctx_edit $@ ;;
+        "lib") _ctx_lib $@ ;;
+        "list") _ctx_list $@ ;;
+        "help") _ctx_help ;;
+        "") _ctx_help ;;
+        *) _ctx_unknown "${command}" ;;
+    esac
+}
+
+# SUBCOMMANDS
+# ===========
+
+# Usage: _ctx_new <context name>
+# Create a new context or report an _error if it does not exist.
+_ctx_new() {
+    if [ $# -ne 1 ]; then
+        _error "invalid invocation; expected: ctx new <context name>"
+        return
+    fi
+
+    local ctx_path="${CTX_ROOT}/$1"
+
+    if [ -e "${ctx_path}" ]; then
+        _error "the context $1 already exist"
+        return
+    fi
+
+    touch "${ctx_path}"
+    _success "created context $1"
+}
+
+# Usage: _ctx_delete <context name>
+# Delete an existing context.
+_ctx_delete() {
+    if [ "${CTX_NAME}" == "$1" ]; then
+        _error "leave the current context before deleting it"
+    fi
+
+    local ctx_path="${CTX_ROOT}/$1"
+
+    if [ ! -e "${ctx_path}" ]; then
+        _error "the context $1 does not exist"
+        return
+    fi
+
+    rm -f "${ctx_path}"
+}
+
+# Usage: _ctx_enter <context name>
+# Enter the specified context: call its enter script (if it exists) and restore
+# history. Reports an _error if the context does not exist or if already in
+# another context. Does nothing when called with the current context.
+_ctx_enter() {
+    if [ "${CTX_NAME}" == "$1" ]; then
+        return
+    fi
+
+    if [ -n "${CTX_NAME}" ]; then
+        _error "leave the current context ${CTX_NAME} first"
+        return 1
+    fi
+
+    local ctx_path="${CTX_ROOT}/$1"
+
+    if [ ! -e "${ctx_path}" ]; then
+        _error "the context $1 does not exist"
+        return 1
+    fi
+
+    CTX_NAME="$1" bash
+}
+
+# Usage: _ctx_list
+# List existing contexts.
+_ctx_list() {
+    command ls "${CTX_ROOT}"
+}
+
+# Usage: _ctx_edit <context name>
+# Edit the context file.
+_ctx_edit() {
+    if [ -z "${EDITOR}" ]; then
+        _error "set EDITOR to the editor of your choice"
+        return 1
+    fi
+
+    local ctx_path="${CTX_ROOT}/$1"
+
+    if [ ! -e "${ctx_path}" ]; then
+        _error "the context $1 does not exist"
+        return 1
+    fi
+
+    "$EDITOR" "${ctx_path}"
+}
+
+# Usage: _ctx_lib <lib name>
+# Edit the lib file.
+_ctx_lib() {
+    if [ -z "${EDITOR}" ]; then
+        _error "set EDITOR to the editor of your choice"
+        return 1
+    fi
+
+    local lib_path="${CTX_LIB}/$1"
+    "$EDITOR" "${lib_path}"
+}
+
+# Usage: _ctx_help
+# Display a help for the commend.
+_ctx_help() {
+    echo "Usage:"
+    echo "  ctx <command> <command arguments>"
+    echo
+    echo "Commands:"
+    echo "  new <context name>      create a new context"
+    echo "  delete <context name>   delete an existing context"
+    echo "  enter <context name>    enter a context"
+    echo "  edit <file name>        edit a context file"
+    echo "  lib <file name>         edit a lib file"
+    echo "  leave                   leave the current context"
+    echo "  list                    list all existing contexts"
+    echo "  help                    display this message"
+}
+
+# Usage: _ctx_unknown <command name>
+# Report an _error about an unknown command.
+_ctx_unknown() {
+    _error "unknown command $1"
+    _ctx_help
+    return 1
+}
+
+# INTERNALS
+# =========
+
+# Color sequences.
+_CTX_RED="$(tput setaf 1)"
+_CTX_GREEN="$(tput setaf 2)"
+_CTX_RESET="$(tput sgr0)"
+
+# Usage: _try_source <path to a bash script>
+# Load the specified bash script if it exists; do nothing otherwise.
+_try_source() {
+    if [ -r "$1" ]; then
+        source "$1"
+    fi
+}
+
+# Usage: _error <message>
+# Dispaly an error message.
+_error() {
+    echo "${_CTX_RED}Error: $1${_CTX_RESET}"
+}
+
+# Usage: _success <message>
+# Display a success message.
+_success() {
+    echo "${_CTX_GREEN}Success: $1${_CTX_RESET}"
+}
+
+# COMMAND COMPLETION
+# ==================
+
+# Command line completion function.
+_ctx_complete() {
+    local options=''
+
+    case "${COMP_WORDS[COMP_CWORD - 1]}" in
+        ctx) options='new delete enter edit lib list help' ;;
+        delete) options=$(ls -1 "${CTX_ROOT}") ;;
+        enter) options=$(ls -1 "${CTX_ROOT}") ;;
+        edit) options=$(ls -1 "${CTX_ROOT}") ;;
+        lib) options=$(ls -1 "${CTX_LIB}") ;;
+    esac
+
+    COMPREPLY=($(compgen -W "${options}" ${COMP_WORDS[COMP_CWORD]}))
+}
+
+# Complete ctx.
+complete -F _ctx_complete ctx
+
+# SUPPORTING FILES AND DIRECTORIES
+# ================================
+
+# Usage: ctx_libs <lib name> ...
+# Source the given files from the lib directory.
+ctx_libs() {
+    while [ $# -gt 0 ]; do
+        local lib_path="${CTX_LIB}/$1"
+        shift
+        source "${lib_path}"
+    done
+}
+
+# Usage: _setup
+# Setup supporting files and directories if they don't exist. Enter the context
+# specified by CTX_NAME.
+_setup() {
+    mkdir -p "${CTX_ROOT}"
+    mkdir -p "${CTX_LIB}"
+
+    if [ "${PS1+x}" = "x" -a "${-#*i}" != "$-" -a -n "${CTX_NAME}" ]; then
+        local ctx_path="${CTX_ROOT}/${CTX_NAME}"
+        _try_source "${ctx_path}"
+    fi
+}
+
+_setup

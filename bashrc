@@ -253,6 +253,10 @@ if `type rbenv &>/dev/null`; then
   eval "$(rbenv init -)";
 fi
 
+if [ -r "${HOME}/.bash-ctx/bash-ctx" ]; then
+    source "${HOME}/.bash-ctx/bash-ctx"
+fi
+
 function init_ssh_agent {
   eval `ssh-agent -s`
   ssh-add
