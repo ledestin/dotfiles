@@ -75,7 +75,7 @@ if [ -n "$PS1" ]; then
   # Terminal title.
   case "$TERM" in                                                         
     screen|xterm*)                                                             
-      if [ -e /usr/share/terminfo/x/xterm+256color ]; then
+      if [ -e /usr/share/terminfo/x/xterm+256color -o "$OS" = "Darwin" ]; then
         export TERM='xterm-256color'
       else
         export TERM='xterm-color'
