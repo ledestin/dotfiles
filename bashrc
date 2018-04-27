@@ -131,6 +131,12 @@ if [ -n "$PS1" ]; then
 
   # Program settings.
 
+  # overlord_quote(1)
+  for character in shalltear albedo aura mare demiurge cocytus entoma narberal \
+    nabe lupusregina yuri solution ainz momonga; do
+    eval "alias $character='overlord_quote $character'"
+  done
+
   # ls(1)
   type dircolors &>/dev/null && eval `dircolors -b`
   if [ "$OS" = 'Darwin' ]; then
