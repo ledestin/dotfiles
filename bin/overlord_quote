@@ -1,10 +1,10 @@
 #!/usr/bin/env ruby
 
-SHOW_ADDITIONAL_SENTENCES = 5
+TOTAL_SENTENCES_TO_SHOW = 6
 
 def random_quote
   quote_index = @quotes[rand @quotes.size]
-  @sentences[quote_index..quote_index + SHOW_ADDITIONAL_SENTENCES].map { |quote| prettify quote }
+  @sentences[quote_index...quote_index + TOTAL_SENTENCES_TO_SHOW].map { |quote| prettify quote }
     .join(" ")
 end
 
