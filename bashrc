@@ -133,7 +133,7 @@ if [ -n "$PS1" ]; then
 
   # overlord_quote(1)
   for character in shalltear albedo aura mare demiurge cocytus entoma narberal \
-    nabe lupusregina yuri solution ainz momonga; do
+    nabe lupusregina yuri solution ainz momonga baraja evileye; do
     eval "alias $character='overlord_quote $character'"
   done
 
