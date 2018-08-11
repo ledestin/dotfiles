@@ -44,6 +44,9 @@ if [ -n "$PS1" ]; then
 
       alias vi='vim'
       ;;
+    Linux)
+      FRAMEBUFFER_RUN='xvfb-run'
+      ;;
     *)
       export LC_MESSAGES=C
       export VISUAL=vim
@@ -123,8 +126,8 @@ if [ -n "$PS1" ]; then
   . ~/.bash_completions
   . ~/.bash/git-completion.bash
   . ~/.bundler-exec.sh
-  alias rake='run-with-bundler xvfb-run rake'
-  alias rspec='run-with-bundler xvfb-run rspec'
+  alias rake="run-with-bundler $FRAMEBUFFER_RUN rake"
+  alias rspec="run-with-bundler $FRAMEBUFFER_RUN rspec"
 
   # Rails/Easil
   export DEV_HOST=dannan
