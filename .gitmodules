@@ -3,4 +3,4 @@
 	url = https://github.com/jimeh/git-aware-prompt.git
 [submodule "asdf"]
 	path = asdf
-	url = ./asdf/
+	url = https://github.com/asdf-vm/asdf.git
