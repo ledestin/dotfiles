@@ -1,7 +1,8 @@
 #!/bin/sh
 #export http_proxy=http://localhost:3128
 
-
+alias random-anime='random-entry /data/video/anime'
+alias random-music="random-entry /data/music/*"
 
 # Shuttlerock stuff.
 #export USE_MEMCACHE=1
