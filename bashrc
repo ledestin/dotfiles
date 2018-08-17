@@ -50,6 +50,7 @@ if [ -n "$PS1" ]; then
     *)
       export LC_MESSAGES=C
       export VISUAL=vim
+      export EDITOR="$VISUAL"
       export FTP_PASSIVE=1
       export DEBEMAIL='ledestin@gmail.com'
       export OPERAPLUGINWRAPPER_PRIORITY=0
