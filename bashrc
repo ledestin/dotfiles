@@ -125,6 +125,7 @@ if [ -n "$PS1" ]; then
   shopt -s extglob
   . ~/.bash_completions
   . ~/.bash/git-completion.bash
+  . ~/.bash/git-flow-completion.bash
   . ~/.bundler-exec.sh
   alias rake="run-with-bundler $FRAMEBUFFER_RUN rake"
   alias rspec="run-with-bundler $FRAMEBUFFER_RUN rspec"

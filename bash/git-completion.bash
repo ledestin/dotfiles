@@ -2351,6 +2351,10 @@ _git ()
 		c=$((++c))
 	done
 
+        if [[ "$command" -eq "flow" ]]; then
+          _git_flow;
+        fi
+
 	if [ -z "$command" ]; then
 		case "${COMP_WORDS[COMP_CWORD]}" in
 		--*)   __gitcomp "
