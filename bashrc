@@ -47,32 +47,31 @@ if [ -n "$PS1" ]; then
     Linux)
       FRAMEBUFFER_RUN='xvfb-run'
       ;;
-    *)
-      export LC_MESSAGES=C
-      export VISUAL=vim
-      export EDITOR="$VISUAL"
-      export FTP_PASSIVE=1
-      export DEBEMAIL='ledestin@gmail.com'
-      export OPERAPLUGINWRAPPER_PRIORITY=0
-      # So that gqview doesn't complain about non-utf filenames.
-      export G_BROKEN_FILENAMES=1
+  esac
 
-      # Terminal-locale-related settings.
-      # Russian locale, unless terminal is kterm.
-      #
-      # The reason for why a Linux distribution should set LANG in /etc/profile is
-      # that this makes it most easy for user to override that system default using
-      # the individual LC_* variables. If LC_ALL is set, then this selective
-      # override functionality would not be available to users.
-      case "$TERM" in
-	kterm)
-	  export XMODIFIERS="@im=kinput2"
-	  export LANG=ja_JP.eucJP
-	  ;;
-	*)
-	  export LESSCHARDEF=8bcccbcc18b95.b41.b15.b7.
-	  ;;
-      esac
+  export LC_MESSAGES=C
+  export VISUAL=vim
+  export EDITOR="$VISUAL"
+  export FTP_PASSIVE=1
+  export DEBEMAIL='ledestin@gmail.com'
+  export OPERAPLUGINWRAPPER_PRIORITY=0
+  # So that gqview doesn't complain about non-utf filenames.
+  export G_BROKEN_FILENAMES=1
+
+  # Terminal-locale-related settings.
+  # Russian locale, unless terminal is kterm.
+  #
+  # The reason for why a Linux distribution should set LANG in /etc/profile is
+  # that this makes it most easy for user to override that system default using
+  # the individual LC_* variables. If LC_ALL is set, then this selective
+  # override functionality would not be available to users.
+  case "$TERM" in
+    kterm)
+      export XMODIFIERS="@im=kinput2"
+      export LANG=ja_JP.eucJP
+      ;;
+    *)
+      export LESSCHARDEF=8bcccbcc18b95.b41.b15.b7.
       ;;
   esac
 
