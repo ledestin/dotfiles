@@ -283,6 +283,8 @@ if [ -d ~/.asdf ]; then
   . $HOME/.asdf/asdf.sh
 
   . $HOME/.asdf/completions/asdf.bash
+
+  PATH="$PATH:$(yarn global bin)"
 fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
