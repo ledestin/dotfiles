@@ -280,6 +280,9 @@ function last_migration {
 LOCAL_CONFIG=~/".bash_$HOSTNAME"
 if [ -f "$LOCAL_CONFIG" ]; then . "$LOCAL_CONFIG"; fi
 
+DISCO_CONFIG=~/.bash_disco
+if [ -f "$DISCO_CONFIG" ]; then . "$DISCO_CONFIG"; fi
+
 if [ -d ~/.asdf ]; then
   . $HOME/.asdf/asdf.sh
 
