@@ -96,6 +96,8 @@ map <F8> :emenu Encoding.<TAB>
 :set fileencodings=iso-2022-jp,utf-8,utf-16,ucs-2-internal,ucs-2
 :endif
 
+autocmd BufNewFile,BufRead              */work/disco/*    setlocal textwidth=100
+
 augroup encrypted
     au!
 
