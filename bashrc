@@ -45,7 +45,7 @@ if [ -n "$PS1" ]; then
       alias vi='vim'
       ;;
     Linux)
-      FRAMEBUFFER_RUN='xvfb-run'
+      FRAMEBUFFER_RUN='xvfb-run -a'
       ;;
   esac
 

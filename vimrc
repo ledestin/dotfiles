@@ -73,11 +73,11 @@ map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
 
 if filereadable('./bin/rspec')
-  let g:rspec_command = "!xvfb-run ./bin/rspec {spec}"
+  let g:rspec_command = "!xvfb-run -a ./bin/rspec {spec}"
 elseif !empty(gemfile)
-  let g:rspec_command = "!xvfb-run bundle exec rspec {spec}"
+  let g:rspec_command = "!xvfb-run -a bundle exec rspec {spec}"
 else
-  let g:rspec_command = "!xvfb-run rspec {spec}"
+  let g:rspec_command = "!xvfb-run -a rspec {spec}"
 endif
 
 :map \q mz^"zyf>`z:set comments+=n:<C-R>z<CR>gq
