@@ -12,6 +12,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'thoughtbot/vim-rspec'
   Plug 'tpope/vim-rails'
   Plug 'wakatime/vim-wakatime'
+  Plug 'moll/vim-bbye'
 call plug#end()
 
 set textwidth=80
