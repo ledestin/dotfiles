@@ -161,6 +161,7 @@ if [ -n "$PS1" ]; then
   alias uzl='unzip -l'
   alias pget='wget -np -krpN -U "Mozilla/4.0 (compatible; MSIE 6.0; X11; Linux i686) Opera 7.54  [en]"'
   alias pgetp='wget -krpN -U "Mozilla/4.0 (compatible; MSIE 6.0; X11; Linux i686) Opera 7.54  [en]"'
+  alias diskusage="du -h -d1 2> /dev/null | sort -hr"
 
   # Debian
   alias ac='apt-cache'
