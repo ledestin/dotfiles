@@ -29,6 +29,7 @@ set laststatus=2
 set smartcase
 set modeline
 set modelines=5
+set backspace=indent,eol,start
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 if executable('ag')
