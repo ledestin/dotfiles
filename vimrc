@@ -59,8 +59,11 @@ colorscheme mydesert
 syntax enable
 highlight ExtraWhitespace ctermbg=red guibg=red
 " Show trailing whitepace and spaces before a tab:
-autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/
+autocmd Syntax * match ExtraWhitespace /\s\+$\| \+\ze\t/
 noremap <F1> :help <cword><CR>
+
+" Vue syntax highlighting support
+autocmd FileType vue syntax sync fromstart
 
 imap <C-h> <Left>
 imap <C-l> <Right>
