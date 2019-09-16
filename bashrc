@@ -76,8 +76,8 @@ if [ -n "$PS1" ]; then
   esac
 
   # Terminal title.
-  case "$TERM" in                                                         
-    screen|xterm*)                                                             
+  case "$TERM" in
+    screen|xterm*)
       if [ -e /usr/share/terminfo/x/xterm+256color -o "$OS" = "Darwin" ]; then
         export TERM='xterm-256color'
       else
@@ -105,7 +105,7 @@ if [ -n "$PS1" ]; then
 	  sed 's/^[^"]\+"//; s/".\+$//; s/-/ /g'`
       fi
       PROMPT_COMMAND='echo -ne "\033]2; [${HOSTNAME}]\007"' ;;
-  esac                                                                    
+  esac
 
   # Shell settings.
 
@@ -246,7 +246,7 @@ if [ -n "$PS1" ]; then
   alias tsong='nptag --album --song'
 
   # mplayer(1)
-  alias mp='mplayer -quiet -mc 0 -nojoystick -cache 8192' 
+  alias mp='mplayer -quiet -mc 0 -nojoystick -cache 8192'
   alias mphd='mp -vo vdpau -vc ffmpeg12vdpau,ffh264vdpau,ffwmv3vdpau,ffvc1vdpau,'
   alias mpf='mp -fs'
   alias mpq='mp -vf pp=ac'
