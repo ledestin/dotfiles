@@ -4,6 +4,8 @@
 alias random-anime='random-entry /data/video/anime'
 alias random-music="random-entry /data/music/*"
 
+export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64"
+
 # Shuttlerock stuff.
 #export USE_MEMCACHE=1
 
