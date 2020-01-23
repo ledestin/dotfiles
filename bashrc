@@ -2,7 +2,7 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
-PATH=~/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin/X11:/usr/X11R6/bin:/usr/games:~/work/utils:~/work/mkat:~/work/dev-scripts
+PATH=~/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin/X11:/usr/X11R6/bin:/usr/games:~/work/utils:~/work/mkat:~/work/dev-scripts:/snap/bin
 
 export LC_MESSAGES=C
 if [ -z "$LANG" ]; then
@@ -166,6 +166,9 @@ if [ -n "$PS1" ]; then
   # Debian
   alias ac='apt-cache'
   alias acs='apt-cache search'
+
+  # K8s
+  alias k="microk8s.kubectl"
 
   # Hardware
   alias motherboard='dmidecode -t 2'
