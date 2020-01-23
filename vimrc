@@ -101,6 +101,12 @@ map <F8> :emenu Encoding.<TAB>
 :set fileencodings=iso-2022-jp,utf-8,utf-16,ucs-2-internal,ucs-2
 :endif
 
+function! StripTrailingWhitespace()
+  :s/\s\+$//
+endfunction
+
+map <Leader>w :call StripTrailingWhitespace()<CR>
+
 function! DiscoTextWidth()
   if &ft =~ 'gitcommit'
     return
