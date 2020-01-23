@@ -13,6 +13,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-rails'
   Plug 'wakatime/vim-wakatime'
   Plug 'moll/vim-bbye'
+  Plug 'ntpeters/vim-better-whitespace'
 call plug#end()
 
 set textwidth=80
@@ -65,6 +66,14 @@ noremap <F1> :help <cword><CR>
 " Vue syntax highlighting support
 autocmd FileType vue syntax sync fromstart
 
+
+" https://vimawesome.com/plugin/better-whitespace
+let g:better_whitespace_enabled=1
+let g:strip_whitespace_confirm=0
+let g:strip_only_modified_lines=0
+let g:strip_whitelines_at_eof=1
+autocmd FileType * EnableStripWhitespaceOnSave
+
 imap <C-h> <Left>
 imap <C-l> <Right>
 map <F9>  :w<CR> :make<CR>
@@ -100,12 +109,6 @@ map <F8> :emenu Encoding.<TAB>
 :set encoding=japan
 :set fileencodings=iso-2022-jp,utf-8,utf-16,ucs-2-internal,ucs-2
 :endif
-
-function! StripTrailingWhitespace()
-  :s/\s\+$//
-endfunction
-
-map <Leader>w :call StripTrailingWhitespace()<CR>
 
 function! DiscoTextWidth()
   if &ft =~ 'gitcommit'
