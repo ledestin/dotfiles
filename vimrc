@@ -1,6 +1,6 @@
 call pathogen#infect()
 call plug#begin('~/.vim/plugged')
-  "Plug 'w0rp/ale'
+  Plug 'dense-analysis/ale'
   Plug 'jlanzarotta/bufexplorer'
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
@@ -65,6 +65,19 @@ noremap <F1> :help <cword><CR>
 
 " Vue syntax highlighting support
 autocmd FileType vue syntax sync fromstart
+
+" ALE
+let g:ale_linters = {
+\}
+let g:ale_fixers = {
+\}
+
+" Only run linters named in ale_linters settings.
+let g:ale_linters_explicit = 1
+
+" let g:ale_fix_on_save = 1
+
+highlight ALEWarning ctermbg=235
 
 
 " https://vimawesome.com/plugin/better-whitespace
