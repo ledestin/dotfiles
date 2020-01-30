@@ -14,6 +14,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'wakatime/vim-wakatime'
   Plug 'moll/vim-bbye'
   Plug 'ntpeters/vim-better-whitespace'
+  Plug 'tpope/vim-surround'
 call plug#end()
 
 set textwidth=80
