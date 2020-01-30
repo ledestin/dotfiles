@@ -157,3 +157,7 @@ augroup encrypted
     " after the file has been written.
     autocmd BufWritePost,FileWritePost    *.gpg   u
 augroup END</pre>
+
+if filereadable(".git/safe/../../vimrc.local")
+  source .git/safe/../../vimrc.local
+endif
