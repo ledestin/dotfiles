@@ -128,7 +128,17 @@ if [ -n "$PS1" ]; then
   . ~/.bash/git-flow-completion.bash
   . ~/.bundler-exec.sh
   alias rake="run-with-bundler $FRAMEBUFFER_RUN rake"
-  alias rspec="run-with-bundler $FRAMEBUFFER_RUN rspec"
+
+  run_rspec_via_spring_or_binstub_or_bundler() {
+    if [ -f "./bin/spring" ]; then
+      ./bin/spring rspec "$@"
+    elif [ -f "./bin/rspec" ]; then
+      ./bin/rspec "$@"
+    else
+      run-with-bundler $FRAMEBUFFER_RUN rspec
+    fi
+  }
+  alias rspec="run_rspec_via_spring_or_binstub_or_bundler"
 
   # Rails/Easil
   export DEV_HOST=dannan
