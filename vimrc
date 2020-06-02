@@ -16,6 +16,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'ntpeters/vim-better-whitespace'
   Plug 'tpope/vim-surround'
   Plug 'christoomey/vim-rfactory'
+  Plug 'https://github.com/AndrewRadev/splitjoin.vim.git'
 call plug#end()
 
 set textwidth=80
