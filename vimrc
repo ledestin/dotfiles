@@ -35,6 +35,12 @@ set modeline
 set modelines=5
 set backspace=indent,eol,start
 set runtimepath^=~/.vim/bundle/ctrlp.vim
+set updatetime=100
+
+autocmd ColorScheme * highlight GitGutterAdd    guifg=#009900 ctermfg=2
+autocmd ColorScheme * highlight GitGutterChange guifg=#bbbb00 ctermfg=3
+autocmd ColorScheme * highlight GitGutterDelete guifg=#ff2222 ctermfg=1
+autocmd ColorScheme * highlight SignColumn ctermbg=black
 
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
