@@ -42,6 +42,8 @@ autocmd ColorScheme * highlight GitGutterChange guifg=#bbbb00 ctermfg=3
 autocmd ColorScheme * highlight GitGutterDelete guifg=#ff2222 ctermfg=1
 autocmd ColorScheme * highlight SignColumn ctermbg=black
 
+let g:bufExplorerShowRelativePath=1
+
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
