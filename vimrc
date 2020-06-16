@@ -17,6 +17,11 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-surround'
   Plug 'christoomey/vim-rfactory'
   Plug 'https://github.com/AndrewRadev/splitjoin.vim.git'
+  Plug 'https://github.com/tpope/vim-fugitive.git'
+  Plug 'https://github.com/tpope/vim-commentary.git'
+  Plug 'https://github.com/inkarkat/vim-ReplaceWithRegister'
+  Plug 'christoomey/vim-titlecase'
+  Plug 'michaeljsmith/vim-indent-object'
 call plug#end()
 
 set textwidth=80
