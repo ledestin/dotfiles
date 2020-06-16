@@ -22,6 +22,9 @@ call plug#begin('~/.vim/plugged')
   Plug 'https://github.com/inkarkat/vim-ReplaceWithRegister'
   Plug 'christoomey/vim-titlecase'
   Plug 'michaeljsmith/vim-indent-object'
+  Plug 'kana/vim-textobj-user'
+  Plug 'https://github.com/adelarsq/vim-matchit'
+  Plug 'nelstrom/vim-textobj-rubyblock'
 call plug#end()
 
 set textwidth=80
@@ -41,6 +44,12 @@ set modelines=5
 set backspace=indent,eol,start
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 set updatetime=100
+set nocompatible
+
+if has("autocmd")
+  filetype indent plugin on
+endif
+runtime macros/matchit.vim
 
 autocmd ColorScheme * highlight GitGutterAdd    guifg=#009900 ctermfg=2
 autocmd ColorScheme * highlight GitGutterChange guifg=#bbbb00 ctermfg=3
