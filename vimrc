@@ -25,6 +25,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'kana/vim-textobj-user'
   Plug 'https://github.com/adelarsq/vim-matchit'
   Plug 'nelstrom/vim-textobj-rubyblock'
+  Plug 'tpope/vim-repeat'
 call plug#end()
 
 set textwidth=80
