@@ -200,6 +200,7 @@ if [ -n "$PS1" ]; then
 
   # git(1)
   alias g='git'
+  alias gb="git checkout -b"
   alias ga='git add'
   alias gc='git commit'
   alias gd='git diff'
@@ -212,6 +213,7 @@ if [ -n "$PS1" ]; then
   alias git-remove-commit='git reset --soft HEAD^'
   alias gcl="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
   alias gcmb="git branch --merged | grep -Ev '(^\*|master)' | xargs git branch -d"
+  alias gprunestale="git fetch --prune --all"
 
   # Rails
   rails="./bin/rails"
