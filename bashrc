@@ -194,6 +194,9 @@ if [ -n "$PS1" ]; then
   alias vladtime="TZ='Asia/Sakhalin' date"
   alias wakeat="date --date='+10 hours'"
 
+  # youtube-dl(1)
+  alias youtube-dl-best="youtube-dl -f bestvideo+bestaudio"
+
   # ssh(1)
   alias scid='ssh-copy-id -i ~/.ssh/id_dsa.pub'
 
