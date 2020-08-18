@@ -274,10 +274,6 @@ if [ -n "$PS1" ]; then
   alias acroread='nice -n19 acroread'
 fi
 
-if `type rbenv &>/dev/null`; then
-  eval "$(rbenv init -)";
-fi
-
 if [ -r "${HOME}/.bash-ctx/bash-ctx" ]; then
     source "${HOME}/.bash-ctx/bash-ctx"
 fi
