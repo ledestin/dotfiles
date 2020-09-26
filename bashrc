@@ -174,6 +174,9 @@ if [ -n "$PS1" ]; then
   # Serve HTTP
   alias serve-current-dir-http="ruby -run -e httpd . -p 9090"
 
+  # Currency exchange
+  alias nzd="currency-convert 1 nzd usd"
+
   # Debian
   alias ac='apt-cache'
   alias acs='apt-cache search'
