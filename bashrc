@@ -168,6 +168,9 @@ if [ -n "$PS1" ]; then
   alias pgetp='wget -krpN -U "Mozilla/4.0 (compatible; MSIE 6.0; X11; Linux i686) Opera 7.54  [en]"'
   alias diskusage="du -h -d1 2> /dev/null | sort -hr"
 
+  # Serve HTTP
+  alias serve-current-dir-http="ruby -run -e httpd . -p 9090"
+
   # Debian
   alias ac='apt-cache'
   alias acs='apt-cache search'
