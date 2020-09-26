@@ -36,6 +36,9 @@ esac
 if [ -n "$PS1" ]; then
   # Locale and user-friendly related stuff.
   case "$OS" in
+    Darwin)
+      alias br="brightness -l"
+      ;;
     SunOS) # Hostile Sun environment.
       export EDITOR=vim
       export PAGER=less
