@@ -176,6 +176,10 @@ if [ -n "$PS1" ]; then
 
   # Currency exchange
   alias nzd="currency-convert 1 nzd usd"
+  alias rub="currency-convert 1 usd rub"
+
+  # Weather
+  alias weather="curl wttr.in?n"
 
   # Debian
   alias ac='apt-cache'
