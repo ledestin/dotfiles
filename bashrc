@@ -130,6 +130,8 @@ if [ -n "$PS1" ]; then
   . ~/.bash/git-completion.bash
   . ~/.bash/git-flow-completion.bash
   . ~/.bundler-exec.sh
+  alias reload-bashrc=". ~/.bashrc"
+
   alias rake="run-with-bundler $FRAMEBUFFER_RUN rake"
 
   run_rspec_via_spring_or_binstub_or_bundler() {
