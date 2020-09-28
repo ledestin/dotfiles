@@ -201,7 +201,7 @@ if [ -n "$PS1" ]; then
   alias blagotime="TZ='Asia/Yakutsk' date"
   alias japtime="TZ='Asia/Tokyo' date"
   alias moscowtime="TZ='Europe/Moscow' date"
-  alias samtime="TZ='Europe/Samara' date"
+  alias minsktime="TZ='Europe/Minsk' date"
   alias vladtime="TZ='Asia/Sakhalin' date"
   alias wakeat="date --date='+10 hours'"
 
