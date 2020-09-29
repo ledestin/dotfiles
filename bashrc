@@ -34,9 +34,12 @@ esac
 
 # Interactive-shell related.
 if [ -n "$PS1" ]; then
+  date_cmd="date"
+
   # Locale and user-friendly related stuff.
   case "$OS" in
     Darwin)
+      date_cmd="gdate"
       alias br="brightness -l"
       ;;
     SunOS) # Hostile Sun environment.
@@ -173,6 +176,7 @@ if [ -n "$PS1" ]; then
   alias pget='wget -np -krpN -U "Mozilla/4.0 (compatible; MSIE 6.0; X11; Linux i686) Opera 7.54  [en]"'
   alias pgetp='wget -krpN -U "Mozilla/4.0 (compatible; MSIE 6.0; X11; Linux i686) Opera 7.54  [en]"'
   alias diskusage="du -h -d1 2> /dev/null | sort -hr"
+  alias tz="$date_cmd -d "
 
   # Serve HTTP
   alias serve-current-dir-http="ruby -run -e httpd . -p 9090"
