@@ -195,6 +195,7 @@ if g:ale_enable == 1
     \ 'javascript': ['eslint', 'prettier-eslint']
   \}
   let g:ale_fixers = {
-    \ 'ruby': ['rubocop']
+    \ 'ruby': ['rubocop'],
+    \ 'javascript': ['eslint', 'prettier-eslint']
   \}
 endif
