@@ -50,6 +50,13 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 set updatetime=100
 set nocompatible
 
+" standard statusline
+set statusline=
+set statusline+=\ %f
+set statusline+=%=
+set statusline+=\ %p%%
+set statusline+=\ %l:%c
+
 if has("autocmd")
   filetype indent plugin on
 endif
@@ -198,4 +205,21 @@ if g:ale_enable == 1
     \ 'ruby': ['rubocop'],
     \ 'javascript': ['eslint', 'prettier-eslint']
   \}
+
+  nmap <silent> <Leader>e <Plug>(ale_next_wrap)
+
+  function! LinterStatus() abort
+      let l:counts = ale#statusline#Count(bufnr(''))
+      let l:all_errors = l:counts.error + l:counts.style_error
+      let l:all_non_errors = l:counts.total - l:all_errors
+      return l:counts.total == 0 ? '' : printf(
+          \   ' %d⨉ %d⚠ ',
+          \   all_non_errors,
+          \   all_errors
+          \)
+  endfunction
+
+  set statusline+=%=
+  set statusline+=%#PmenuSel#%#LineNr#
+  set statusline+=%{LinterStatus()}
 endif
