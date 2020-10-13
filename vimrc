@@ -220,6 +220,6 @@ if g:ale_enable == 1
   endfunction
 
   set statusline+=%=
-  set statusline+=%#PmenuSel#%#LineNr#
+  set statusline+=%#PmenuSel#%#ErrorMsg#
   set statusline+=%{LinterStatus()}
 endif
