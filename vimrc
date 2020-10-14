@@ -53,6 +53,7 @@ set nocompatible
 " standard statusline
 set statusline=
 set statusline+=\ %f
+set statusline+=\ %{&modified?'[+]':''}
 set statusline+=%=
 set statusline+=\ %p%%
 set statusline+=\ %l:%c
