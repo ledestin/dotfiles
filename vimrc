@@ -80,6 +80,8 @@ if !empty(git_root)
   exec 'set tags='.fnameescape(tags_file)
 endif
 
+let g:fzf_history_dir = '~/.local/share/fzf-history'
+
 " Gemfile
 let gemfile = ''
 if filereadable('./Gemfile')
