@@ -221,6 +221,12 @@ if g:ale_enable == 1
           \)
   endfunction
 
+  augroup ALELinters
+    autocmd!
+    autocmd User ALELintPost   :redrawstatus
+    autocmd User ALEFixPost    :redrawstatus
+  augroup END
+
   set statusline+=%=
   set statusline+=%#PmenuSel#%#ErrorMsg#
   set statusline+=%{LinterStatus()}
