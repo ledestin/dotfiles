@@ -26,6 +26,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'https://github.com/adelarsq/vim-matchit'
   Plug 'nelstrom/vim-textobj-rubyblock'
   Plug 'tpope/vim-repeat'
+  Plug 'Galooshi/vim-import-js'
 
   Plug 'mattn/webapi-vim'
   Plug 'christoomey/vim-quicklink'
@@ -221,7 +222,7 @@ if g:ale_enable == 1
   \}
   let g:ale_fixers = {
     \ 'ruby': ['rubocop'],
-    \ 'javascript': ['eslint', 'prettier-eslint']
+    \ 'javascript': ['eslint', 'prettier-eslint', 'importjs']
   \}
 
   nmap <silent> <Leader>e <Plug>(ale_next_wrap)
