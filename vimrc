@@ -225,6 +225,7 @@ if g:ale_enable == 1
   \}
 
   nmap <silent> <Leader>e <Plug>(ale_next_wrap)
+  nmap <silent> <Leader>f :ALEFix<CR>
 
   function! LinterStatus() abort
       let l:counts = ale#statusline#Count(bufnr(''))
