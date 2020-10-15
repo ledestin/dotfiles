@@ -105,6 +105,10 @@ noremap <F1> :help <cword><CR>
 " Vue syntax highlighting support
 autocmd FileType vue syntax sync fromstart
 
+" vimrc.local stuff
+function! EnableVimrcLocal()
+  call mkdir(".git/safe", "p")
+endfunction
 
 " ALE
 " Only run linters named in ale_linters settings.
@@ -114,6 +118,17 @@ let g:ale_fixers_explicit = 1
 " let g:ale_fix_on_save = 1
 
 highlight ALEWarning ctermbg=235
+
+" Enable ALE in vimrc.local
+function! EnableALEInVimrcLocal()
+  call system("echo 'let g:ale_enable = 1' >> vimrc.local")
+endfunction
+
+function! EnableALEInCurrentProject()
+  call EnableVimrcLocal()
+  call EnableALEInVimrcLocal()
+  echo "Please reload ~/.vimrc"
+endfunction
 
 " https://vimawesome.com/plugin/better-whitespace
 let g:better_whitespace_enabled=1
