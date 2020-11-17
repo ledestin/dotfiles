@@ -182,8 +182,8 @@ if [ -n "$PS1" ]; then
   alias serve-current-dir-http="ruby -run -e httpd . -p 9090"
 
   # Currency exchange
-  alias nzd="currency-convert 1 nzd usd"
-  alias rub="currency-convert 1 usd rub"
+  alias nzd="lumione 1 nzd usd"
+  alias rub="lumione 1 usd rub"
 
   # Weather
   alias weather="curl wttr.in?n"
