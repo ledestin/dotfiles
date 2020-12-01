@@ -207,6 +207,7 @@ if [ -n "$PS1" ]; then
   alias moscowtime="TZ='Europe/Moscow' date"
   alias minsktime="TZ='Europe/Minsk' date"
   alias vladtime="TZ='Asia/Sakhalin' date"
+  alias pst="TZ='America/Los_Angeles' date"
   alias wakeat="date --date='+10 hours'"
 
   # youtube-dl(1)
