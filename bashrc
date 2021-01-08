@@ -181,6 +181,22 @@ if [ -n "$PS1" ]; then
   # Serve HTTP
   alias serve-current-dir-http="ruby -run -e httpd . -p 9090"
 
+  # Docker
+  alias dc="docker container"
+  alias dcl="dc ls"
+  alias dcs="dc start"
+  function de() {
+    local container="$1"
+    local cmd="$2"
+
+    if [[ -z "$cmd" ]]; then
+      docker exec -it "$container" /bin/bash
+    else
+      shift
+      docker exec -it "$container" /bin/bash -c "$*"
+    fi
+  }
+
   # Currency exchange
   alias nzd="lumione 1 nzd usd"
   alias rub="lumione 1 usd rub"
