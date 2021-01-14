@@ -163,7 +163,7 @@ if [ -n "$PS1" ]; then
   # ls(1)
   type dircolors &>/dev/null && eval `dircolors -b`
   alias ls='exa'
-  alias ll='ls -l'
+  alias ll='ls -lg'
   alias la='ls -A'
 
   # Coreutils
