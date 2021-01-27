@@ -84,6 +84,9 @@ endif
 
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 
+" Docker
+autocmd BufReadPost *dockerfile* set filetype=dockerfile
+
 " Gemfile
 let gemfile = ''
 if filereadable('./Gemfile')
