@@ -154,6 +154,9 @@ if [ -n "$PS1" ]; then
 
   # Program settings.
 
+  alias dquilt="quilt --quiltrc=${HOME}/.quiltrc-dpkg"
+  complete -F _quilt_completion -o filenames dquilt
+
   # overlord_quote(1)
   for character in shalltear albedo aura mare demiurge cocytus entoma narberal \
     nabe lupusregina yuri solution ainz momonga baraja evileye renner; do
