@@ -188,15 +188,31 @@ if [ -n "$PS1" ]; then
   alias dc="docker container"
   alias dcl="dc ls"
   alias dcs="dc start"
+
+  # Passing options that take arguments:
+  # --user=root
+  # The argument must be used without whitespace!
   function de() {
+    # Move options (e.g. --user) to $options array.
+    local option
+    local options=()
+    for option in $*; do
+      if [[ "${option:0:1}" != "-" ]]; then
+        break
+      fi
+
+      options+=($option)
+      shift
+    done
+
     local container="$1"
     local cmd="$2"
 
     if [[ -z "$cmd" ]]; then
-      docker exec -it "$container" /bin/bash
+      docker exec -it ${options[@]} "$container" /bin/bash
     else
       shift
-      docker exec -it "$container" /bin/bash -c "$*"
+      docker exec -it ${options[@]} "$container" /bin/bash -c "$*"
     fi
   }
 
