@@ -215,6 +215,7 @@ if [ -n "$PS1" ]; then
       docker exec -it ${options[@]} "$container" /bin/bash -c "$*"
     fi
   }
+  alias der="de --user=root"
 
   # Currency exchange
   alias nzd="lumione 1 nzd usd"
