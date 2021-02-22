@@ -217,6 +217,50 @@ if [ -n "$PS1" ]; then
   }
   alias der="de --user=root"
 
+  # dr ubuntu:bionic
+  #   => docker run -it --rm ubuntu:bionic bash
+  # dr ubuntu:bionic ls /bin
+  #   => docker run -it --rm ubuntu:bionic ls /bin
+  function dr() {
+    # Move options (e.g. --user) to $options array.
+    local option
+    local options=()
+    for option in $*; do
+      if [[ "${option:0:1}" != "-" ]]; then
+        break
+      fi
+
+      options+=($option)
+      shift
+    done
+
+    local image="$1"
+    shift
+    local cmd
+    if [ $# -gt 1 ]; then
+      cmd="$@"
+    else
+      cmd="${1:-/bin/bash}"
+    fi
+
+    # --entrypoint was passed instead of cmd.
+    if `echo ${options[@]} | grep -q -P -- '--entrypoint'`; then
+      echo docker run -it --rm ${options[@]} "$image"
+      docker run -it --rm ${options[@]} "$image"
+      return
+    fi
+
+    # Use cmd.
+    echo docker run -it --rm ${options[@]} "$image" $cmd
+    docker run -it --rm ${options[@]} "$image" $cmd
+  }
+
+  # dreb ubuntu:bionic
+  #  Pass --entrypoint=/bin/bash to dr.
+  # dreb --user=1000 ubuntu:bionic
+  #  Pass --entrypoint=/bin/bash to dr and use USER 1000.
+  alias dreb="dr --entrypoint=/bin/bash"
+
   # Currency exchange
   alias nzd="lumione 1 nzd usd"
   alias rub="lumione 1 usd rub"
