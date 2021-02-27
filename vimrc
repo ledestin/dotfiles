@@ -153,6 +153,9 @@ map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
 
+" FZF filename search
+nmap <Leader>f :Files<CR>
+
 if filereadable('./bin/spring')
   let g:rspec_command = "!xvfb-run -a ./bin/spring rspec {spec}"
 elseif filereadable('./bin/rspec')
