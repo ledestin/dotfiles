@@ -313,7 +313,8 @@ if [ -n "$PS1" ]; then
   alias gm='git branch --merged master'
   alias git-remove-commit='git reset --soft HEAD^'
   alias gcl="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
-  alias gcmb="git branch --merged | grep -Ev '(^\*|master)' | xargs git branch -d"
+  alias git-clean-merged-branches="git branch --merged | grep -Ev '(^\*|master)' | xargs git branch -d"
+  alias gcmb="git-clean-merged-branches"
   alias gprunestale="git fetch --prune --all"
 
   # Rails
