@@ -141,6 +141,8 @@ let g:strip_only_modified_lines=0
 let g:strip_whitelines_at_eof=1
 autocmd FileType * EnableStripWhitespaceOnSave
 
+command Erc :e ~/.vimrc
+
 imap <C-h> <Left>
 imap <C-l> <Right>
 map <F9>  :w<CR> :make<CR>
