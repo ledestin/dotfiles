@@ -119,12 +119,15 @@ if [ -n "$PS1" ]; then
   export GITAWAREPROMPT=~/.bash/git-aware-prompt
   source "${GITAWAREPROMPT}/main.sh"
 
-  os_logo=''
   if [ "$OS" = "Darwin" ]; then
-    os_logo=' '
+    os_logo=''
     txtrst="$txtwht"
   fi
-  PS1='\[\033[33m\]\u\e[90m@\e[33m\h\e[37;40m$os_logo \[\033[33m\w\033[0m\] \[\033[32m$git_branch\033[0m\]\[$txtred\]$git_dirty\[$txtrst\]\n\$'
+  if [ "$OS" = "Linux" ]; then
+    os_logo='🐧'
+  fi
+
+  PS1='\[\033[33m\]\u\e[90m@\e[33m\h\e[37;40m$ps_logo \[\033[33m\w\033[0m\] \[\033[32m$git_branch\033[0m\]\[$txtred\]$git_dirty\[$txtrst\]\n\$'
   MAIL="~/Mail/mbox"
 
   # don't put duplicate lines in the history. See bash(1) for more options
@@ -394,6 +397,7 @@ function last_migration {
 # Load host-local config.
 LOCAL_CONFIG=~/".bash_$HOSTNAME"
 if [ -f "$LOCAL_CONFIG" ]; then . "$LOCAL_CONFIG"; fi
+ps_logo=" ${host_logo:-$os_logo}"
 
 DISCO_CONFIG=~/.bash_disco
 if [ -f "$DISCO_CONFIG" ]; then . "$DISCO_CONFIG"; fi
