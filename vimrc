@@ -27,6 +27,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'nelstrom/vim-textobj-rubyblock'
   Plug 'tpope/vim-repeat'
   Plug 'Galooshi/vim-import-js'
+  Plug 'christoomey/vim-conflicted'
 
   Plug 'mattn/webapi-vim'
   Plug 'christoomey/vim-quicklink'
@@ -58,6 +59,7 @@ set statusline+=\ %{&modified?'[+]':''}
 set statusline+=%=
 set statusline+=\ %p%%
 set statusline+=\ %l:%c
+set statusline+=\ %{ConflictedVersion()}
 
 if has("autocmd")
   filetype indent plugin on
