@@ -28,6 +28,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-repeat'
   Plug 'Galooshi/vim-import-js'
   Plug 'christoomey/vim-conflicted'
+  Plug 'davidpdrsn/vim-notable'
 
   Plug 'mattn/webapi-vim'
   Plug 'christoomey/vim-quicklink'
@@ -153,6 +154,10 @@ map <Leader>br :e ~/.bashrc<CR>
 map <F9>  :w<CR> :make<CR>
 map <F11> :update<CR> : execute("! ./" . bufname(""))<CR>
 map <F10> :update<CR> :!ruby -w -c %<CR>
+
+" vim-notable
+noremap <leader>n :call notable#open_notes_file()<cr>
+let g:notable_notes_folder = "~/work/notes/"
 
 " Rspec
 map <Leader>t :call RunCurrentSpecFile()<CR>
