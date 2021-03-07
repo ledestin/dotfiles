@@ -157,6 +157,10 @@ if [ -n "$PS1" ]; then
   # Rails/Easil
   export DEV_HOST=dannan
 
+  # rc files
+  alias vr="vim ~/.vimrc"
+  alias br="vim ~/.bashrc"
+
   # Program settings.
 
   alias dquilt="quilt --quiltrc=${HOME}/.quiltrc-dpkg"
