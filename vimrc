@@ -148,6 +148,7 @@ command Erc :e ~/.vimrc
 imap <C-h> <Left>
 imap <C-l> <Right>
 map <Leader>w :Bwipeout<CR>
+map <Leader>vr :Erc<CR>
 map <F9>  :w<CR> :make<CR>
 map <F11> :update<CR> : execute("! ./" . bufname(""))<CR>
 map <F10> :update<CR> :!ruby -w -c %<CR>
