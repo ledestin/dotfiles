@@ -139,6 +139,7 @@ if [ -n "$PS1" ]; then
   . ~/.bash/git-flow-completion.bash
   . ~/.bundler-exec.sh
   alias reload-bashrc=". ~/.bashrc"
+  alias bs="reload-bashrc"
 
   # Ruby
   alias rake="run-with-bundler $FRAMEBUFFER_RUN rake"
