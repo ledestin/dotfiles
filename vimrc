@@ -88,6 +88,12 @@ endif
 
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 
+" Don't auto-wrap existing long lines
+set fo+=l
+
+" Toggle paste
+set pastetoggle=<Leader>p
+
 " Hardtime
 let g:hardtime_default_on = 1
 
