@@ -29,6 +29,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'Galooshi/vim-import-js'
   Plug 'christoomey/vim-conflicted'
   Plug 'davidpdrsn/vim-notable'
+  Plug 'takac/vim-hardtime'
 
   Plug 'mattn/webapi-vim'
   Plug 'christoomey/vim-quicklink'
@@ -86,6 +87,9 @@ if !empty(git_root)
 endif
 
 let g:fzf_history_dir = '~/.local/share/fzf-history'
+
+" Hardtime
+let g:hardtime_default_on = 1
 
 " Docker
 autocmd BufReadPost *dockerfile* set filetype=dockerfile
