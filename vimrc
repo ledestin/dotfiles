@@ -63,6 +63,10 @@ set statusline+=\ %p%%
 set statusline+=\ %l:%c
 set statusline+=\ %{ConflictedVersion()}
 
+" turn relative line numbers on
+set relativenumber
+set rnu
+
 if has("autocmd")
   filetype indent plugin on
 endif
