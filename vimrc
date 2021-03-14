@@ -255,8 +255,8 @@ if g:ale_enable == 1
     \ 'javascript': ['eslint', 'prettier-eslint', 'importjs']
   \}
 
-  nmap <silent> <Leader>e <Plug>(ale_next_wrap)
-  nmap <silent> <Leader>f :ALEFix<CR>
+  nmap <silent> <Leader>an <Plug>(ale_next_wrap)
+  nmap <silent> <Leader>af :ALEFix<CR>
 
   function! LinterStatus() abort
       let l:counts = ale#statusline#Count(bufnr(''))
