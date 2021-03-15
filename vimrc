@@ -162,6 +162,7 @@ command Erc :e ~/.vimrc
 
 imap <C-h> <Left>
 imap <C-l> <Right>
+map <Leader>d :filetype detect<CR>
 map <Leader>w :Bwipeout<CR>
 map <Leader>sp :split<CR>
 map <Leader>vr :Erc<CR>
