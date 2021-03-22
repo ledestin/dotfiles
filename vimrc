@@ -98,6 +98,16 @@ set fo+=l
 " Toggle paste
 set pastetoggle=<Leader>p
 
+" Flash cursor line
+function! Flash()
+  set cursorline
+  redraw
+  sleep 200m
+  set nocursorline
+endfunction
+
+nnoremap <Leader>fl :call Flash()<CR>
+
 " Hardtime
 let g:hardtime_default_on = 1
 
