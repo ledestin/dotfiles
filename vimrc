@@ -53,6 +53,7 @@ set backspace=indent,eol,start
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 set updatetime=100
 set nocompatible
+set complete+=kspell " Autocomplete with dictionary words when spell check is on
 
 " standard statusline
 set statusline=
@@ -91,6 +92,10 @@ if !empty(git_root)
 endif
 
 let g:fzf_history_dir = '~/.local/share/fzf-history'
+
+" Spell
+autocmd Filetype markdown setlocal spell textwidth=80
+autocmd Filetype gitcommit,mail setlocal spell
 
 " Don't auto-wrap existing long lines
 set fo+=l
