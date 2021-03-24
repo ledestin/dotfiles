@@ -111,7 +111,7 @@ function! Flash()
   set nocursorline
 endfunction
 
-nnoremap <Leader>fl :call Flash()<CR>
+nnoremap <Leader>c :call Flash()<CR>
 
 " Hardtime
 let g:hardtime_default_on = 1
