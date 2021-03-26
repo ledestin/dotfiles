@@ -30,6 +30,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'christoomey/vim-conflicted'
   Plug 'davidpdrsn/vim-notable'
   Plug 'takac/vim-hardtime'
+  Plug 'rhysd/vim-grammarous'
 
   Plug 'mattn/webapi-vim'
   Plug 'christoomey/vim-quicklink'
