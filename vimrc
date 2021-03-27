@@ -94,6 +94,13 @@ endif
 
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 
+" git grep current word
+function! GitGrepCurrentWord()
+  Ggrep '\<<cword>\>' **
+endfunction
+
+noremap <Leader>g :call GitGrepCurrentWord()<CR>
+
 " Spell
 autocmd Filetype markdown setlocal spell textwidth=80
 autocmd Filetype gitcommit,mail setlocal spell
