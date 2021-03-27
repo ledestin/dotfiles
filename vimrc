@@ -117,6 +117,19 @@ nnoremap <Leader>c :call Flash()<CR>
 " Hardtime
 let g:hardtime_default_on = 1
 
+" Help in a separate tab.
+augroup HelpInTabs
+    autocmd!
+    autocmd BufEnter  *.txt   call HelpInNewTab()
+augroup END
+
+function! HelpInNewTab ()
+    if &buftype == 'help'
+        "Convert the help window to a tab...
+        execute "normal \<C-W>T"
+    endif
+endfunction
+
 " Docker
 autocmd BufReadPost *dockerfile* set filetype=dockerfile
 
