@@ -31,6 +31,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'davidpdrsn/vim-notable'
   Plug 'takac/vim-hardtime'
   Plug 'rhysd/vim-grammarous'
+  Plug 'MattesGroeger/vim-bookmarks'
 
   Plug 'mattn/webapi-vim'
   Plug 'christoomey/vim-quicklink'
