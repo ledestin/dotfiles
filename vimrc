@@ -95,9 +95,20 @@ endif
 
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 
+" QuickFix
+noremap [q :cnext<CR>
+noremap ]q :cprev<CR>
+noremap <Leader>qc :cclose<CR>
+
+augroup quickfix
+    autocmd!
+    autocmd QuickFixCmdPost [^l]* cwindow
+    autocmd QuickFixCmdPost l* lwindow
+augroup END
+
 " git grep current word
 function! GitGrepCurrentWord()
-  Ggrep '\<<cword>\>' **
+  silent Ggrep '\<<cword>\>'
 endfunction
 
 noremap <Leader>g :call GitGrepCurrentWord()<CR>
