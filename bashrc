@@ -167,6 +167,12 @@ if [ -n "$PS1" ]; then
   alias dquilt="quilt --quiltrc=${HOME}/.quiltrc-dpkg"
   complete -F _quilt_completion -o filenames dquilt
 
+  # pbcopy
+  if [ "$OS" = Linux ]; then
+    alias pbcopy='xclip -selection clipboard'
+    alias pbpaste='xclip -selection clipboard -o'
+  fi
+
   # overlord_quote(1)
   for character in shalltear albedo aura mare demiurge cocytus entoma narberal \
     nabe lupusregina yuri solution ainz momonga baraja evileye renner; do
