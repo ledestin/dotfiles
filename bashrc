@@ -167,10 +167,13 @@ if [ -n "$PS1" ]; then
   alias dquilt="quilt --quiltrc=${HOME}/.quiltrc-dpkg"
   complete -F _quilt_completion -o filenames dquilt
 
-  # pbcopy
   if [ "$OS" = Linux ]; then
+    # pbcopy
     alias pbcopy='xclip -selection clipboard'
     alias pbpaste='xclip -selection clipboard -o'
+
+    # Syncplay
+    alias sp="syncplay -a jun.dashjr.org -r a --player-path /usr/bin/mpv -n Pancake"
   fi
 
   # overlord_quote(1)
