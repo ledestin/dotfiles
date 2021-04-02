@@ -80,6 +80,11 @@ autocmd ColorScheme * highlight GitGutterChange guifg=#bbbb00 ctermfg=3
 autocmd ColorScheme * highlight GitGutterDelete guifg=#ff2222 ctermfg=1
 autocmd ColorScheme * highlight SignColumn ctermbg=black
 
+" Hardtime
+let g:hardtime_default_on = 1
+let g:hardtime_ignore_buffer_patterns = [ "[BufExplorer]", "NERD.*" ]
+let g:hardtime_ignore_quickfix = 1
+
 let g:bufExplorerShowRelativePath=1
 
 if executable('ag')
