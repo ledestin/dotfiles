@@ -1,0 +1,14 @@
+[Unit]
+Description=OneDrive sync service (detached)
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/rclone --vfs-cache-mode writes mount "OneDrive": /home/ledestin/OneDrive
+
+ExecStop=/usr/bin/pkill rclone
+KillMode=none
+
+RestartSec=2
+
+[Install]
+WantedBy=default.target
