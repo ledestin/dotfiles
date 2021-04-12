@@ -55,6 +55,7 @@ set backspace=indent,eol,start
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 set updatetime=100
 set nocompatible
+set showcmd
 set complete+=kspell " Autocomplete with dictionary words when spell check is on
 
 " standard statusline
