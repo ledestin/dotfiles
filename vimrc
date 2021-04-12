@@ -71,6 +71,9 @@ set statusline+=\ %{ConflictedVersion()}
 set relativenumber
 set rnu
 
+" Auto-load .vimrc
+autocmd BufWritePost .vimrc source %
+
 if has("autocmd")
   filetype indent plugin on
 endif
