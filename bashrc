@@ -174,6 +174,18 @@ if [ -n "$PS1" ]; then
 
     # Syncplay
     alias sp="syncplay -a jun.dashjr.org -r a --player-path /usr/bin/mpv -n Pancake"
+    function idp() {
+      local post="$1"
+      local looter_bin=
+
+      if [ "$OS" = Linux ]; then
+        looter_bin=~/.local/bin/instalooter
+      else
+        looter_bin=~/Library/Python/3.9/bin/instalooter
+      fi
+
+      $looter_bin post "$post" "~/Resources/Beautiful Women/instagram"
+    }
   fi
 
   # overlord_quote(1)
