@@ -219,6 +219,8 @@ if [ -n "$PS1" ]; then
   alias dc="docker container"
   alias dcl="dc ls"
   alias dcs="dc start"
+  alias di="docker image"
+  alias dil="di ls"
 
   # Passing options that take arguments:
   # --user=root
@@ -373,7 +375,7 @@ if [ -n "$PS1" ]; then
 
   # dict(1)
   DICTL_CHARSET='KOI8-R'
-  alias di='dictl'
+  alias dic='dictl'
 
   # Wallpapers
   alias delbgpic='rm "`cat ~/.chbg_history`"'
