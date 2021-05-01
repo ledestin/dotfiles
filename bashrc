@@ -224,8 +224,11 @@ if [ -n "$PS1" ]; then
   alias dl="docker logs"
 
   function derlast() {
-    local last_container_name=$(docker container ls -l --format "{{.Names}}")
+    local name_and_image=($(docker container ls -l --format "{{.Names}} {{.Image}}"))
+    local last_container_name=${name_and_image[0]}
+    local last_container_image=${name_and_image[1]}
 
+    echo $last_container_image
     der "$last_container_name" "$*"
   }
 
