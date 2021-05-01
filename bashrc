@@ -226,7 +226,7 @@ if [ -n "$PS1" ]; then
   function derlast() {
     local last_container_name=$(docker container ls -l --format "{{.Names}}")
 
-    der "$last_container_name"
+    der "$last_container_name" "$*"
   }
 
   # Passing options that take arguments:
