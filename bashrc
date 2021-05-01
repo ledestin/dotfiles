@@ -249,9 +249,11 @@ if [ -n "$PS1" ]; then
     local cmd="$2"
 
     if [[ -z "$cmd" ]]; then
+      echo docker exec -it ${options[@]} "$container" /bin/bash
       docker exec -it ${options[@]} "$container" /bin/bash
     else
       shift
+      echo docker exec -it ${options[@]} "$container" /bin/bash -c "$*"
       docker exec -it ${options[@]} "$container" /bin/bash -c "$*"
     fi
   }
