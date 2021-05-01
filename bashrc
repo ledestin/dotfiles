@@ -221,6 +221,13 @@ if [ -n "$PS1" ]; then
   alias dcs="dc start"
   alias di="docker image"
   alias dil="di ls"
+  alias dl="docker logs"
+
+  function derlast() {
+    local last_container_name=$(docker container ls -l --format "{{.Names}}")
+
+    der "$last_container_name"
+  }
 
   # Passing options that take arguments:
   # --user=root
