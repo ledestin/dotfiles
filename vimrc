@@ -84,6 +84,14 @@ autocmd ColorScheme * highlight GitGutterChange guifg=#bbbb00 ctermfg=3
 autocmd ColorScheme * highlight GitGutterDelete guifg=#ff2222 ctermfg=1
 autocmd ColorScheme * highlight SignColumn ctermbg=black
 
+" Persistent undo
+if has('persistent_undo')
+  set undofile
+
+  call mkdir($HOME . "/.vim_undo_files", "p", 0700)
+  set undodir=$HOME/.vim_undo_files
+endif
+
 " Hardtime
 let g:hardtime_default_on = 1
 let g:hardtime_ignore_buffer_patterns = [ "BufExplorer" ]
