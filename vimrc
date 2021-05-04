@@ -323,7 +323,8 @@ if g:ale_enable == 1
   let g:ale_linters = {
     \ 'ruby': ['rubocop', 'ruby'],
     \ 'javascript': ['eslint', 'prettier-eslint'],
-    \ 'sh': ['shellcheck']
+    \ 'sh': ['shellcheck'],
+    \ 'dockerfile': ['hadolint']
   \}
   let g:ale_fixers = {
     \ 'ruby': ['rubocop'],
