@@ -57,6 +57,7 @@ set updatetime=100
 set nocompatible
 set showcmd
 set complete+=kspell " Autocomplete with dictionary words when spell check is on
+set incsearch
 
 " standard statusline
 set statusline=
@@ -66,6 +67,9 @@ set statusline+=%=
 set statusline+=\ %p%%
 set statusline+=\ %l:%c
 set statusline+=\ %{ConflictedVersion()}
+
+set hlsearch
+nmap <silent>  <BS>  :nohlsearch<CR>
 
 " turn relative line numbers on
 set relativenumber
