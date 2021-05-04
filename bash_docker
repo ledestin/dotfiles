@@ -1,0 +1,94 @@
+#!/bin/bash
+
+# Docker aliases and functions
+
+alias dc="docker container"
+alias dcl="dc ls"
+alias dcs="dc start"
+alias di="docker image"
+alias dil="di ls"
+alias dl="docker logs"
+
+# Run the last started container with root user.
+function derlast() {
+  local name_and_image=($(docker container ls -l --format "{{.Names}} {{.Image}}"))
+  local last_container_name=${name_and_image[0]}
+  local last_container_image=${name_and_image[1]}
+
+  echo $last_container_image
+  der "$last_container_name" "$*"
+}
+
+# Passing options that take arguments:
+# --user=root
+# The argument must be used without whitespace!
+function de() {
+  # Move options (e.g. --user) to $options array.
+  local option
+  local options=()
+  for option in $*; do
+    if [[ "${option:0:1}" != "-" ]]; then
+      break
+    fi
+
+    options+=($option)
+    shift
+  done
+
+  local container="$1"
+  local cmd="$2"
+
+  if [[ -z "$cmd" ]]; then
+    echo docker exec -it ${options[@]} "$container" /bin/bash
+    docker exec -it ${options[@]} "$container" /bin/bash
+  else
+    shift
+    echo docker exec -it ${options[@]} "$container" /bin/bash -c "$*"
+    docker exec -it ${options[@]} "$container" /bin/bash -c "$*"
+  fi
+}
+alias der="de --user=root"
+
+# dr ubuntu:bionic
+#   => docker run -it --rm ubuntu:bionic bash
+# dr ubuntu:bionic ls /bin
+#   => docker run -it --rm ubuntu:bionic ls /bin
+function dr() {
+  # Move options (e.g. --user) to $options array.
+  local option
+  local options=()
+  for option in $*; do
+    if [[ "${option:0:1}" != "-" ]]; then
+      break
+    fi
+
+    options+=($option)
+    shift
+  done
+
+  local image="$1"
+  shift
+  local cmd
+  if [ $# -gt 1 ]; then
+    cmd="$@"
+  else
+    cmd="${1:-/bin/bash}"
+  fi
+
+  # --entrypoint was passed instead of cmd.
+  if `echo ${options[@]} | grep -q -P -- '--entrypoint'`; then
+    echo docker run -it --rm ${options[@]} "$image"
+    docker run -it --rm ${options[@]} "$image"
+    return
+  fi
+
+  # Use cmd.
+  echo docker run -it --rm ${options[@]} "$image" $cmd
+  docker run -it --rm ${options[@]} "$image" $cmd
+}
+
+# dreb ubuntu:bionic
+#  Pass --entrypoint=/bin/bash to dr.
+# dreb --user=1000 ubuntu:bionic
+#  Pass --entrypoint=/bin/bash to dr and use USER 1000.
+alias dreb="dr --entrypoint=/bin/bash"
