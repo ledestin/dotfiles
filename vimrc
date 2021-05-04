@@ -318,15 +318,18 @@ endif
 if g:ale_enable == 1
   let g:ale_linters = {
     \ 'ruby': ['rubocop', 'ruby'],
-    \ 'javascript': ['eslint', 'prettier-eslint']
+    \ 'javascript': ['eslint', 'prettier-eslint'],
+    \ 'sh': ['shellcheck']
   \}
   let g:ale_fixers = {
     \ 'ruby': ['rubocop'],
-    \ 'javascript': ['eslint', 'prettier-eslint', 'importjs']
+    \ 'javascript': ['eslint', 'prettier-eslint', 'importjs'],
+    \ 'sh': ['shfmt']
   \}
 
   nmap <silent> <Leader>an <Plug>(ale_next_wrap)
   nmap <silent> <Leader>af :ALEFix<CR>
+  nmap <silent> <Leader>ad :ALEDetail<CR>
 
   function! LinterStatus() abort
       let l:counts = ale#statusline#Count(bufnr(''))
