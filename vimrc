@@ -92,7 +92,9 @@ autocmd ColorScheme * highlight SignColumn ctermbg=black
 if has('persistent_undo')
   set undofile
 
-  call mkdir($HOME . "/.vim_undo_files", "p", 0700)
+  if !isdirectory($HOME . "/.vim_undo_files")
+    call mkdir($HOME . "/.vim_undo_files", "p", 0700)
+  endif
   set undodir=$HOME/.vim_undo_files
 endif
 
