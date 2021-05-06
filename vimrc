@@ -335,6 +335,7 @@ if g:ale_enable == 1
   \}
 
   nmap <silent> <Leader>an <Plug>(ale_next_wrap)
+  nmap <silent> <Leader>ap <Plug>(ale_previous_wrap)
   nmap <silent> <Leader>af :ALEFix<CR>
   nmap <silent> <Leader>ad :ALEDetail<CR>
 
