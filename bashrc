@@ -1,3 +1,4 @@
+#!/bin/bash
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -12,7 +13,7 @@ fi
 export NODE_PATH=/usr/local/lib/node_modules
 
 # OS-related settings.
-OS=`uname`
+OS=$(uname)
 case "$OS" in
   Linux)
     ulimit -u 2000
@@ -24,7 +25,7 @@ case "$OS" in
     fi
     ;;
   CYGWIN*)
-    if [ -n "$WINDIR" ]; then PATH="$PATH:`cygpath.exe $WINDIR/system32`"; fi
+    if [ -n "$WINDIR" ]; then PATH="$PATH":$(cygpath.exe "$WINDIR/system32"); fi
     ;;
   SunOS)
     # Prepend PATH with sunfreeware path.
@@ -92,23 +93,23 @@ if [ -n "$PS1" ]; then
 
       # If this is an xterm set the title to "WindowName (hostname)".
       if [ -z "$WINDOWID" ]; then
-	# FIXME: Ugly hack because WINDOWID gets purged by sudo. Need to
-	# investigate about preserving environment with sudo. Other option is
-	# exporting something like WINDOW_NAME, but that would make it static
-	# (though practically, I don't fancy it changing). But, WINDOW_NAME will
-	# also be purged, no doubt :(
-	case "$USER" in
-	  root) windowName='Root console' ;;
-	  *)    windowName='Unknown' ;;
+        # FIXME: Ugly hack because WINDOWID gets purged by sudo. Need to
+        # investigate about preserving environment with sudo. Other option is
+        # exporting something like WINDOW_NAME, but that would make it static
+        # (though practically, I don't fancy it changing). But, WINDOW_NAME will
+        # also be purged, no doubt :(
+        case "$USER" in
+          root) windowName='Root console' ;;
+          *)    windowName='Unknown' ;;
         esac
       else
-	# Get window title from WM_CLASS property.
-	#
-	# Note: FVWM is unable to work with window names that have spaces, thus
-	# I have to use `Root-console' in FVWM instead of `Root console'. Thus,
-	# I assume that I it's fine to convert `-'s to ` 's.
-	windowName=`xprop -notype -id $WINDOWID WM_CLASS | \
-	  sed 's/^[^"]\+"//; s/".\+$//; s/-/ /g'`
+        # Get window title from WM_CLASS property.
+        #
+        # Note: FVWM is unable to work with window names that have spaces, thus
+        # I have to use `Root-console' in FVWM instead of `Root console'. Thus,
+        # I assume that I it's fine to convert `-'s to ` 's.
+        windowName=`xprop -notype -id $WINDOWID WM_CLASS | \
+          sed 's/^[^"]\+"//; s/".\+$//; s/-/ /g'`
       fi
       PROMPT_COMMAND='echo -ne "\033]2; [${HOSTNAME}]\007"' ;;
   esac
@@ -128,7 +129,7 @@ if [ -n "$PS1" ]; then
   fi
 
   PS1='\[\033[33m\]\u\e[90m@\e[33m\h\e[37;40m$ps_logo \[\033[33m\w\033[0m\] \[\033[32m$git_branch\033[0m\]\[$txtred\]$git_dirty\[$txtrst\]\n\$'
-  MAIL="~/Mail/mbox"
+  MAIL="$HOME/Mail/mbox"
 
   # don't put duplicate lines in the history. See bash(1) for more options
   HISTCONTROL=ignoredups
@@ -140,6 +141,11 @@ if [ -n "$PS1" ]; then
   . ~/.bundler-exec.sh
   alias reload-bashrc=". ~/.bashrc"
   alias bs="reload-bashrc"
+
+  set -o vi
+  bind -m vi-insert C-k:yank-last-arg
+  bind -m vi-command 'Control-l: clear-screen'
+  bind -m vi-insert 'Control-l: clear-screen'
 
   # Ruby
   alias rake="run-with-bundler $FRAMEBUFFER_RUN rake"
@@ -174,7 +180,7 @@ if [ -n "$PS1" ]; then
 
     # Syncplay
     alias sp="syncplay -a jun.dashjr.org -r a --player-path /usr/bin/mpv -n Pancake"
-    function idp() {
+    idp() {
       local post="$1"
       local looter_bin=
 
@@ -184,7 +190,7 @@ if [ -n "$PS1" ]; then
         looter_bin=~/Library/Python/3.9/bin/instalooter
       fi
 
-      $looter_bin post "$post" "~/Resources/Beautiful Women/instagram"
+      $looter_bin post "$post" "$HOME/Resources/Beautiful Women/instagram"
     }
   fi
 
@@ -215,7 +221,7 @@ if [ -n "$PS1" ]; then
   # Serve HTTP
   alias serve-current-dir-http="ruby -run -e httpd . -p 9090"
 
-  . $HOME/.bash_docker
+  . "$HOME/.bash_docker"
 
   # Currency exchange
   alias nzd="lumione 1 nzd usd"
@@ -297,7 +303,6 @@ if [ -n "$PS1" ]; then
   # alias dl='dh_listpackages'
 
   # dict(1)
-  DICTL_CHARSET='KOI8-R'
   alias dic='dictl'
 
   # Wallpapers
@@ -337,15 +342,16 @@ if [ -r "${HOME}/.bash-ctx/bash-ctx" ]; then
 fi
 
 function init_ssh_agent {
-  eval `ssh-agent -s`
+  eval "$(ssh-agent -s)"
   ssh-add
 }
 
 function last_migration {
-  "$VISUAL" db/migrate/$(ls db/migrate/ | sort | tail -1)
+  "$VISUAL" db/migrate/"$(ls db/migrate/ | sort | tail -1)"
 }
 
-export MAKE="make -j$(nproc)"
+MAKE="make -j$(nproc)"
+export MAKE
 
 # if the command-not-found package is installed, use it
 if [ -x /usr/lib/command-not-found -o -x /usr/share/command-not-found/command-not-found ]; then
