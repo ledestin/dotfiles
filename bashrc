@@ -294,7 +294,7 @@ if [ -n "$PS1" ]; then
 
   # Misc programming.
   export CVSROOT=/var/lib/cvs
-  alias dl='dh_listpackages'
+  # alias dl='dh_listpackages'
 
   # dict(1)
   DICTL_CHARSET='KOI8-R'
