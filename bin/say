@@ -3,4 +3,4 @@
 set -e
 
 message="$1"
-gtts-cli "$message" | mpv -
+gtts-cli "$message" | mpg123 - &>/dev/null
