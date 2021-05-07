@@ -32,6 +32,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'takac/vim-hardtime'
   Plug 'rhysd/vim-grammarous'
   Plug 'MattesGroeger/vim-bookmarks'
+  Plug 'svermeulen/vim-yoink'
 
   Plug 'mattn/webapi-vim'
   Plug 'christoomey/vim-quicklink'
@@ -87,6 +88,21 @@ autocmd ColorScheme * highlight GitGutterAdd    guifg=#009900 ctermfg=2
 autocmd ColorScheme * highlight GitGutterChange guifg=#bbbb00 ctermfg=3
 autocmd ColorScheme * highlight GitGutterDelete guifg=#ff2222 ctermfg=1
 autocmd ColorScheme * highlight SignColumn ctermbg=black
+
+" Yoink - save all copied text and cycle through it on paste. Yay!
+nmap <c-n> <plug>(YoinkPostPasteSwapBack)
+nmap <c-p> <plug>(YoinkPostPasteSwapForward)
+
+nmap p <plug>(YoinkPaste_p)
+nmap P <plug>(YoinkPaste_P)
+
+" Also replace the default gp with yoink paste so we can toggle paste in this
+" case too
+nmap gp <plug>(YoinkPaste_gp)
+nmap gP <plug>(YoinkPaste_gP)
+
+nmap [y <plug>(YoinkRotateBack)
+nmap ]y <plug>(YoinkRotateForward)
 
 " Persistent undo
 if has('persistent_undo')
