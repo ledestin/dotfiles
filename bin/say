@@ -1,0 +1,6 @@
+#!/bin/bash
+
+set -e
+
+message="$1"
+gtts-cli "$message" | mpv -
