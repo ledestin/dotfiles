@@ -185,6 +185,7 @@ if [ -n "$PS1" ]; then
   idp() {
     local post="$1"
     local looter_bin=
+
     if [ "$OS" = Linux ]; then
       looter_bin=~/.local/bin/instalooter
     else
