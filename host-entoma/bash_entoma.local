@@ -1,5 +1,5 @@
 export OVERLORD_TEXT="/Users/ledestin/Archive/Library/Overlord LN/v1-11.txt"
-export PATH=/Users/ledestin/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/local/Cellar/ruby/1.9.3-p385/bin
+export PATH=/Users/ledestin/bin:$HOME/.bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/local/Cellar/ruby/1.9.3-p385/bin
 eval "$(rbenv init -)"
 
 host_logo='🪲'
