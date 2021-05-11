@@ -42,6 +42,8 @@ if [ -n "$PS1" ]; then
     Darwin)
       date_cmd="gdate"
       alias br="brightness -l"
+      # Allow Ctrl-o to work.
+      stty discard undef
       ;;
     SunOS) # Hostile Sun environment.
       export EDITOR=vim
