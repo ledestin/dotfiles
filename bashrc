@@ -142,11 +142,6 @@ if [ -n "$PS1" ]; then
   alias reload-bashrc=". ~/.bashrc"
   alias bs="reload-bashrc"
 
-  set -o vi
-  bind -m vi-insert C-k:yank-last-arg
-  bind -m vi-command 'Control-l: clear-screen'
-  bind -m vi-insert 'Control-l: clear-screen'
-
   # Ruby
   alias rake="run-with-bundler $FRAMEBUFFER_RUN rake"
 
