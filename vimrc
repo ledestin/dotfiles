@@ -229,7 +229,7 @@ highlight ALEWarning ctermbg=235
 
 " Enable ALE in vimrc.local
 function! EnableALEInVimrcLocal()
-  call system("echo 'let g:ale_enable = 1' >> vimrc.local")
+  call system("echo 'let g:ale_enable = 1' >> .git/safe/vimrc.local")
 endfunction
 
 function! EnableALEInCurrentProject()
@@ -331,6 +331,10 @@ augroup encrypted
     " after the file has been written.
     autocmd BufWritePost,FileWritePost    *.gpg   u
 augroup END</pre>
+
+if filereadable(".git/safe/vimrc.local")
+  source .git/safe/vimrc.local
+endif
 
 if filereadable(".git/safe/../../vimrc.local")
   source .git/safe/../../vimrc.local
