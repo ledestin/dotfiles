@@ -9,15 +9,30 @@ alias di="docker image"
 alias dil="di ls"
 alias dl="docker logs"
 
-# derlast - docker exec the last started container with root user.
-function derlast() {
+# delast - docker exec the last started container.
+function delast() {
+  # Move options (e.g. --user) to $options array.
+  local option
+  local options=()
+  for option in $*; do
+    if [[ "${option:0:1}" != "-" ]]; then
+      break
+    fi
+
+    options+=($option)
+    shift
+  done
+
   local name_and_image=($(docker container ls -l --format "{{.Names}} {{.Image}}"))
   local last_container_name=${name_and_image[0]}
   local last_container_image=${name_and_image[1]}
 
   echo $last_container_image
-  der "$last_container_name" "$*"
+  de "${options[@]}" "$last_container_name" "$*"
 }
+
+# derlast - docker exec the last started container with root user.
+alias derlast="delast -u=root"
 
 # de - docker exec shortcut.
 # Passing options that take arguments:
@@ -97,3 +112,4 @@ function dr() {
 # dreb --user=1000 ubuntu:bionic
 #  Pass --entrypoint=/bin/bash to dr and use USER 1000.
 alias dreb="dr --entrypoint=/bin/bash"
+alias drreb="dreb -u=root"
