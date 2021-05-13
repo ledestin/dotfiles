@@ -163,6 +163,7 @@ set fo+=l
 set pastetoggle=<Leader>p
 
 " Flash cursor line
+autocmd ColorScheme * highlight CursorLine term=bold cterm=inverse
 function! Flash()
   set cursorline
   redraw
@@ -203,7 +204,6 @@ endif
 set backupcopy=yes
 filetype plugin on
 filetype plugin indent on
-colorscheme mydesert
 syntax enable
 highlight ExtraWhitespace ctermbg=red guibg=red
 " Show trailing whitepace and spaces before a tab:
