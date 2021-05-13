@@ -22,6 +22,7 @@ let g:colors_name="mydesert"
 hi Normal	guifg=White guibg=grey20
 
 " highlight groups
+highlight CursorLine term=bold cterm=inverse
 hi Cursor	guibg=khaki guifg=slategrey
 "hi CursorIM
 "hi Directory
