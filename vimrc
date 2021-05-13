@@ -39,7 +39,6 @@ call plug#begin('~/.vim/plugged')
 call plug#end()
 
 set textwidth=80
-set colorcolumn=+1
 set softtabstop=2
 set expandtab
 set sw=2
@@ -75,6 +74,13 @@ nmap <silent>  <BS>  :nohlsearch<CR>
 " turn relative line numbers on
 set relativenumber
 set rnu
+
+colorscheme mydesert
+
+" Color code over textwidth
+autocmd ColorScheme * highlight ColorColumn ctermbg=magenta
+let column_to_color = &textwidth + 1
+call matchadd('ColorColumn', '\%' . column_to_color . 'v', 100)
 
 " Auto-load .vimrc
 autocmd BufWritePost .vimrc source %
