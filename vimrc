@@ -139,6 +139,7 @@ if !empty(git_root)
 endif
 
 let g:fzf_history_dir = '~/.local/share/fzf-history'
+let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
 
 " QuickFix
 noremap [q :cnext<CR>
