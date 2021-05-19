@@ -17,20 +17,7 @@ OS=$(uname)
 case "$OS" in
   Linux)
     ulimit -u 2000
-
-    if [ "$HOSTNAME" = 'karn' ]; then
-      # Was unable to build ruby 1.9, wasn't enough allowed processes and POSIX
-      # message queues.
-      ulimit -q 281921
-    fi
     ;;
-  CYGWIN*)
-    if [ -n "$WINDIR" ]; then PATH="$PATH":$(cygpath.exe "$WINDIR/system32"); fi
-    ;;
-  SunOS)
-    # Prepend PATH with sunfreeware path.
-    PATH="/opt/csw/bin:/opt/csw/sbin:$PATH"
-  ;;
 esac
 
 # Interactive-shell related.
