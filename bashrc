@@ -23,7 +23,6 @@ esac
 # Interactive-shell related.
 if [ -n "$PS1" ]; then
   date_cmd="date"
-
   # Locale and user-friendly related stuff.
   case "$OS" in
     Darwin)
@@ -31,14 +30,6 @@ if [ -n "$PS1" ]; then
       alias br="brightness -l"
       # Allow Ctrl-o to work.
       stty discard undef
-      ;;
-    SunOS) # Hostile Sun environment.
-      export EDITOR=vim
-      export PAGER=less
-      export TERMINFO=$HOME/.terminfo
-      export MANPATH=/opt/csw/share/man:/usr/share/man
-
-      alias vi='vim'
       ;;
     Linux)
       FRAMEBUFFER_RUN='xvfb-run -a'
