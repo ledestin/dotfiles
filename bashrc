@@ -22,7 +22,6 @@ esac
 
 # Interactive-shell related.
 if [ -n "$PS1" ]; then
-  date_cmd="date"
   # Locale and user-friendly related stuff.
   case "$OS" in
     Darwin)
@@ -32,6 +31,7 @@ if [ -n "$PS1" ]; then
       stty discard undef
       ;;
     Linux)
+      date_cmd="date"
       FRAMEBUFFER_RUN='xvfb-run -a'
       ;;
   esac
