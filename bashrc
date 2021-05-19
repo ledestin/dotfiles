@@ -22,7 +22,6 @@ esac
 
 . ~/.bash_common.sh
 
-# Interactive-shell related.
 if is_interactive_shell; then
   # Locale and user-friendly related stuff.
   case "$OS" in
