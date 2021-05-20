@@ -33,6 +33,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'rhysd/vim-grammarous'
   Plug 'MattesGroeger/vim-bookmarks'
   Plug 'svermeulen/vim-yoink'
+  Plug 'liuchengxu/vim-which-key'
 
   Plug 'mattn/webapi-vim'
   Plug 'christoomey/vim-quicklink'
@@ -94,6 +95,9 @@ autocmd ColorScheme * highlight GitGutterAdd    guifg=#009900 ctermfg=2
 autocmd ColorScheme * highlight GitGutterChange guifg=#bbbb00 ctermfg=3
 autocmd ColorScheme * highlight GitGutterDelete guifg=#ff2222 ctermfg=1
 autocmd ColorScheme * highlight SignColumn ctermbg=black
+
+" vim-which-key
+nnoremap <silent> <leader>      :<c-u>WhichKey '\'<CR>
 
 " Yoink - save all copied text and cycle through it on paste. Yay!
 nmap <c-n> <plug>(YoinkPostPasteSwapBack)
