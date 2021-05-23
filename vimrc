@@ -65,6 +65,7 @@ set statusline=
 set statusline+=\ %f
 set statusline+=\ %{&modified?'[+]':''}
 set statusline+=%=
+set statusline+=%{&paste?'PASTE':''}
 set statusline+=\ %p%%
 set statusline+=\ %l:%c
 set statusline+=\ %{ConflictedVersion()}
@@ -171,7 +172,7 @@ autocmd Filetype gitcommit,mail setlocal spell
 set fo+=l
 
 " Toggle paste
-set pastetoggle=<Leader>p
+map <silent> <Leader>p :set invpaste<CR>
 
 " Flash cursor line
 autocmd ColorScheme * highlight CursorLine term=bold cterm=inverse
