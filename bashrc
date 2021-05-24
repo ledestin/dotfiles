@@ -22,6 +22,10 @@ esac
 
 . ~/.bash_common.sh
 
+if [ -n "$TERM" ]; then
+  export TERM=$TERM
+fi
+
 if is_interactive_shell; then
   # Locale and user-friendly related stuff.
   case "$OS" in
