@@ -149,7 +149,8 @@ let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
 " QuickFix
 noremap [q :cnext<CR>
 noremap ]q :cprev<CR>
-noremap <Leader>qc :cclose<CR>
+noremap <silent> <Leader>qc :cclose<CR>
+noremap <Leader>m :silent make <bar> redraw!<CR>
 
 augroup quickfix
     autocmd!
