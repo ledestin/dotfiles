@@ -97,6 +97,11 @@ autocmd ColorScheme * highlight GitGutterChange guifg=#bbbb00 ctermfg=3
 autocmd ColorScheme * highlight GitGutterDelete guifg=#ff2222 ctermfg=1
 autocmd ColorScheme * highlight SignColumn ctermbg=black
 
+" Sounds
+function! Electrosphere()
+  execute "silent !ssh entoma 'mpg123 -q Resources/Overlord/Electrosphere.mp3' &" | redraw!
+endfunction
+
 " vim-which-key
 nnoremap <silent> <leader>      :<c-u>WhichKey '\'<CR>
 
