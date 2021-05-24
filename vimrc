@@ -238,6 +238,10 @@ let g:ale_linters_explicit = 1
 let g:ale_fixers_explicit = 1
 " let g:ale_fix_on_save = 1
 
+" C linting
+let g:ale_c_parse_makefile = 1
+let g:ale_c_always_make = 1
+
 highlight ALEWarning ctermbg=235
 
 " Enable ALE in vimrc.local
@@ -359,12 +363,14 @@ if g:ale_enable == 1
     \ 'ruby': ['rubocop', 'ruby'],
     \ 'javascript': ['eslint', 'prettier-eslint'],
     \ 'sh': ['shellcheck'],
-    \ 'dockerfile': ['hadolint']
+    \ 'dockerfile': ['hadolint'],
+    \ 'c': ['cc']
   \}
   let g:ale_fixers = {
     \ 'ruby': ['rubocop'],
     \ 'javascript': ['eslint', 'prettier-eslint', 'importjs'],
-    \ 'sh': ['shfmt']
+    \ 'sh': ['shfmt'],
+    \ 'c': ['astyle']
   \}
 
   nmap <silent> <Leader>an <Plug>(ale_next_wrap)
