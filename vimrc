@@ -43,6 +43,7 @@ set textwidth=80
 set softtabstop=2
 set expandtab
 set sw=2
+set shiftround
 set autoindent
 set foldmethod=marker
 set viminfo='20,f1,%
