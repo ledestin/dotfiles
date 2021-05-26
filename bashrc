@@ -5,26 +5,14 @@
 
 PATH=~/bin:~/.bin/:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin/X11:/usr/X11R6/bin:/usr/games:~/work/utils:~/work/mkat:~/work/dev-scripts:/snap/bin:.git/safe/../../bin
 
-export LC_MESSAGES=C
-if [ -z "$LANG" ]; then
-  export LANG=en_NZ.UTF-8
-fi
-
-export NODE_PATH=/usr/local/lib/node_modules
-
-# OS-related settings.
 OS=$(uname)
-case "$OS" in
-  Linux)
-    ulimit -u 2000
-    ;;
-esac
 
 . ~/.bash_common.sh
 
-if [ -n "$TERM" ]; then
-  export TERM=$TERM
-fi
+set_locale_messages_c_lang_nz
+set_node_path
+limit_user_processes_on_linux
+fix_macos_no_term_warning
 
 if is_interactive_shell; then
   # Locale and user-friendly related stuff.
