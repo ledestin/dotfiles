@@ -11,7 +11,7 @@ OS=$(uname)
 
 set_locale_messages_c_lang_nz
 set_node_path
-limit_user_processes_on_linux
+limit_number_of_user_processes_on_linux
 fix_macos_no_term_warning
 
 if is_interactive_shell; then

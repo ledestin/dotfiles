@@ -11,7 +11,7 @@ set_node_path() {
   export NODE_PATH=/usr/local/lib/node_modules
 }
 
-limit_user_processes_on_linux() {
+limit_number_of_user_processes_on_linux() {
   case "$OS" in
     Linux)
       ulimit -u 2000
