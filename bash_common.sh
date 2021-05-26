@@ -29,3 +29,7 @@ fix_macos_no_term_warning() {
     export TERM=$TERM
   fi
 }
+
+fix_ctrl_o_on_macos() {
+  stty discard undef
+}

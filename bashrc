@@ -20,8 +20,7 @@ if is_interactive_shell; then
     Darwin)
       date_cmd="gdate"
       alias br="brightness -l"
-      # Allow Ctrl-o to work.
-      stty discard undef
+      fix_ctrl_o_on_macos
       ;;
     Linux)
       date_cmd="date"
