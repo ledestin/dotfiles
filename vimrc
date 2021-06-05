@@ -98,6 +98,18 @@ autocmd ColorScheme * highlight GitGutterChange guifg=#bbbb00 ctermfg=3
 autocmd ColorScheme * highlight GitGutterDelete guifg=#ff2222 ctermfg=1
 autocmd ColorScheme * highlight SignColumn ctermbg=black
 
+" Main
+
+" Move lines up and down
+noremap - ddkP
+noremap _ ddp
+
+" Uppercase current word
+nnoremap <c-u> gUiw
+
+" Easier saving
+nnoremap <silent>,, :w<CR>
+
 " Sounds
 function! PlayOnEntoma(fileName)
   execute "silent !ssh entoma 'mpg123 -q " . fnameescape(a:fileName) . "' &" | redraw!
