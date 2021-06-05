@@ -72,7 +72,7 @@ set statusline+=\ %l:%c
 set statusline+=\ %{ConflictedVersion()}
 
 set hlsearch
-nmap <silent>  <BS>  :nohlsearch<CR>
+nnoremap <silent>  <BS>  :nohlsearch<CR>
 
 " turn relative line numbers on
 set relativenumber
@@ -138,19 +138,19 @@ endfunction
 nnoremap <silent> <leader>      :<c-u>WhichKey '\'<CR>
 
 " Yoink - save all copied text and cycle through it on paste. Yay!
-nmap <c-n> <plug>(YoinkPostPasteSwapBack)
-nmap <c-p> <plug>(YoinkPostPasteSwapForward)
+nnoremap <c-n> <plug>(YoinkPostPasteSwapBack)
+nnoremap <c-p> <plug>(YoinkPostPasteSwapForward)
 
-nmap p <plug>(YoinkPaste_p)
-nmap P <plug>(YoinkPaste_P)
+nnoremap p <plug>(YoinkPaste_p)
+nnoremap P <plug>(YoinkPaste_P)
 
 " Also replace the default gp with yoink paste so we can toggle paste in this
 " case too
-nmap gp <plug>(YoinkPaste_gp)
-nmap gP <plug>(YoinkPaste_gP)
+nnoremap gp <plug>(YoinkPaste_gp)
+nnoremap gP <plug>(YoinkPaste_gP)
 
-nmap [y <plug>(YoinkRotateBack)
-nmap ]y <plug>(YoinkRotateForward)
+nnoremap [y <plug>(YoinkRotateBack)
+nnoremap ]y <plug>(YoinkRotateForward)
 
 " Persistent undo
 if has('persistent_undo')
@@ -210,7 +210,7 @@ autocmd Filetype gitcommit,mail setlocal spell
 set fo+=l
 
 " Toggle paste
-map <silent> <Leader>p :set invpaste<CR>
+noremap <silent> <Leader>p :set invpaste<CR>
 
 " Flash cursor line
 autocmd ColorScheme * highlight CursorLine term=bold cterm=inverse
@@ -301,27 +301,27 @@ autocmd FileType * EnableStripWhitespaceOnSave
 
 command! Erc :e ~/.vimrc
 
-imap <C-h> <Left>
-imap <C-l> <Right>
-map <Leader>d :filetype detect<CR>
-map <Leader>w :Bwipeout<CR>
-map <Leader>sp :split<CR>
-map <Leader>vr :Erc<CR>
-map <Leader>vs :source ~/.vimrc<CR>
-map <Leader>br :e ~/.bashrc<CR>
-map <F9>  :w<CR> :make<CR>
-map <F11> :update<CR> : execute("! ./" . bufname(""))<CR>
-map <F10> :update<CR> :!ruby -w -c %<CR>
+inoremap <C-h> <Left>
+inoremap <C-l> <Right>
+noremap <Leader>d :filetype detect<CR>
+noremap <Leader>w :Bwipeout<CR>
+noremap <Leader>sp :split<CR>
+noremap <Leader>vr :Erc<CR>
+noremap <Leader>vs :source ~/.vimrc<CR>
+noremap <Leader>br :e ~/.bashrc<CR>
+noremap <F9>  :w<CR> :make<CR>
+noremap <F11> :update<CR> : execute("! ./" . bufname(""))<CR>
+noremap <F10> :update<CR> :!ruby -w -c %<CR>
 
 " vim-notable
 noremap <leader>n :call notable#open_notes_file()<cr>
 let g:notable_notes_folder = "~/work/notes/"
 
 " Rspec
-map <Leader>t :call RunCurrentSpecFile()<CR>
-map <Leader>s :call RunNearestSpec()<CR>
-map <Leader>l :call RunLastSpec()<CR>
-map <Leader>a :call RunAllSpecs()<CR>
+noremap <Leader>t :call RunCurrentSpecFile()<CR>
+noremap <Leader>s :call RunNearestSpec()<CR>
+noremap <Leader>l :call RunLastSpec()<CR>
+noremap <Leader>a :call RunAllSpecs()<CR>
 
 " FZF filename search
 function! FZFFileSearch()
@@ -329,7 +329,7 @@ function! FZFFileSearch()
   :Files
 endfunction
 
-nmap <Leader>f :call FZFFileSearch()<CR>
+nnoremap <Leader>f :call FZFFileSearch()<CR>
 
 if filereadable('./bin/spring')
   let g:rspec_command = "!xvfb-run -a ./bin/spring rspec {spec}"
@@ -341,7 +341,7 @@ else
   let g:rspec_command = "!xvfb-run -a rspec {spec}"
 endif
 
-:map \q mz^"zyf>`z:set comments+=n:<C-R>z<CR>gq
+noremap \q mz^"zyf>`z:set comments+=n:<C-R>z<CR>gq
 :set formatoptions+=cq
 
 set wildmenu
@@ -350,7 +350,7 @@ menu Encoding.koi8-r   :e ++enc=koi8-r<CR>
 menu Encoding.windows-1251 :e ++enc=cp1251<CR>
 menu Encoding.ibm-866      :e ++enc=ibm866<CR>
 menu Encoding.utf-8     :e ++enc=utf-8 <CR>
-map <F8> :emenu Encoding.<TAB>
+noremap <F8> :emenu Encoding.<TAB>
 
 :if &term == "kterm"
 :set encoding=japan
@@ -415,10 +415,10 @@ if g:ale_enable == 1
     \ 'c': ['astyle']
   \}
 
-  nmap <silent> <Leader>an <Plug>(ale_next_wrap)
-  nmap <silent> <Leader>ap <Plug>(ale_previous_wrap)
-  nmap <silent> <Leader>af :ALEFix<CR>
-  nmap <silent> <Leader>ad :ALEDetail<CR>
+  nnoremap <silent> <Leader>an <Plug>(ale_next_wrap)
+  nnoremap <silent> <Leader>ap <Plug>(ale_previous_wrap)
+  nnoremap <silent> <Leader>af :ALEFix<CR>
+  nnoremap <silent> <Leader>ad :ALEDetail<CR>
 
   function! LinterStatus() abort
       let l:counts = ale#statusline#Count(bufnr(''))
