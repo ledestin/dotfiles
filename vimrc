@@ -99,8 +99,27 @@ autocmd ColorScheme * highlight GitGutterDelete guifg=#ff2222 ctermfg=1
 autocmd ColorScheme * highlight SignColumn ctermbg=black
 
 " Sounds
+function! PlayOnEntoma(fileName)
+  execute "silent !ssh entoma 'mpg123 -q " . fnameescape(a:fileName) . "' &" | redraw!
+endfunction
+
 function! Electrosphere()
-  execute "silent !ssh entoma 'mpg123 -q Resources/Overlord/Electrosphere.mp3' &" | redraw!
+  call PlayOnEntoma('Resources/Overlord/Electrosphere.mp3')
+endfunction
+
+function! Teleportation()
+  call PlayOnEntoma('Resources/Overlord/Teleportation.mp3')
+endfunction
+
+function! NazarickShimese()
+  call PlayOnEntoma("Resources/Overlord/Show them the power of Nazarick.mp3")
+endfunction
+
+function! RandomPowerUp()
+	let spell = system("ruby -e \"puts ['Teleportation', 'NazarickShimese'].sample\"")
+
+  let funcToCall = trim(spell) . "()"
+  execute "call " . funcToCall
 endfunction
 
 " vim-which-key
@@ -156,7 +175,7 @@ let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
 noremap [q :cnext<CR>
 noremap ]q :cprev<CR>
 noremap <silent> <Leader>qc :cclose<CR>
-noremap <Leader>m :silent make <bar> redraw!<CR>
+noremap <Leader>m :call Electrosphere()<CR> :silent make <bar> redraw!<CR>
 
 augroup quickfix
     autocmd!
@@ -293,7 +312,12 @@ map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
 
 " FZF filename search
-nmap <Leader>f :Files<CR>
+function! FZFFileSearch()
+  call RandomPowerUp()
+  :Files
+endfunction
+
+nmap <Leader>f :call FZFFileSearch()<CR>
 
 if filereadable('./bin/spring')
   let g:rspec_command = "!xvfb-run -a ./bin/spring rspec {spec}"
