@@ -54,7 +54,7 @@ set smartcase
 set modeline
 set modelines=5
 set backspace=indent,eol,start
-set runtimepath^=~/.vim/bundle/ctrlp.vim
+" set runtimepath^=~/.vim/bundle/ctrlp.vim
 set updatetime=100
 set nocompatible
 set showcmd
