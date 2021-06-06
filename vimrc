@@ -74,6 +74,8 @@ set statusline+=\ %{ConflictedVersion()}
 set hlsearch
 nnoremap <silent>  <BS>  :nohlsearch<CR>
 
+let maplocalleader = "-"
+
 " turn relative line numbers on
 set relativenumber
 set rnu
