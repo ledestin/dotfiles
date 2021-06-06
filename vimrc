@@ -138,19 +138,19 @@ endfunction
 nnoremap <silent> <leader>      :<c-u>WhichKey '\'<CR>
 
 " Yoink - save all copied text and cycle through it on paste. Yay!
-nnoremap <c-n> <plug>(YoinkPostPasteSwapBack)
-nnoremap <c-p> <plug>(YoinkPostPasteSwapForward)
+nmap <c-n> <plug>(YoinkPostPasteSwapBack)
+nmap <c-p> <plug>(YoinkPostPasteSwapForward)
 
-nnoremap p <plug>(YoinkPaste_p)
-nnoremap P <plug>(YoinkPaste_P)
+nmap p <plug>(YoinkPaste_p)
+nmap P <plug>(YoinkPaste_P)
 
 " Also replace the default gp with yoink paste so we can toggle paste in this
 " case too
-nnoremap gp <plug>(YoinkPaste_gp)
-nnoremap gP <plug>(YoinkPaste_gP)
+nmap gp <plug>(YoinkPaste_gp)
+nmap gP <plug>(YoinkPaste_gP)
 
-nnoremap [y <plug>(YoinkRotateBack)
-nnoremap ]y <plug>(YoinkRotateForward)
+nmap [y <plug>(YoinkRotateBack)
+nmap ]y <plug>(YoinkRotateForward)
 
 " Persistent undo
 if has('persistent_undo')
