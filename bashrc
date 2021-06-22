@@ -319,8 +319,8 @@ function last_migration {
   "$VISUAL" db/migrate/"$(ls db/migrate/ | sort | tail -1)"
 }
 
-MAKE="make -j$(nproc)"
-export MAKE
+MAKEFLAGS="-j$(nproc)"
+export MAKEFLAGS
 
 # if the command-not-found package is installed, use it
 if [ -x /usr/lib/command-not-found -o -x /usr/share/command-not-found/command-not-found ]; then
