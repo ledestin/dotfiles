@@ -143,7 +143,7 @@ endfunction
 
 function! IsSshKeyLoaded()
   let isLoaded = system("ssh-add -l 2>/dev/null | wc -l")
-  return isLoaded != "0"
+  return isLoaded !~ "^0"
 endfunction
 
 function! PlayOnEntoma(fileName)
