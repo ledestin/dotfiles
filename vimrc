@@ -136,7 +136,8 @@ function! CanPlaySound()
 endfunction
 
 function! CurrentHostIsEntoma()
-  let entomaMatch = matchstr($HOSTNAME, '^entoma\.')
+  let hostname = system('echo $HOSTNAME')
+  let entomaMatch = matchstr(hostname, '^entoma\.')
   return !empty(entomaMatch)
 endfunction
 
@@ -146,11 +147,15 @@ function! IsSshKeyLoaded()
 endfunction
 
 function! PlayOnEntoma(fileName)
-  if !IsSshKeyLoaded()
+  if !CanPlaySound()
     return
   endif
 
-  execute "silent !ssh entoma 'mpg123 -q " . fnameescape(a:fileName) . "' &" | redraw!
+  if CurrentHostIsEntoma()
+    execute "silent !cd ~ && mpg123 -q " . fnameescape(a:fileName) . " &" | redraw!
+  else
+    execute "silent !ssh entoma" . "'mpg123 -q " . fnameescape(a:fileName) . "' &" | redraw!
+  endif
 endfunction
 
 function! Electrosphere()
