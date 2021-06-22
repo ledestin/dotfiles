@@ -131,7 +131,16 @@ nnoremap <c-u> gUiw
 nnoremap <silent>,, :w<CR>
 
 " Sounds
+function! IsSshKeyLoaded()
+  let isLoaded = system("ssh-add -l 2>/dev/null | wc -l")
+  return isLoaded != "0"
+endfunction
+
 function! PlayOnEntoma(fileName)
+  if !IsSshKeyLoaded()
+    return
+  endif
+
   execute "silent !ssh entoma 'mpg123 -q " . fnameescape(a:fileName) . "' &" | redraw!
 endfunction
 
