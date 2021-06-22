@@ -102,6 +102,24 @@ autocmd ColorScheme * highlight SignColumn ctermbg=black
 
 " Main
 
+" Cut and paste using line numbers
+function! CutAndPasteByLineNumber(relative_line_number)
+  let cursor_position = getpos('.')
+
+  exec a:relative_line_number . 'd'
+  call setpos(".", cursor_position)
+  normal P
+  call setpos(".", cursor_position)
+endfunction
+
+nmap <Leader>xk :call CutAndPasteByLineNumber('-')<left><left>
+nmap <Leader>xj :call CutAndPasteByLineNumber('+')<left><left>
+
+" Abbrev
+iabbrev @b #!/bin/bash
+iabbrev @r #!/usr/bin/env ruby
+iabbrev @s rubyclarity.com
+
 " Move lines up and down
 noremap - ddkP
 noremap _ ddp
