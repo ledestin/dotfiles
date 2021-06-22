@@ -131,6 +131,15 @@ nnoremap <c-u> gUiw
 nnoremap <silent>,, :w<CR>
 
 " Sounds
+function! CanPlaySound()
+  return IsSshKeyLoaded() || CurrentHostIsEntoma()
+endfunction
+
+function! CurrentHostIsEntoma()
+  let entomaMatch = matchstr($HOSTNAME, '^entoma\.')
+  return !empty(entomaMatch)
+endfunction
+
 function! IsSshKeyLoaded()
   let isLoaded = system("ssh-add -l 2>/dev/null | wc -l")
   return isLoaded != "0"
