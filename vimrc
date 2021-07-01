@@ -153,7 +153,7 @@ function! PlayOnEntoma(fileName)
   if CurrentHostIsEntoma()
     execute "silent !cd ~ && mpg123 -q " . fnameescape(a:fileName) . " &" | redraw!
   else
-    execute "silent !ssh entoma" . "'mpg123 -q " . fnameescape(a:fileName) . "' &" | redraw!
+    execute "silent !ssh entoma " . "'mpg123 -q " . fnameescape(a:fileName) . "' &" | redraw!
   endif
 endfunction
 
