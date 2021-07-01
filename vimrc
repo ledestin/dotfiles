@@ -1,4 +1,3 @@
-call pathogen#infect()
 call plug#begin('~/.vim/plugged')
   Plug 'dense-analysis/ale'
   Plug 'jlanzarotta/bufexplorer'
