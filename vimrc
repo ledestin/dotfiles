@@ -33,6 +33,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'MattesGroeger/vim-bookmarks'
   Plug 'svermeulen/vim-yoink'
   Plug 'liuchengxu/vim-which-key'
+  Plug 'kana/vim-textobj-user'
+  Plug 'kana/vim-textobj-function'
 
   Plug 'mattn/webapi-vim'
   Plug 'christoomey/vim-quicklink'
