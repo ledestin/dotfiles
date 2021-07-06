@@ -36,6 +36,11 @@ call plug#begin('~/.vim/plugged')
   Plug 'kana/vim-textobj-user'
   Plug 'kana/vim-textobj-function'
 
+  " Snippets
+  Plug 'SirVer/ultisnips'
+  " Snippets are separated from the engine. Add this if you want them:
+  Plug 'honza/vim-snippets'
+
   Plug 'mattn/webapi-vim'
   Plug 'christoomey/vim-quicklink'
 call plug#end()
@@ -102,6 +107,11 @@ autocmd ColorScheme * highlight GitGutterDelete guifg=#ff2222 ctermfg=1
 autocmd ColorScheme * highlight SignColumn ctermbg=black
 
 " Main
+
+" Snippets
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " Cut and paste using line numbers
 function! CutAndPasteByLineNumber(relative_line_number)
