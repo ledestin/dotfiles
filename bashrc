@@ -114,6 +114,8 @@ if is_interactive_shell; then
   alias reload-bashrc=". ~/.bashrc"
   alias bs="reload-bashrc"
 
+  alias t="brew-tea"
+
   if [[  "$OS" = "Darwin" ]]; then
     # addev today "call Shalltear-sama"
     # addev 2021-07-11 "have fun"
