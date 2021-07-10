@@ -114,6 +114,20 @@ if is_interactive_shell; then
   alias reload-bashrc=". ~/.bashrc"
   alias bs="reload-bashrc"
 
+  if [[  "$OS" = "Darwin" ]]; then
+    # addev today "call Shalltear-sama"
+    # addev 2021-07-11 "have fun"
+    function addev() {
+      local date="$1"
+      local description="$2"
+
+      if [[ "$date" = "today" ]]; then
+        date=$($date_cmd +'%Y-%m-%d')
+      fi
+      calendar-cli create --date="$date" "$description"
+    }
+  fi
+
   # Ruby
   alias rake="run-with-bundler $FRAMEBUFFER_RUN rake"
 
