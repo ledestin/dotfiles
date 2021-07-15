@@ -133,6 +133,8 @@ iabbrev @b #!/bin/bash
 iabbrev @r #!/usr/bin/env ruby
 iabbrev @s rubyclarity.com
 
+autocmd FileType gitcommit iabbrev <buffer> @s [skip CI]
+
 " Move lines up and down
 noremap - ddkP
 noremap _ ddp
