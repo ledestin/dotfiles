@@ -36,6 +36,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'kana/vim-textobj-user'
   Plug 'kana/vim-textobj-function'
   Plug 'fvictorio/vim-textobj-backticks'
+  Plug 'kana/vim-textobj-line'
 
   " Snippets
   Plug 'SirVer/ultisnips'
