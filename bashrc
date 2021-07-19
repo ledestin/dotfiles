@@ -121,12 +121,12 @@ if is_interactive_shell; then
     # addev 2021-07-11 "have fun"
     function addev() {
       local date="$1"
-      local description="$2"
+      shift
 
       if [[ "$date" = "today" ]]; then
         date=$($date_cmd +'%Y-%m-%d')
       fi
-      calendar-cli create --date="$date" "$description"
+      calendar-cli create --date="$date" $@
     }
   fi
 
