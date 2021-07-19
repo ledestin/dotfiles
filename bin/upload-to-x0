@@ -1,0 +1,9 @@
+#!/bin/bash
+
+file_to_upload="$1"
+if [[ -z "$file_to_upload" ]]; then
+  echo "Usage: $(basename "$0") <file_to_upload>"
+  exit 1
+fi
+
+curl -F "file=@$file_to_upload" https://x0.at/
