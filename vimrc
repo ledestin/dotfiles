@@ -28,7 +28,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'Galooshi/vim-import-js'
   Plug 'christoomey/vim-conflicted'
   Plug 'davidpdrsn/vim-notable'
-  Plug 'takac/vim-hardtime'
   Plug 'rhysd/vim-grammarous'
   Plug 'MattesGroeger/vim-bookmarks'
   Plug 'svermeulen/vim-yoink'
