@@ -195,6 +195,8 @@ endfunction
 nnoremap <silent> <leader>      :<c-u>WhichKey '\'<CR>
 
 " Yoink - save all copied text and cycle through it on paste. Yay!
+let g:yoinkIncludeDeleteOperations = 1
+
 nmap <c-n> <plug>(YoinkPostPasteSwapBack)
 nmap <c-p> <plug>(YoinkPostPasteSwapForward)
 
