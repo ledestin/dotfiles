@@ -114,6 +114,20 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
+" Open default snippet file
+function! UltiSnipsOpenDefaultSnippet()
+  if empty(&filetype)
+    return
+  endif
+
+  let l:snippet = "~/.vim/plugged/vim-snippets/UltiSnips/"
+  let l:snippet .= &filetype . ".snippets"
+
+  execute 'split +view' l:snippet
+endfunction
+
+nnoremap <Leader>us :call UltiSnipsOpenDefaultSnippet()<CR>
+
 " Cut and paste using line numbers
 function! CutAndPasteByLineNumber(relative_line_number)
   let cursor_position = getpos('.')
