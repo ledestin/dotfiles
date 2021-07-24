@@ -1,0 +1,3 @@
+snippet td "Today's date"
+`date -R | ruby -ne '$_ =~ /(.+ 2021)/; puts "\# " + $1'`
+endsnippet
