@@ -90,22 +90,32 @@ set rnu
 colorscheme mydesert
 
 " Color code over textwidth
-autocmd ColorScheme * highlight ColorColumn ctermbg=magenta
+augroup color_column
+  autocmd!
+  autocmd ColorScheme * highlight ColorColumn ctermbg=magenta
+augroup END
+
 let column_to_color = &textwidth + 1
 call matchadd('ColorColumn', '\%' . column_to_color . 'v', 100)
 
 " Auto-load .vimrc
-autocmd BufWritePost .vimrc source %
+augroup load_vimrc_on_write
+  autocmd!
+  autocmd BufWritePost .vimrc source %
+augroup END
 
 if has("autocmd")
   filetype indent plugin on
 endif
 runtime macros/matchit.vim
 
-autocmd ColorScheme * highlight GitGutterAdd    guifg=#009900 ctermfg=2
-autocmd ColorScheme * highlight GitGutterChange guifg=#bbbb00 ctermfg=3
-autocmd ColorScheme * highlight GitGutterDelete guifg=#ff2222 ctermfg=1
-autocmd ColorScheme * highlight SignColumn ctermbg=black
+augroup gitgutter
+  autocmd!
+  autocmd ColorScheme * highlight GitGutterAdd    guifg=#009900 ctermfg=2
+  autocmd ColorScheme * highlight GitGutterChange guifg=#bbbb00 ctermfg=3
+  autocmd ColorScheme * highlight GitGutterDelete guifg=#ff2222 ctermfg=1
+  autocmd ColorScheme * highlight SignColumn ctermbg=black
+augroup END
 
 " Main
 
@@ -146,7 +156,10 @@ iabbrev @b #!/bin/bash
 iabbrev @r #!/usr/bin/env ruby
 iabbrev @s rubyclarity.com
 
-autocmd FileType gitcommit iabbrev <buffer> @s [skip CI]
+augroup gitcommit
+  autocmd!
+  autocmd FileType gitcommit iabbrev <buffer> @s [skip CI]
+augroup END
 
 " Move lines up and down
 noremap - ddkP
@@ -276,8 +289,11 @@ endfunction
 noremap <Leader>g :call GitGrepCurrentWord()<CR>
 
 " Spell
-autocmd Filetype markdown setlocal spell textwidth=80
-autocmd Filetype gitcommit,mail setlocal spell
+augroup spell
+  autocmd!
+  autocmd Filetype markdown setlocal spell textwidth=80
+  autocmd Filetype gitcommit,mail setlocal spell
+augroup END
 
 " Don't auto-wrap existing long lines
 set fo+=l
@@ -286,7 +302,11 @@ set fo+=l
 noremap <silent> <Leader>p :set invpaste<CR>
 
 " Flash cursor line
-autocmd ColorScheme * highlight CursorLine term=bold cterm=inverse
+augroup flash_cursor_line
+  autocmd!
+  autocmd ColorScheme * highlight CursorLine term=bold cterm=inverse
+augroup END
+
 function! Flash()
   set cursorline
   redraw
@@ -313,7 +333,10 @@ function! HelpInNewTab ()
 endfunction
 
 " Docker
-autocmd BufReadPost *dockerfile* set filetype=dockerfile
+augroup docker
+  autocmd!
+  autocmd BufReadPost dockerfile*,*dockerfile* set filetype=dockerfile
+augroup END
 
 " Gemfile
 let gemfile = ''
@@ -330,11 +353,17 @@ filetype plugin indent on
 syntax enable
 highlight ExtraWhitespace ctermbg=red guibg=red
 " Show trailing whitepace and spaces before a tab:
-autocmd Syntax * match ExtraWhitespace /\s\+$\| \+\ze\t/
+augroup show_extra_whitespace_in_red
+  autocmd!
+  autocmd Syntax * match ExtraWhitespace /\s\+$\| \+\ze\t/
+augroup END
 noremap <F1> :help <cword><CR>
 
 " Vue syntax highlighting support
-autocmd FileType vue syntax sync fromstart
+augroup vue
+  autocmd!
+  autocmd FileType vue syntax sync fromstart
+augroup END
 
 " vimrc.local stuff
 function! EnableVimrcLocal()
@@ -437,8 +466,6 @@ function! DiscoTextWidth()
 
   setlocal textwidth=100
 endfunction
-
-autocmd BufNewFile,BufRead              */work/disco/*    call DiscoTextWidth()
 
 augroup encrypted
     au!
