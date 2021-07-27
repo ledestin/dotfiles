@@ -114,6 +114,8 @@ if is_interactive_shell; then
   alias reload-bashrc=". ~/.bashrc"
   alias bs="reload-bashrc"
 
+  # Main clause
+
   alias t="brew-tea"
 
   if [[  "$OS" = "Darwin" ]]; then
@@ -129,6 +131,12 @@ if is_interactive_shell; then
       calendar-cli create --date="$date" $@
     }
   fi
+
+  # Jekyll
+  alias js="be jekyll serve"
+
+  # Obsidian
+  alias os="obsidian-search"
 
   # Ruby
   alias rake="run-with-bundler $FRAMEBUFFER_RUN rake"
