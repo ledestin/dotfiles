@@ -1,0 +1,11 @@
+#!/bin/bash
+
+set -e
+
+search_term="$1"
+if [[ -z "$search_term" ]]; then
+  echo "Usage: $(basename "$0") <search_term>"
+  exit 1
+fi
+
+open "obsidian://search?vault=Second%20Brain&query=${search_term}"
