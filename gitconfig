@@ -22,3 +22,4 @@ email = ledestin@gmail.com
 	autosquash = true
 [init]
 	templatedir = ~/.git_template
+	defaultBranch = main
