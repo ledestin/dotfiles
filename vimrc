@@ -507,14 +507,16 @@ if g:ale_enable == 1
     \ 'sh': ['shellcheck'],
     \ 'dockerfile': ['hadolint'],
     \ 'c': ['cc'],
-    \ 'yaml': ['yamllint']
+    \ 'yaml': ['yamllint'],
+    \ 'perl': ['perl', 'perlcritic']
   \}
   let g:ale_fixers = {
     \ 'ruby': ['rubocop'],
     \ 'javascript': ['eslint', 'prettier-eslint', 'importjs'],
     \ 'sh': ['shfmt'],
     \ 'c': ['astyle'],
-    \ 'yaml': ['yamlfix']
+    \ 'yaml': ['yamlfix'],
+    \ 'perl': ['perltidy']
   \}
 
   nnoremap <silent> <Leader>an <Plug>(ale_next_wrap)
