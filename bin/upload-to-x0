@@ -6,4 +6,4 @@ if [[ -z "$file_to_upload" ]]; then
   exit 1
 fi
 
-curl -F "file=@$file_to_upload" https://x0.at/
+curl -F "file=@$file_to_upload" https://x0.at/ | tee >(pbcopy)
