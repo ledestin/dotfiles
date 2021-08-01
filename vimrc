@@ -119,6 +119,19 @@ augroup END
 
 " Main
 
+" Perl extract function
+function! PerlExtractFunction() range
+  let l:function_name = input("Enter function name: ")
+  let l:cmd = "O&" . l:function_name . "();}isub " . l:function_name . " {}P"
+  execute a:firstline . "," . a:lastline . "d"
+  execute "normal! " . l:cmd
+endfunction
+
+augroup perl
+  autocmd!
+  autocmd FileType perl vnoremap <buffer> <Leader>e :call PerlExtractFunction()<CR>
+augroup END
+
 " Snippets
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
