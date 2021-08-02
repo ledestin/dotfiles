@@ -29,7 +29,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'christoomey/vim-conflicted'
   Plug 'davidpdrsn/vim-notable'
   Plug 'rhysd/vim-grammarous'
-  Plug 'MattesGroeger/vim-bookmarks'
   Plug 'svermeulen/vim-yoink'
   Plug 'liuchengxu/vim-which-key'
   Plug 'kana/vim-textobj-user'
