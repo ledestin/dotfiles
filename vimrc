@@ -35,6 +35,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'kana/vim-textobj-function'
   Plug 'fvictorio/vim-textobj-backticks'
   Plug 'kana/vim-textobj-line'
+  Plug 'luochen1990/rainbow'
 
   " Snippets
   Plug 'SirVer/ultisnips'
@@ -117,6 +118,12 @@ augroup gitgutter
 augroup END
 
 " Main
+
+" Rainbow parentheses
+let g:rainbow_conf = {
+\	'ctermfgs': ['lightgrey', 'lightyellow', 'lightcyan', 'lightmagenta']
+\}
+let g:rainbow_active = 1
 
 " Perl extract function
 function! PerlExtractFunction() range
