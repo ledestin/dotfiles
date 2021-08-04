@@ -21,7 +21,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'https://github.com/inkarkat/vim-ReplaceWithRegister'
   Plug 'christoomey/vim-titlecase'
   Plug 'michaeljsmith/vim-indent-object'
-  Plug 'kana/vim-textobj-user'
   Plug 'https://github.com/adelarsq/vim-matchit'
   Plug 'nelstrom/vim-textobj-rubyblock'
   Plug 'tpope/vim-repeat'
