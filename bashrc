@@ -339,6 +339,7 @@ function init_ssh_agent {
   eval "$(ssh-agent -s)"
   ssh-add
 }
+alias iss="init_ssh_agent"
 
 function last_migration {
   "$VISUAL" db/migrate/"$(ls db/migrate/ | sort | tail -1)"
