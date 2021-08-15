@@ -9,6 +9,9 @@ alias di="docker image"
 alias dil="di ls"
 alias dl="docker logs"
 
+alias sc="scratchpad scratchpad-centos7 centos:centos7"
+alias sb="scratchpad scratchpad-bionic ubuntu:bionic"
+
 # delast - docker exec the last started container.
 function delast() {
   # Move options (e.g. --user) to $options array.

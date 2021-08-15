@@ -1,0 +1,23 @@
+#!/bin/bash
+
+set -e
+
+scratchpad_name="$1"
+image="$2"
+
+if [[ -z "$scratchpad_name" || -z "$image" ]]; then
+  echo "Usage: $(basename $0) <scratchpad_name> <image>"
+  exit 1
+fi
+
+scratchpad_exists() {
+  docker container ls -a | grep "$scratchpad_name" -q
+}
+
+if ! scratchpad_exists; then
+  docker run -it --name "$scratchpad_name" "$image" /bin/bash
+  exit
+fi
+
+docker container start "$scratchpad_name"
+docker exec -it "$scratchpad_name" /bin/bash
