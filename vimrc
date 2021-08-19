@@ -72,13 +72,13 @@ set incsearch
 
 " standard statusline
 set statusline=
-set statusline+=\ %f
-set statusline+=\ %{&modified?'[+]':''}
-set statusline+=%=
-set statusline+=%{&paste?'PASTE':''}
-set statusline+=\ %p%%
-set statusline+=\ %l:%c
-set statusline+=\ %{ConflictedVersion()}
+set statusline+=\ %f                     " File name
+set statusline+=\ %{&modified?'[+]':''}  " Modified or not
+set statusline+=%=                       " Align right after this
+set statusline+=%{&paste?'PASTE':''}     " PASTE on/off
+set statusline+=\ %p%%                   " We're at % of the file
+set statusline+=\ %l:%c                  " Line:Character
+set statusline+=\ %{ConflictedVersion()} " ALE stuff
 
 set hlsearch
 nnoremap <silent>  <BS>  :nohlsearch<CR>
