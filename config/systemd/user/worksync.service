@@ -1,0 +1,10 @@
+[Unit]
+Description=Sync parts of ~/work to Entoma
+
+[Service]
+ExecStart=/home/ledestin/.bin/synckasm
+
+RestartSec=2
+
+[Install]
+WantedBy=default.target

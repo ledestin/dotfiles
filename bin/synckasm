@@ -1,0 +1,26 @@
+#!/bin/bash
+
+set -e
+
+keychain="$HOME/.keychain/${HOSTNAME}-sh"
+
+while [ ! -f "$keychain" ]; do
+  sleep 1
+done
+source "$keychain"
+
+dirs_to_sync=(~/work/kasmtech ~/work/kasmvnc)
+
+changed_file_feed="inotifywait -mrq -e modify,move,create,delete ${dirs_to_sync[@]}"
+sync_cmd="rsync -azH ${dirs_to_sync[@]} entoma:renner_work_sync/"
+
+$changed_file_feed | while read DIRECTORY EVENT FILE
+do
+  echo $FILE
+
+  if
+    [ $(pgrep rsync | wc -l) -le 0 ]
+  then
+    $sync_cmd
+  fi
+done
