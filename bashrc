@@ -329,6 +329,12 @@ if is_interactive_shell; then
 
   # PDF
   alias acroread='nice -n19 acroread'
+
+  ssh_key=$HOME/.ssh/id_rsa
+  if [[ "$OS" = "Linux" && -f "$ssh_key" ]]; then
+    /usr/bin/keychain "$ssh_key"
+    source $HOME/.keychain/${HOSTNAME}-sh
+  fi
 fi
 
 if [ -r "${HOME}/.bash-ctx/bash-ctx" ]; then
