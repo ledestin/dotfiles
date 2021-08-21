@@ -316,6 +316,7 @@ augroup spell
   autocmd!
   autocmd Filetype markdown setlocal spell textwidth=80
   autocmd Filetype gitcommit,mail setlocal spell
+  autocmd ColorScheme * highlight SpellBad ctermfg=white ctermbg=red
 augroup END
 
 " Don't auto-wrap existing long lines
