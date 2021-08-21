@@ -73,7 +73,7 @@ set incsearch
 " standard statusline
 set statusline=
 set statusline+=\ %f                     " File name
-set statusline+=\ %{&modified?'[+]':''}  " Modified or not
+set statusline+=\ %m                     " Modified or not
 set statusline+=\ %y                     " File type
 set statusline+=%=                       " Align right after this
 set statusline+=%{&paste?'PASTE':''}     " PASTE on/off
