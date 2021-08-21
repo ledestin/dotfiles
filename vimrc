@@ -98,7 +98,7 @@ augroup color_column
   autocmd ColorScheme * highlight ColorColumn ctermbg=magenta
 augroup END
 
-let column_to_color = &textwidth + 1
+let column_to_color = &textwidth + 2
 call matchadd('ColorColumn', '\%' . column_to_color . 'v', 100)
 
 " Auto-load .vimrc
