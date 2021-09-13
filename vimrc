@@ -122,6 +122,10 @@ augroup END
 
 " Main
 
+nnoremap <Leader>fb :Buffers<CR>
+nnoremap <Leader>cx !chmod +x %<CR>
+nnoremap <Leader>km :%s/\[MASKED\]/kasmweb-build-artifacts/g<CR>
+
 " Rainbow parentheses
 let g:rainbow_conf = {
 \	'ctermfgs': ['lightgrey', 'lightyellow', 'lightcyan', 'lightmagenta']
