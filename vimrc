@@ -540,7 +540,8 @@ if g:ale_enable == 1
     \ 'dockerfile': ['hadolint'],
     \ 'c': ['cc'],
     \ 'yaml': ['yamllint'],
-    \ 'perl': ['perl', 'perlcritic']
+    \ 'perl': ['perl', 'perlcritic'],
+    \ 'python': ['flake8']
   \}
   let g:ale_fixers = {
     \ 'ruby': ['rubocop'],
