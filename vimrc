@@ -122,8 +122,12 @@ augroup END
 
 " Main
 
-nnoremap <Leader>fb :Buffers<CR>
-nnoremap <Leader>cx !chmod +x %<CR>
+" Journaling: insert current date and copy the previous day's note.
+nmap <Leader>td V{yGo<BS>td<TAB>pdd
+
+nnoremap <Leader>b :Buffers<CR>
+nnoremap <Leader>fx !chmod +x %<CR>
+nnoremap <Leader>fs :Git add %<CR>
 nnoremap <Leader>km :%s/\[MASKED\]/kasmweb-build-artifacts/g<CR>
 
 " Rainbow parentheses
