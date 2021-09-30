@@ -1,0 +1,33 @@
+#!/bin/bash
+
+set -e
+
+if [[ -z "$1" ]]; then
+  echo >&2 "Usage $0: [-l] <seconds or minutes to wait for> [message]"
+  exit 1
+fi
+
+if [[ "$1" = "-l" ]]; then
+  pgrep -fl "$0"
+  exit 0
+fi
+
+if echo "$1" | ggrep -qP "m\s*$"; then
+  minutes_to_wait="${1%m}"
+  seconds_to_wait=$((minutes_to_wait * 60))
+else
+  seconds_to_wait="$1"
+fi
+
+sleep "$seconds_to_wait"
+
+if [[ -n "$minutes_to_wait" ]]; then
+  msg_time="${minutes_to_wait}m"
+else
+  msg_time="${seconds_to_wait}s"
+fi
+message=${2:-$msg_time over}
+
+echo "$message"
+say "$message"
+terminal-notifier -sound funky -message "$message" -title "Timer"
