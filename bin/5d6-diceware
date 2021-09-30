@@ -1,0 +1,3 @@
+#!/bin/bash
+
+{ for i in `seq 1 5`; do number=$(rolldice d6); echo -n $number; done; echo; } | pbcopy
