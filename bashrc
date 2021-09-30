@@ -252,6 +252,16 @@ if is_interactive_shell; then
   # youtube-dl(1)
   alias youtube-dl-best="youtube-dl -f bestvideo+bestaudio"
   alias youtube-dl-audio='youtube-dl --ignore-errors --output "%(title)s.%(ext)s" --extract-audio --audio-format mp3'
+  if [ "$OS" = "Darwin" ]; then
+    youtube-dl-audio-and-move-to-icloud() {
+      local url="$1"
+      local tmpdir=$(mktemp -d)
+
+      cd "$tmpdir" && youtube-dl-audio "$url" && mv -v *.mp3 ~/iCloudDocs/
+      cd -
+      rmdir "$tmpdir"
+    }
+  fi
 
   # ssh(1)
   alias scid='ssh-copy-id -i ~/.ssh/id_dsa.pub'
