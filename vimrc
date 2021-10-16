@@ -147,6 +147,7 @@ endfunction
 augroup perl
   autocmd!
   autocmd FileType perl vnoremap <buffer> <Leader>e :call PerlExtractFunction()<CR>
+  autocmd FileType perl EnableStripWhitespaceOnSave
 augroup END
 
 " Snippets
