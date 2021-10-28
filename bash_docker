@@ -12,6 +12,13 @@ alias dl="docker logs"
 alias sc="scratchpad scratchpad-centos7 centos:centos7"
 alias sb="scratchpad scratchpad-bionic ubuntu:bionic"
 
+# dlname - print name of most recently started container.
+dlname() {
+  local last_container_name=$(docker container ls -l --format "{{.Names}}")
+
+  echo $last_container_name
+}
+
 # delast - docker exec the last started container.
 function delast() {
   # Move options (e.g. --user) to $options array.
