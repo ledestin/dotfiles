@@ -543,7 +543,8 @@ if g:ale_enable == 1
     \ 'c': ['cc'],
     \ 'yaml': ['yamllint'],
     \ 'perl': ['perl', 'perlcritic'],
-    \ 'python': ['flake8']
+    \ 'python': ['flake8'],
+    \ 'gitcommit': ['gitlint']
   \}
   let g:ale_fixers = {
     \ 'ruby': ['rubocop'],
@@ -553,6 +554,8 @@ if g:ale_enable == 1
     \ 'yaml': ['yamlfix'],
     \ 'perl': ['perltidy']
   \}
+  let g:gitlint_config = $HOME . '/.gitlint'
+  let g:ale_gitcommit_gitlint_options = '-C ' . gitlint_config
 
   nnoremap <silent> <Leader>an <Plug>(ale_next_wrap)
   nnoremap <silent> <Leader>ap <Plug>(ale_previous_wrap)
