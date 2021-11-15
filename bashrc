@@ -198,6 +198,11 @@ if is_interactive_shell; then
     eval "alias $character='overlord_quote $character'"
   done
 
+  if [[ "$OS" = "Darwin" ]]; then
+    alias cp=gcp
+    alias df=gdf
+  fi
+
   # ls(1)
   type dircolors &>/dev/null && eval `dircolors -b`
   alias ls='exa'
