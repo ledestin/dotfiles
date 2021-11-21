@@ -9,6 +9,7 @@ email = ledestin@gmail.com
   ciw = commit --cleanup=whitespace
   st = status
   br = branch
+  rs = reset
   hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
   type = cat-file -t
   dump = cat-file -p

@@ -286,6 +286,7 @@ if is_interactive_shell; then
   alias gl='git log'
   alias gs='git show'
   alias gst='git st'
+  alias grs='git reset'
   alias gpr='git pull --rebase'
   alias gm='git branch --merged master'
   alias git-remove-commit='git reset --soft HEAD^'
