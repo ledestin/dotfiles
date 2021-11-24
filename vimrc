@@ -128,7 +128,7 @@ nmap <Leader>td V{yGo<BS>td<TAB>pdd
 nnoremap <Leader>b :Buffers<CR>
 nnoremap <Leader>bb :Buffers<CR>
 nnoremap <Leader>fx :!chmod +x %<CR>
-nnoremap <Leader>fs :Git add %<CR>
+nnoremap <Leader>ga :Git add %<CR>
 nnoremap <Leader>km :%s/\[MASKED\]/kasmweb-build-artifacts/g<CR>
 
 " Rainbow parentheses
