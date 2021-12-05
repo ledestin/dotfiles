@@ -280,6 +280,7 @@ if is_interactive_shell; then
   alias g='git'
   alias gb="git checkout -b"
   alias ga='git add'
+  alias gapa='git add --patch --all'
   alias gc='git commit'
   alias gd='git diff'
   alias gdc='gd --cached'
