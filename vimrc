@@ -38,6 +38,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'fvictorio/vim-textobj-backticks'
   Plug 'kana/vim-textobj-line'
   Plug 'luochen1990/rainbow'
+  Plug 'jreybert/vimagit'
 
   " Snippets
   Plug 'SirVer/ultisnips'
