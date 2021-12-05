@@ -553,7 +553,8 @@ if g:ale_enable == 1
     \ 'sh': ['shfmt'],
     \ 'c': ['astyle'],
     \ 'yaml': ['yamlfix'],
-    \ 'perl': ['perltidy']
+    \ 'perl': ['perltidy'],
+    \ 'python': ['yapf']
   \}
   let g:gitlint_config = $HOME . '/.gitlint'
   let g:ale_gitcommit_gitlint_options = '-C ' . gitlint_config
