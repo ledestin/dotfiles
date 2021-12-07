@@ -200,6 +200,7 @@ if is_interactive_shell; then
 
   if [[ "$OS" = "Darwin" ]]; then
     alias cp=gcp
+    alias mv=gmv
     alias df=gdf
   fi
 
