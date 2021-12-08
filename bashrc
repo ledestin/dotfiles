@@ -283,6 +283,17 @@ if is_interactive_shell; then
   alias gcmb="git-clean-merged-branches"
   alias gprunestale="git fetch --prune --all"
 
+  gstr() {
+    git remote update
+    local behind=$(gst --porcelain=2 --branch | grep branch.ab | \
+      ruby -ne 'match = $_.match /-(?<behind>\d+)/; puts match[:behind]')
+    if [[ "$behind" -eq 0 ]]; then
+      echo -e "${txtgrn}Branch is up to date with remote${txtrst}"
+    else
+      echo -e "${txtred}Branch is behind of remote by $behind commits${txtrst}"
+    fi
+  }
+
   # Rails
   rails="./bin/rails"
 
