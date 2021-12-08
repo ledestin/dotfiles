@@ -122,20 +122,6 @@ if is_interactive_shell; then
 
   alias t="brew-tea"
 
-  if [[  "$OS" = "Darwin" ]]; then
-    # addev today "call Shalltear-sama"
-    # addev 2021-07-11 "have fun"
-    function addev() {
-      local date="$1"
-      shift
-
-      if [[ "$date" = "today" ]]; then
-        date=$($date_cmd +'%Y-%m-%d')
-      fi
-      calendar-cli create --date="$date" $@
-    }
-  fi
-
   # Jekyll
   alias js="be jekyll serve"
 
