@@ -170,7 +170,8 @@ function! UltiSnipsOpenDefaultSnippet()
   execute 'split +view' l:snippet
 endfunction
 
-nnoremap <Leader>us :call UltiSnipsOpenDefaultSnippet()<CR>
+nnoremap <Leader>ue :call UltiSnipsOpenDefaultSnippet()<CR>
+nnoremap <Leader>us :call UltiSnips#RefreshSnippets()<CR>
 
 " Cut and paste using line numbers
 function! CutAndPasteByLineNumber(relative_line_number)
