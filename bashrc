@@ -263,6 +263,11 @@ if is_interactive_shell; then
   # bundler(1)
   alias be='bundle exec'
 
+  # mtr
+  if [[ "$OS" = Linux ]]; then
+    alias mtr='mtr --curses'
+  fi
+
   # git(1)
   alias g='git'
   alias gb="git checkout -b"
