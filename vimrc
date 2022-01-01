@@ -186,11 +186,6 @@ endfunction
 nmap <Leader>xk :call CutAndPasteByLineNumber('-')<left><left>
 nmap <Leader>xj :call CutAndPasteByLineNumber('+')<left><left>
 
-" Abbrev
-iabbrev @b #!/bin/bash
-iabbrev @r #!/usr/bin/env ruby
-iabbrev @s rubyclarity.com
-
 augroup gitcommit
   autocmd!
   autocmd FileType gitcommit iabbrev <buffer> @s [skip CI]
