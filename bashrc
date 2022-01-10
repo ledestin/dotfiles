@@ -214,6 +214,7 @@ if is_interactive_shell; then
   . "$HOME/.bash_docker"
 
   # Currency exchange
+  alias conv=lumione
   alias nzd="lumione 1 nzd usd"
   alias rub="lumione 1 usd rub"
 
