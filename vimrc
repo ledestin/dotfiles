@@ -403,7 +403,7 @@ endfunction
 
 " ALE
 " Only run linters named in ale_linters settings.
-let g:ale_enable = 0
+let g:ale_enable = 1
 let g:ale_linters_explicit = 1
 let g:ale_fixers_explicit = 1
 " let g:ale_fix_on_save = 1
