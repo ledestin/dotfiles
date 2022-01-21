@@ -122,6 +122,14 @@ if is_interactive_shell; then
 
   alias t="brew-tea"
 
+  if [[ "$OS" = "Linux" ]]; then
+    alias fd="fdfind"
+    alias open="xdg-open"
+  fi
+
+  # Virsh
+  alias virsh="virsh -c qemu:///system"
+
   # Jekyll
   alias js="be jekyll serve"
 
