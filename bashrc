@@ -253,6 +253,7 @@ if is_interactive_shell; then
   alias wakeat="date --date='+10 hours'"
 
   # youtube-dl(1)
+  alias youtube-dl="yt-dlp"
   alias youtube-dl-best="youtube-dl -f bestvideo+bestaudio"
   alias youtube-dl-audio='youtube-dl --ignore-errors --output "%(title)s.%(ext)s" --extract-audio --audio-format mp3'
   if [ "$OS" = "Darwin" ]; then
