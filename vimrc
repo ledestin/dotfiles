@@ -39,6 +39,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'kana/vim-textobj-line'
   Plug 'luochen1990/rainbow'
   Plug 'jreybert/vimagit'
+  Plug 'https://gitlab.com/calebw/vci-check.git'
 
   " Snippets
   Plug 'SirVer/ultisnips'
@@ -119,6 +120,11 @@ augroup gitgutter
   autocmd ColorScheme * highlight GitGutterChange guifg=#bbbb00 ctermfg=3
   autocmd ColorScheme * highlight GitGutterDelete guifg=#ff2222 ctermfg=1
   autocmd ColorScheme * highlight SignColumn ctermbg=black
+augroup END
+
+augroup Gitlab
+  autocmd!
+  autocmd FileType yaml nnoremap <buffer> <Leader>l :Vci<CR>
 augroup END
 
 " Main
