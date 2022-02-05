@@ -383,6 +383,10 @@ function init_ssh_agent {
 }
 alias iss="init_ssh_agent"
 
+function sum_stdin_numbers {
+  'ruby' -ne 'BEGIN { sum = 0 }; sum += $_.to_f; END { puts sum }'
+}
+
 function last_migration {
   "$VISUAL" db/migrate/"$(ls db/migrate/ | sort | tail -1)"
 }
