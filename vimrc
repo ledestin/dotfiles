@@ -215,13 +215,19 @@ nnoremap <silent>,, :w<CR>
 
 " Sounds
 function! CanPlaySound()
-  return IsSshKeyLoaded() || CurrentHostIsEntoma()
+  return CurrentHostIsRenner()
 endfunction
 
 function! CurrentHostIsEntoma()
   let hostname = system('echo $HOSTNAME')
   let entomaMatch = matchstr(hostname, '^entoma\.')
   return !empty(entomaMatch)
+endfunction
+
+function! CurrentHostIsRenner()
+  let hostname = system('echo $HOSTNAME')
+  let rennerMatch = matchstr(hostname, '^renner')
+  return !empty(rennerMatch)
 endfunction
 
 function! IsSshKeyLoaded()
@@ -233,6 +239,9 @@ function! PlayOnEntoma(fileName)
   if !CanPlaySound()
     return
   endif
+
+  execute "silent !cd ~ && mpg123 -q " . fnameescape(a:fileName) . " &" | redraw!
+  return
 
   if CurrentHostIsEntoma()
     execute "silent !cd ~ && mpg123 -q " . fnameescape(a:fileName) . " &" | redraw!
