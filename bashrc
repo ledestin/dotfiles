@@ -280,6 +280,15 @@ if is_interactive_shell; then
     alias mtr='mtr --curses'
   fi
 
+  # Kasm
+  function kls() {
+    ls builder/build/"$1"
+  }
+  function kclean() {
+    rm builder/build/"$1"/*
+  }
+  PATH="$PATH:.git/safe/../../builder"
+
   # git(1)
   alias g='git'
   alias gb="git checkout -b"
