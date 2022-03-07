@@ -1,3 +1,8 @@
 snippet td "Today's date"
 `date -R | ruby -ne '$_ =~ /(.+ 2022)/; puts "\# " + $1'`
 endsnippet
+
+snippet ud
+Unit: ${1:boolean}
+Default: ${2:true}
+endsnippet
