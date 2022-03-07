@@ -120,6 +120,8 @@ if is_interactive_shell; then
       awk '{printf $1/1024 "MB"; $1=""; print }'
   }
 
+  alias pwgen="pwgen 12"
+
   alias t="brew-tea"
 
   if [[ "$OS" = "Linux" ]]; then
