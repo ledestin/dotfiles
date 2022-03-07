@@ -40,6 +40,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'luochen1990/rainbow'
   Plug 'jreybert/vimagit'
   Plug 'https://gitlab.com/calebw/vci-check.git'
+  Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 
   " Snippets
   Plug 'SirVer/ultisnips'
@@ -137,6 +138,11 @@ nnoremap <Leader>bb :Buffers<CR>
 nnoremap <Leader>fx :!chmod +x %<CR>
 nnoremap <Leader>ga :Git add %<CR>
 nnoremap <Leader>km :%s/\[MASKED\]/kasmweb-build-artifacts/g<CR>
+
+" Markdown preview
+nmap <Leader>mp <Plug>MarkdownPreview
+nmap <Leader>ms <Plug>MarkdownPreviewStop
+nmap <Leader>mt <Plug>MarkdownPreviewToggle
 
 " Rainbow parentheses
 let g:rainbow_conf = {
