@@ -441,3 +441,4 @@ fi
 [ -f /usr/local/etc/profile.d/autojump.sh ] && .  /usr/local/etc/profile.d/autojump.sh
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
