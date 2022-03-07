@@ -553,7 +553,8 @@ if g:ale_enable == 1
     \ 'yaml': ['yamllint'],
     \ 'perl': ['perl', 'perlcritic'],
     \ 'python': ['flake8'],
-    \ 'gitcommit': ['gitlint']
+    \ 'gitcommit': ['gitlint'],
+    \ 'markdown': ['vale']
   \}
   let g:ale_fixers = {
     \ 'ruby': ['rubocop'],
