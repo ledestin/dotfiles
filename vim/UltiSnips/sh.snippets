@@ -1,0 +1,6 @@
+snippet usage "Usage:" b
+if [[ -z "\$$1" ]]; then
+  echo >&2 "Usage: $(basename "\$0") <$1>"
+  exit 1
+fi
+endsnippet

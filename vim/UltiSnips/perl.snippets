@@ -1,0 +1,54 @@
+snippet pr "Print"
+print("$1\n");
+endsnippet
+
+snippet subc "function in a class"
+sub ${1:function_name} {
+  my $self = shift;
+
+	${2:# body...}
+}
+endsnippet
+
+snippet $s "object referencing a function or hash key" i
+$self->
+endsnippet
+
+snippet sd "say Dumper()"
+say Dumper($1);
+endsnippet
+
+snippet clio "CliOption"
+'-$1' => KasmVNC::CliOption->new({
+    name => '$1',
+    configKeys => [
+      KasmVNC::ConfigKey->new({
+        name => "$2",
+        type => KasmVNC::ConfigKey::BOOLEAN
+      })
+    ]
+}),
+endsnippet
+
+snippet ptrace "Print stack trace"
+my $trace = Devel::StackTrace->new;
+print $trace->as_string;
+endsnippet
+
+snippet newmodule "New Perl module"
+package KasmVNC::${1:module_name};
+
+use strict;
+use warnings;
+use v5.10;
+use Data::Dumper;
+
+sub new {
+    my ($class, $args) = @_;
+    my $self = bless {
+      ${2:arg_name} => $args->{$2},
+    }, $class;
+}
+
+1;
+endsnippet
