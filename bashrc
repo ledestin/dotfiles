@@ -122,8 +122,6 @@ if is_interactive_shell; then
 
   alias pwgen="pwgen 12"
 
-  alias t="brew-tea"
-
   if [[ "$OS" = "Linux" ]]; then
     alias fd="fdfind"
     alias open="xdg-open"
