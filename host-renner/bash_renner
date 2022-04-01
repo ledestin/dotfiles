@@ -1,8 +1,15 @@
-#!/bin/sh
+#!/bin/bash
 #export http_proxy=http://localhost:3128
 
 alias random-anime='random-entry /data/video/anime'
 alias random-music="random-entry /data/music/*"
+
+random_porn() {
+  local random_video=$(find /data/video/porn/ -type f -regextype posix-egrep -regex ".*\.(avi|mpeg|mpg4|webm)$" | shuf -n 1)
+  echo "$random_video"
+  vlc "$random_video" &
+}
+alias random-porn="random_porn"
 
 export PERL5LIB=/home/ledestin/work/kasmvnc/KasmVNC/unix
 export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64"
