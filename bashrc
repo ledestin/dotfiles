@@ -307,6 +307,10 @@ if is_interactive_shell; then
   alias gcmb="git-clean-merged-branches"
   alias gprunestale="git fetch --prune --all"
 
+  gch() {
+    git checkout "$(git branch --all | fzf | tr -d ‘[:space:]’)"
+  }
+
   gstr() {
     git remote update
     local behind=$(gst --porcelain=2 --branch | grep branch.ab | \
