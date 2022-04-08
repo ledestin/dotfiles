@@ -10,6 +10,14 @@ sub ${1:function_name} {
 }
 endsnippet
 
+snippet attr "Class reader"
+sub $1 {
+  my $self = shift;
+
+  $self->{$1};
+}
+endsnippet
+
 snippet $s "object referencing a function or hash key" i
 $self->
 endsnippet
