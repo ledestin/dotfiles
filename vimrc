@@ -565,6 +565,7 @@ if g:ale_enable == 1
     \ 'perl': ['perl', 'perlcritic'],
     \ 'python': ['flake8'],
     \ 'gitcommit': ['gitlint'],
+    \ 'terraform': ['tflint'],
     \ 'markdown': ['vale']
   \}
   let g:ale_fixers = {
