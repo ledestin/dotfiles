@@ -216,6 +216,18 @@ if is_interactive_shell; then
   alias diskusage="du -h -d1 2> /dev/null | sort -hr"
   alias tz="$date_cmd -d "
 
+  sd() {
+    local dir="${1:-.}"
+
+    fd . --full-path "$dir" --type d | fzf --print0 | pbcopy
+  }
+
+  function sf {
+    local dir="${1:-.}"
+
+    fd --full-path "$dir" --type f | fzf --print0 | pbcopy
+  }
+
   # Serve HTTP
   alias serve-current-dir-http="ruby -run -e httpd . -p 9090"
 
