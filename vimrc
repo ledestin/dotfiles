@@ -42,6 +42,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'https://gitlab.com/calebw/vci-check.git'
   Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
   Plug 'tpope/vim-abolish'
+  Plug 'christoomey/vim-system-copy'
 
   " Snippets
   Plug 'SirVer/ultisnips'
