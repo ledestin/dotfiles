@@ -1,0 +1,17 @@
+#!/bin/bash
+
+set -euo pipefail
+unhealthy_co2_level=700
+
+co2_level=$(co2 | jq '.CO2')
+if [[ -z "$co2_level" ]]; then
+  echo "co2 不明"
+  exit
+fi
+
+if [[ "$co2_level" -gt "$unhealthy_co2_level" ]]; then
+  echo "<txt><span foreground=\"red\">🔴${co2_level}ppm</span></txt>"
+  exit
+fi
+
+echo "${co2_level}ppm"

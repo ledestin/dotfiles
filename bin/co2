@@ -1,0 +1,8 @@
+#!/bin/bash
+
+set -e
+
+cd ~/work/netatmo.sh/
+source ./.netatmo.conf
+./netatmo.sh -u $netatmo_user -p $netatmo_password -D | jq '.body.devices[0].dashboard_data'
+# ./netatmo.sh -u ledestin@gmail.com -p Wacalliope0} -D | grep CO2\": | sed -e 's/"CO2": //g; s/,/ppm/; s/\s\+//'
