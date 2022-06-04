@@ -216,6 +216,10 @@ if is_interactive_shell; then
   alias diskusage="du -h -d1 2> /dev/null | sort -hr"
   alias tz="$date_cmd -d "
 
+  lej() {
+    jq '.' "$@" | less
+  }
+
   sd() {
     local dir="${1:-.}"
 
