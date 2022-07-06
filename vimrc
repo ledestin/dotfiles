@@ -565,8 +565,9 @@ if g:ale_enable == 1
     \ 'perl': ['perl', 'perlcritic'],
     \ 'python': ['flake8'],
     \ 'gitcommit': ['gitlint'],
-    \ 'terraform': ['tflint'],
-    \ 'markdown': ['vale']
+    \ 'terraform': ['checkov'],
+    \ 'markdown': ['vale'],
+    \ 'json': ['jq']
   \}
   let g:ale_fixers = {
     \ 'ruby': ['rubocop'],
