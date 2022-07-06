@@ -14,7 +14,7 @@ set_node_path() {
 limit_number_of_user_processes_on_linux() {
   case "$OS" in
     Linux)
-      ulimit -u 2000
+      ulimit -u 5000
       ;;
   esac
 }
