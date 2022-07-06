@@ -283,6 +283,8 @@ if is_interactive_shell; then
     }
   fi
 
+  alias video-resolution="ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=s=x:p=0"
+
   # ssh(1)
   alias scid='ssh-copy-id -i ~/.ssh/id_dsa.pub'
 
