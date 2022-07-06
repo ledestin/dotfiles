@@ -223,13 +223,13 @@ if is_interactive_shell; then
   sd() {
     local dir="${1:-.}"
 
-    fd . --full-path "$dir" --type d | fzf --print0 | pbcopy
+    fdfind . --full-path "$dir" --type d | fzf --print0 | pbcopy
   }
 
   function sf {
     local dir="${1:-.}"
 
-    fd --full-path "$dir" --type f | fzf --print0 | pbcopy
+    fdfind . --type f "$dir" | fzf --print0 | pbcopy
   }
 
   # Serve HTTP
