@@ -584,8 +584,8 @@ if g:ale_enable == 1
   let g:gitlint_config = $HOME . '/.gitlint'
   let g:ale_gitcommit_gitlint_options = '-C ' . gitlint_config
 
-  nnoremap <silent> <Leader>an <Plug>(ale_next_wrap)
-  nnoremap <silent> <Leader>ap <Plug>(ale_previous_wrap)
+  nmap <silent> <Leader>an <Plug>(ale_next_wrap)
+  nmap <silent> <Leader>ap <Plug>(ale_previous_wrap)
   nnoremap <silent> <Leader>af :ALEFix<CR>
   nnoremap <silent> <Leader>ad :ALEDetail<CR>
 
