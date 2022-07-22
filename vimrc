@@ -474,10 +474,13 @@ noremap <leader>n :call notable#open_notes_file()<cr>
 let g:notable_notes_folder = "~/work/notes/"
 
 " Rspec
-noremap <Leader>t :call RunCurrentSpecFile()<CR>
-noremap <Leader>s :call RunNearestSpec()<CR>
-noremap <Leader>l :call RunLastSpec()<CR>
-noremap <Leader>a :call RunAllSpecs()<CR>
+augroup RSpec
+  autocmd!
+  autocmd FileType ruby noremap <Leader>t :call RunCurrentSpecFile()<CR>
+  autocmd FileType ruby noremap <Leader>s :call RunNearestSpec()<CR>
+  autocmd FileType ruby noremap <Leader>l :call RunLastSpec()<CR>
+  autocmd FileType ruby noremap <Leader>a :call RunAllSpecs()<CR>
+augroup END
 
 " FZF filename search
 function! FZFFileSearch()
