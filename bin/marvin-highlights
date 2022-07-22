@@ -1,0 +1,21 @@
+#!/usr/bin/env ruby
+
+require "csv"
+
+unless ARGV.first
+  puts "Usage: #{File.basename $PROGRAM_NAME} <marvin_csv_annotations>"
+  exit 1
+end
+
+csv_text = File.read ARGV.first
+
+csv = CSV.new csv_text, headers: true
+csv.each do |row|
+  highlight = row.to_h["HighlightText"]
+  puts highlight unless highlight.empty?
+
+  annotation = row.to_h["EntryText"]
+  puts "Notes:\n#{annotation}" unless annotation.empty?
+
+  puts if highlight || annotation
+end
