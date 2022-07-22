@@ -12,6 +12,8 @@ alias dl="docker logs"
 alias dsc="scratchpad scratchpad-centos7 centos:centos7"
 alias dsb="scratchpad scratchpad-bionic ubuntu:bionic"
 alias dsf="scratchpad scratchpad-focal ubuntu:focal"
+alias dss="scratchpad scratchpad-opensuse-leap opensuse/leap:15.3"
+alias dso="scratchpad scratchpad-oracle-8 oraclelinux:8"
 
 # dlname - print name of most recently started container.
 dlname() {
