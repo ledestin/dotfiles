@@ -1,17 +1,45 @@
 #!/bin/bash
 
-set -euo pipefail
+set -eo pipefail
 unhealthy_co2_level=700
+temperature_too_cold=22
 
-co2_level=$(co2 | jq '.CO2')
-if [[ -z "$co2_level" ]]; then
+netatmo_stats=$(co2)
+if [[ "$netatmo_stats" =~ "null"  ]]; then
   echo "co2 不明"
   exit
 fi
 
+co2_level=$(echo "$netatmo_stats" | jq '.CO2')
+temperature=$(echo "$netatmo_stats" | jq '.Temperature')
+
 if [[ "$co2_level" -gt "$unhealthy_co2_level" ]]; then
-  echo "<txt><span foreground=\"red\">🔴${co2_level}ppm</span></txt>"
+  warn_co2=1
+fi
+
+if ruby -e "$temperature <= $temperature_too_cold ? exit(0) : exit(1)"; then
+  warn_temperature=1
+fi
+
+if [[ -n "$warn_co2" || -n "$warn_temperature" ]]; then
+  warning_sign="🔴"
+fi
+
+if [[ -n "$warn_co2" ]]; then
+  co2_output="${co2_level}ppm"
+fi
+
+if [[ -n "$warn_temperature" ]]; then
+  temperature_output="${temperature}C"
+fi
+
+if [[ -n "$warn_co2" || -n "$warn_temperature" ]]; then
+  output="${warning_sign}${co2_output}"
+  if [[ -n "$temperature_output" ]]; then
+    output="${output}$temperature_output"
+  fi
+  echo "<txt><span foreground=\"black\">${output}</span></txt>"
   exit
 fi
 
-echo "${co2_level}ppm"
+echo "🌲"
