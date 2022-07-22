@@ -155,7 +155,7 @@ let g:rainbow_active = 1
 " Perl extract function
 function! PerlExtractFunction() range
   let l:function_name = input("Enter function name: ")
-  let l:cmd = "O&" . l:function_name . "();}isub " . l:function_name . " {}P"
+  let l:cmd = "O" . l:function_name . "();}isub " . l:function_name . " {}P"
   execute a:firstline . "," . a:lastline . "d"
   execute "normal! " . l:cmd
 endfunction
