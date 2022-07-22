@@ -27,7 +27,7 @@ say Dumper($1);
 endsnippet
 
 snippet clio "CliOption"
-'-$1' => KasmVNC::CliOption->new({
+KasmVNC::CliOption->new({
     name => '$1',
     configKeys => [
       KasmVNC::ConfigKey->new({
