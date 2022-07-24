@@ -16,6 +16,8 @@ alias dss="scratchpad scratchpad-opensuse-leap opensuse/leap:15.3"
 alias dso="scratchpad scratchpad-oracle-8 oraclelinux:8"
 
 declare -A last_container_data
+declare -a d_cmd_options
+declare -a d_cmd_rest
 
 # dlname - print name of most recently started container.
 dlname() {
@@ -38,21 +40,11 @@ dlstop() {
 # delast - docker exec the last started container.
 function delast() {
   # Move options (e.g. --user) to $options array.
-  local option
-  local options=()
-  for option in $*; do
-    if [[ "${option:0:1}" != "-" ]]; then
-      break
-    fi
-
-    options+=($option)
-    shift
-  done
-
+  gobble_options "$@"
   fetch_last_container_data
 
-  echo ${last_container_data['image']}
-  de "${options[@]}" "${last_container_data['name']}" "$*"
+  echo "${last_container_data['image']}"
+  de "${d_cmd_options[@]}" "${last_container_data['name']}" "${d_cmd_rest[*]}"
 }
 
 # derlast - docker exec the last started container with root user.
@@ -63,28 +55,20 @@ alias derlast="delast -u=root"
 # --user=root
 # The argument must be used without whitespace!
 function de() {
-  # Move options (e.g. --user) to $options array.
-  local option
-  local options=()
-  for option in $*; do
-    if [[ "${option:0:1}" != "-" ]]; then
-      break
-    fi
+  gobble_options "$@"
 
-    options+=($option)
-    shift
-  done
-
+  set -- "${d_cmd_rest[@]}"
   local container="$1"
-  local cmd="$2"
+  shift
 
-  if [[ -z "$cmd" ]]; then
-    echo docker exec -it "${options[@]}" "$container" /bin/bash
-    docker exec -it "${options[@]}" "$container" /bin/bash
+  if [[ -z "$*" ]]; then
+    echo docker exec -it "${d_cmd_options[@]}" "$container" /bin/bash
+    docker exec -it "${d_cmd_options[@]}" "$container" /bin/bash
   else
-    shift
-    echo docker exec -it "${options[@]}" "$container" /bin/bash -c "$*"
-    docker exec -it "${options[@]}" "$container" /bin/bash -c "$*"
+    echo docker exec -it "${d_cmd_options[@]}" "$container" \
+      /bin/bash -c "$*"
+    docker exec -it "${d_cmd_options[@]}" "$container" \
+      /bin/bash -c  "$*"
   fi
 }
 alias der="de --user=root"
@@ -96,37 +80,28 @@ alias der="de --user=root"
 # dr ubuntu:bionic ls /bin
 #   => docker run -it --rm ubuntu:bionic ls /bin
 function dr() {
-  # Move options (e.g. --user) to $options array.
-  local option
-  local options=()
-  for option in $*; do
-    if [[ "${option:0:1}" != "-" ]]; then
-      break
-    fi
-
-    options+=($option)
-    shift
-  done
+  gobble_options "$@"
+  set -- "${d_cmd_rest[@]}"
 
   local image="$1"
   shift
   local cmd
   if [ $# -gt 1 ]; then
-    cmd="$@"
+    cmd=("$@")
   else
-    cmd="${1:-/bin/bash}"
+    cmd=("${1:-/bin/bash}")
   fi
 
   # --entrypoint was passed instead of cmd.
-  if `echo "${options[@]}" | grep -q -P -- '--entrypoint'`; then
-    echo docker run -it --rm "${options[@]}" "$image"
-    docker run -it --rm "${options[@]}" "$image"
+  if (echo "${d_cmd_options[@]}" | grep -q -P -- '--entrypoint'); then
+    echo docker run -it --rm "${d_cmd_options[@]}" "$image"
+    docker run -it --rm "${d_cmd_options[@]}" "$image"
     return
   fi
 
   # Use cmd.
-  echo docker run -it --rm "${options[@]}" "$image" $cmd
-  docker run -it --rm "${options[@]}" "$image" $cmd
+  echo docker run -it --rm "${options[@]}" "$image" "${cmd[@]}"
+  docker run -it --rm "${options[@]}" "$image" "${cmd[@]}"
 }
 
 # dreb - docker run with entrypoint of bash.
@@ -145,4 +120,21 @@ fetch_last_container_data() {
 
   last_container_data['name']=${name_and_image[0]}
   last_container_data['image']=${name_and_image[1]}
+}
+
+gobble_options() {
+  # Move options (e.g. --user) to $options array.
+  local option
+  local options=()
+  for option in "$@"; do
+    if [[ "${option:0:1}" != "-" ]]; then
+      break
+    fi
+
+    options+=("$option")
+    shift
+  done
+
+  d_cmd_options=("${options[@]}")
+  d_cmd_rest=("$@")
 }
