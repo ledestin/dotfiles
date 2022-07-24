@@ -85,12 +85,12 @@ function de() {
   local cmd="$2"
 
   if [[ -z "$cmd" ]]; then
-    echo docker exec -it ${options[@]} "$container" /bin/bash
-    docker exec -it ${options[@]} "$container" /bin/bash
+    echo docker exec -it "${options[@]}" "$container" /bin/bash
+    docker exec -it "${options[@]}" "$container" /bin/bash
   else
     shift
-    echo docker exec -it ${options[@]} "$container" /bin/bash -c "$*"
-    docker exec -it ${options[@]} "$container" /bin/bash -c "$*"
+    echo docker exec -it "${options[@]}" "$container" /bin/bash -c "$*"
+    docker exec -it "${options[@]}" "$container" /bin/bash -c "$*"
   fi
 }
 alias der="de --user=root"
@@ -124,15 +124,15 @@ function dr() {
   fi
 
   # --entrypoint was passed instead of cmd.
-  if `echo ${options[@]} | grep -q -P -- '--entrypoint'`; then
-    echo docker run -it --rm ${options[@]} "$image"
-    docker run -it --rm ${options[@]} "$image"
+  if `echo "${options[@]}" | grep -q -P -- '--entrypoint'`; then
+    echo docker run -it --rm "${options[@]}" "$image"
+    docker run -it --rm "${options[@]}" "$image"
     return
   fi
 
   # Use cmd.
-  echo docker run -it --rm ${options[@]} "$image" $cmd
-  docker run -it --rm ${options[@]} "$image" $cmd
+  echo docker run -it --rm "${options[@]}" "$image" $cmd
+  docker run -it --rm "${options[@]}" "$image" $cmd
 }
 
 # dreb - docker run with entrypoint of bash.
