@@ -25,7 +25,10 @@ dlname() {
 }
 
 fetch_last_container_data() {
-  local name_and_image=($(docker container ls -l --format "{{.Names}} {{.Image}}"))
+  local name_and_image;
+  mapfile -t name_and_image < \
+    <(docker container ls -l --format "{{.Names}}\\n{{.Image}}")
+
   last_container_data['name']=${name_and_image[0]}
   last_container_data['image']=${name_and_image[1]}
 }
