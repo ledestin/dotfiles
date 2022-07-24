@@ -22,6 +22,19 @@ dlname() {
   echo $last_container_name
 }
 
+dlstop() {
+  local name_and_image=($(docker container ls -l --format "{{.Names}} {{.Image}}"))
+  local last_container_name=${name_and_image[0]}
+  local last_container_image=${name_and_image[1]}
+
+  echo "Container: $last_container_image ($last_container_name)"
+  echo -n "Stop container? y/N "
+  read -r response
+  if [[ "$response" =~ Y|y ]]; then
+    docker stop "$last_container_name"
+  fi
+}
+
 # delast - docker exec the last started container.
 function delast() {
   # Move options (e.g. --user) to $options array.
