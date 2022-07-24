@@ -336,7 +336,8 @@ augroup END
 
 " git grep current word
 function! GitGrepCurrentWord()
-  silent Ggrep '\<<cword>\>'
+  silent! let l:curr_word = expand('<cword>')
+  silent execute 'Ggrep' l:curr_word
 endfunction
 
 noremap <Leader>g :call GitGrepCurrentWord()<CR>
