@@ -24,15 +24,6 @@ dlname() {
   echo "${last_container_data['name']}"
 }
 
-fetch_last_container_data() {
-  local name_and_image;
-  mapfile -t name_and_image < \
-    <(docker container ls -l --format "{{.Names}}\\n{{.Image}}")
-
-  last_container_data['name']=${name_and_image[0]}
-  last_container_data['image']=${name_and_image[1]}
-}
-
 dlstop() {
   fetch_last_container_data
 
@@ -146,3 +137,12 @@ function dr() {
 #  Pass --entrypoint=/bin/bash to dr and use USER 1000.
 alias dreb="dr --entrypoint=/bin/bash"
 alias drreb="dreb -u=root"
+
+fetch_last_container_data() {
+  local name_and_image;
+  mapfile -t name_and_image < \
+    <(docker container ls -l --format "{{.Names}}\\n{{.Image}}")
+
+  last_container_data['name']=${name_and_image[0]}
+  last_container_data['image']=${name_and_image[1]}
+}
