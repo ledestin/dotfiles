@@ -15,23 +15,29 @@ alias dsf="scratchpad scratchpad-focal ubuntu:focal"
 alias dss="scratchpad scratchpad-opensuse-leap opensuse/leap:15.3"
 alias dso="scratchpad scratchpad-oracle-8 oraclelinux:8"
 
+declare -A last_container_data
+
 # dlname - print name of most recently started container.
 dlname() {
-  local last_container_name=$(docker container ls -l --format "{{.Names}}")
+  fetch_last_container_data
 
-  echo $last_container_name
+  echo "${last_container_data['name']}"
+}
+
+fetch_last_container_data() {
+  local name_and_image=($(docker container ls -l --format "{{.Names}} {{.Image}}"))
+  last_container_data['name']=${name_and_image[0]}
+  last_container_data['image']=${name_and_image[1]}
 }
 
 dlstop() {
-  local name_and_image=($(docker container ls -l --format "{{.Names}} {{.Image}}"))
-  local last_container_name=${name_and_image[0]}
-  local last_container_image=${name_and_image[1]}
+  fetch_last_container_data
 
-  echo "Container: $last_container_image ($last_container_name)"
+  echo "Container: ${last_container_data['image']} (${last_container_data['name']})"
   echo -n "Stop container? y/N "
   read -r response
   if [[ "$response" =~ Y|y ]]; then
-    docker stop "$last_container_name"
+    docker stop "${last_container_data['name']}"
   fi
 }
 
@@ -49,12 +55,10 @@ function delast() {
     shift
   done
 
-  local name_and_image=($(docker container ls -l --format "{{.Names}} {{.Image}}"))
-  local last_container_name=${name_and_image[0]}
-  local last_container_image=${name_and_image[1]}
+  fetch_last_container_data
 
-  echo $last_container_image
-  de "${options[@]}" "$last_container_name" "$*"
+  echo ${last_container_data['image']}
+  de "${options[@]}" "${last_container_data['name']}" "$*"
 }
 
 # derlast - docker exec the last started container with root user.
