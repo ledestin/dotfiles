@@ -22,7 +22,7 @@ if ruby -e "$temperature <= $temperature_too_cold ? exit(0) : exit(1)"; then
 fi
 
 if [[ -n "$warn_co2" || -n "$warn_temperature" ]]; then
-  warning_sign="🔴"
+  warning_sign="🔴🧠"
 fi
 
 if [[ -n "$warn_co2" ]]; then
@@ -42,4 +42,4 @@ if [[ -n "$warn_co2" || -n "$warn_temperature" ]]; then
   exit
 fi
 
-echo "🌲"
+echo "🌲🧠"
