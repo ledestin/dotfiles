@@ -100,8 +100,8 @@ function dr() {
   fi
 
   # Use cmd.
-  echo docker run -it --rm "${options[@]}" "$image" "${cmd[@]}"
-  docker run -it --rm "${options[@]}" "$image" "${cmd[@]}"
+  echo docker run -it --rm "${d_cmd_options[@]}" "$image" "${cmd[@]}"
+  docker run -it --rm "${d_cmd_options[@]}" "$image" "${cmd[@]}"
 }
 
 # dreb - docker run with entrypoint of bash.
