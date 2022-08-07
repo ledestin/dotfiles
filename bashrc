@@ -168,7 +168,7 @@ if is_interactive_shell; then
     alias pbpaste='xclip -selection clipboard -o'
 
     # Syncplay
-    alias sp="syncplay -a jun.dashjr.org -r a --player-path /usr/bin/mpv -n Pancake"
+    alias syncp="syncplay -a jun.dashjr.org -r a --player-path /usr/bin/mpv -n Pancake"
   fi
 
   idp() {
