@@ -1,0 +1,44 @@
+#!/bin/bash
+
+set -e
+
+declare -A menu_items
+menu_items["Ocean waves sound"]="https://open.spotify.com/episode/2OvvCIh07HgYDmx5k4tQPH?si=c4bfbaa884b04fbb"
+menu_items["Life dashboard"]="https://docs.google.com/spreadsheets/d/1SwNPal8ID6W66QbUgPafTX6oEhHlWF_KR4XQPYzzC_g/edit#gid=0"
+
+execute_menu_item() {
+	if [ x"$*" = x"quit" ]
+	then
+		exit 0
+	fi
+
+	for key in "${!menu_items[@]}"; do
+		value="${menu_items[$key]}"
+
+		if [ x"$*" = x"$key" ]; then
+			open_url "$value"
+			exit
+		fi
+	done
+}
+
+open_url() {
+	local url="$1"
+
+	if [[ "$url" =~ spotify ]]; then
+		sp open "'$url'"
+		return
+	fi
+
+	xdg-open "$url" &>/dev/null
+}
+
+show_menu() {
+	for key in "${!menu_items[@]}"; do
+		echo "$key"
+	done
+	echo "quit"
+}
+
+execute_menu_item "$@"
+show_menu
