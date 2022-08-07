@@ -159,8 +159,6 @@ if is_interactive_shell; then
 
   # Program settings.
 
-  alias bell="echo -e '\a'"
-
   alias dquilt="quilt --quiltrc=${HOME}/.quiltrc-dpkg"
   complete -F _quilt_completion -o filenames dquilt
 
