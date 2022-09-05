@@ -400,6 +400,8 @@ if is_interactive_shell; then
     /usr/bin/keychain "$ssh_key"
     source $HOME/.keychain/${HOSTNAME}-sh
   fi
+
+  running-latest-kernel
 fi
 
 if [ -r "${HOME}/.bash-ctx/bash-ctx" ]; then

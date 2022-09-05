@@ -1,0 +1,15 @@
+#!/bin/bash
+
+set -euo pipefail
+
+current_kernel=$(uname -r)
+meta_kernel_package="(linux-image-cloud-amd64|linux-image-amd64)"
+
+newer_kernel=$(dpkg -l linux-image* | grep ii | grep -vP "$meta_kernel_package" | sort \
+  | tail -1 | grep -v "$current_kernel")
+
+if [[ -z "$newer_kernel" ]]; then
+  exit
+fi
+
+echo -e "\\e[93mNewer kernel available, please reboot:\\n$newer_kernel\\e[0m"
