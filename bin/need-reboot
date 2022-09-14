@@ -1,0 +1,5 @@
+#!/bin/bash
+
+set -e
+
+running-latest-kernel | grep -q "Newer kernel available"
