@@ -13,4 +13,3 @@ if [[ -z "$newer_kernel" ]]; then
 fi
 
 echo -e "\\e[93mNewer kernel available, please reboot:\\n$newer_kernel\\e[0m"
-exit 1
