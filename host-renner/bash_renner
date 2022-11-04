@@ -4,6 +4,12 @@
 alias random-anime='random-entry /data/video/anime'
 alias random-music="random-entry /data/music/*"
 
+random_picks() {
+  local picks_file=$(ls ~/Documents/Pensieve/*picks.md | shuf -n 1)
+  obsidian "obsidian://$picks_file"
+}
+alias random-picks=random_picks
+
 VIDEO_PLAYER="vlc -q"
 
 random_porn() {
