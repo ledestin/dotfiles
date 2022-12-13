@@ -184,8 +184,15 @@ function! UltiSnipsOpenDefaultSnippet()
   execute 'split +view' l:snippet
 endfunction
 
+function! SetFileType()
+  let l:filetype = input("Enter filetype: ")
+  let l:cmd = "set filetype=" . l:filetype
+  execute l:cmd
+endfunction
+
 nnoremap <Leader>ue :call UltiSnipsOpenDefaultSnippet()<CR>
 nnoremap <Leader>us :call UltiSnips#RefreshSnippets()<CR>
+nnoremap <Leader>ut :call SetFileType()<CR>
 
 " Cut and paste using line numbers
 function! CutAndPasteByLineNumber(relative_line_number)
