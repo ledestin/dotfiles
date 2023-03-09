@@ -9,4 +9,4 @@ if [[ -z "$instance_name" ]]; then
   exit 1
 fi
 
-virsh undefine --domain "$instance_name" --remove-all-storage
+echo undefine --domain "$instance_name" --remove-all-storage | virsh
