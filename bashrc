@@ -115,6 +115,7 @@ if is_interactive_shell; then
   alias bs="reload-bashrc"
 
   # Main clause
+  alias restart-proxy="pkill -f fith"
   mem() {
     ps -eo rss,pid,euser,args:100 --sort %mem | grep -v grep | grep -i "$@" | \
       awk '{printf $1/1024 "MB"; $1=""; print }'
@@ -209,6 +210,7 @@ if is_interactive_shell; then
   alias la='ls -A'
 
   # Coreutils
+  alias myip='wget -qO- http://ipecho.net/plain | xargs echo'
   alias le='less'
   alias df='df -h'
   alias du='du -h'
@@ -258,6 +260,8 @@ if is_interactive_shell; then
 
   # Hardware
   alias motherboard='dmidecode -t 2'
+  alias what-prevents-sleep='systemd-inhibit --list --mode=block'
+  alias turn-off-monitor='xset dpms force off'
 
   # Mail
   alias gmail='mutt -F ~/.muttrc-gmail'
@@ -276,6 +280,8 @@ if is_interactive_shell; then
   alias youtube-dl="yt-dlp"
   alias youtube-dl-best="youtube-dl -S res:1080,ext --write-sub --sub-lang en"
   alias youtube-dl-audio='youtube-dl --ignore-errors --output "%(title)s.%(ext)s" --extract-audio --audio-format mp3'
+  alias youtube-dl-subs="youtube-dl --write-auto-sub --sub-lang en --skip-download"
+
   if [ "$OS" = "Darwin" ]; then
     youtube-dl-audio-and-move-to-icloud() {
       local url="$1"
