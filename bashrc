@@ -150,6 +150,12 @@ if is_interactive_shell; then
   }
   alias rspec="run_rspec_via_spring_or_binstub_or_bundler"
 
+  # Cryptography
+  show-crypto-key-size() {
+    local file="$1"
+    openssl rsa -in "$file" -text -noout | head
+  }
+
   # Rails/Easil
   export DEV_HOST=dannan
 
