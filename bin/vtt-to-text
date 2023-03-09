@@ -1,0 +1,5 @@
+#!/bin/bash
+# VTT files are text files saved in Video Text Tracks format, also known as
+# WebVTT.
+
+awk 'FNR<=4 || ($0 ~ /^$|-->|\[|\]|</){next} !a[$0]++' "$@"
