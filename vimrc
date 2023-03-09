@@ -251,13 +251,13 @@ function! PlayOnEntoma(fileName)
     return
   endif
 
-  execute "silent !cd ~ && mpg123 -q " . fnameescape(a:fileName) . " &" | redraw!
+  execute "silent !cd ~ && ffplay -nodisp -autoexit &>/dev/null " . fnameescape(a:fileName) . " &" | redraw!
   return
 
   if CurrentHostIsEntoma()
-    execute "silent !cd ~ && mpg123 -q " . fnameescape(a:fileName) . " &" | redraw!
+    execute "silent !cd ~ && ffplay -nodisp -autoexit &>/dev/null " . fnameescape(a:fileName) . " &" | redraw!
   else
-    execute "silent !ssh entoma " . "'mpg123 -q " . fnameescape(a:fileName) . "' &" | redraw!
+    execute "silent !ssh entoma " . "'ffplay -nodisp -autoexit &>/dev/null " . fnameescape(a:fileName) . "' &" | redraw!
   endif
 endfunction
 
