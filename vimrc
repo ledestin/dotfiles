@@ -500,7 +500,7 @@ endfunction
 
 nnoremap <Leader>f :call FZFFileSearch()<CR>
 
-if filereadable('./bin/spring')
+if filereadable('./bin/spring') && filereadable('./bin/rspec')
   let g:rspec_command = "!xvfb-run -a ./bin/spring rspec {spec}"
 elseif filereadable('./bin/rspec')
   let g:rspec_command = "!xvfb-run -a ./bin/rspec {spec}"
