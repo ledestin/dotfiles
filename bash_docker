@@ -10,12 +10,15 @@ alias dcs="dc start"
 alias di="docker image"
 alias dil="di ls"
 alias dl="docker logs"
+alias drv='dr -v${PWD}:/src'
 
 alias dsc="scratchpad scratchpad-centos7 centos:centos7"
 alias dsb="scratchpad scratchpad-bionic ubuntu:bionic"
 alias dsf="scratchpad scratchpad-focal ubuntu:focal"
+alias dsj="scratchpad scratchpad-jammy ubuntu:jammy"
 alias dss="scratchpad scratchpad-opensuse-leap opensuse/leap:15.3"
 alias dso="scratchpad scratchpad-oracle-8 oraclelinux:8"
+alias dsfl="scratchpad scratchpad-fedora fedora:latest"
 
 declare -A last_container_data
 declare -a d_cmd_options
