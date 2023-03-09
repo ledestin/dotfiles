@@ -1,8 +1,9 @@
 #!/bin/bash
 
 set -eo pipefail
-unhealthy_co2_level=700
+unhealthy_co2_level=520
 temperature_too_cold=22
+temperature_too_hot=29
 
 netatmo_stats=$(co2)
 if [[ "$netatmo_stats" =~ "null"  ]]; then
@@ -17,7 +18,7 @@ if [[ "$co2_level" -gt "$unhealthy_co2_level" ]]; then
   warn_co2=1
 fi
 
-if ruby -e "$temperature <= $temperature_too_cold ? exit(0) : exit(1)"; then
+if ruby -e "$temperature <= $temperature_too_cold || $temperature >= $temperature_too_hot ? exit(0) : exit(1)"; then
   warn_temperature=1
 fi
 
