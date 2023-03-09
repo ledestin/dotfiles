@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export BUILDKIT_PROGRESS=plain
+
 # Docker aliases and functions
 
 alias dc="docker container"
