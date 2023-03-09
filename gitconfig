@@ -1,6 +1,8 @@
 [user]
 name = Dmitry Maksyoma
 email = ledestin@gmail.com
+  signingkey = ~/.ssh/id_rsa.pub
+
 [color]
 	ui = true
 [alias]
@@ -24,3 +26,7 @@ email = ledestin@gmail.com
 [init]
 	templatedir = ~/.git_template
 	defaultBranch = main
+[gpg]
+	format = ssh
+[commit]
+	gpgsign = true
