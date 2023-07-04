@@ -1,0 +1,4 @@
+#!/bin/sh
+
+. ~/.restic-env
+exec restic "$@"

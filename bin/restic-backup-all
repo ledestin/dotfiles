@@ -1,0 +1,3 @@
+#!/bin/bash
+
+restic-renner backup --limit-upload=40 --exclude /home/ledestin/work/kasmvnc/KasmVNC/builder/build --exclude ~ledestin/.config/yarn --exclude ~ledestin/.config/BraveSoftware  --exclude ~ledestin/.config/discord --exclude ~ledestin/.config/Slack --exclude ~ledestin/.config/chromium "$@" ~/Projects/ ~/Archive/ ~/Resources ~/Areas ~/Documents/ ~/work ~/bin /data/pics/fotki "$HOME/Local Sites/" ~/.config ~/Pictures/

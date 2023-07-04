@@ -1,0 +1,15 @@
+#!/bin/bash
+
+set -e
+
+backup() {
+  export RESTIC_PASSWORD_FILE=$HOME/.restic-password-file
+  restic -r /mnt/flash/backup "$@" backup --exclude ~ledestin/.config/yarn --exclude ~ledestin/.config/BraveSoftware  --exclude ~ledestin/.config/discord --exclude ~ledestin/.config/Slack --exclude ~ledestin/.config/chromium --exclude ~ledestin/Resources/KPOP --exclude ~ledestin/Resources/MFC --exclude ~ledestin/Resources/JPOP --exclude ~ledestin/Resources/JAV --exclude ~ledestin/Resources/"Ruby Tapas" "$@" ~/Projects/ ~/Archive/ ~/Areas ~/Documents/ "$HOME/Local Sites/" ~/Resources/
+}
+
+flash_disk=/dev/disk/by-id/usb-USB_SanDisk_3.2Gen1_050166175a4e73805dd3a735c45023f4b48e1918c7abc0fce2d634c3074566e8de960000000000000000000088339e5d001e0b108355810741aa5df9-0:0-part1
+
+sudo mount "$flash_disk" /mnt/flash/
+backup "$@"
+sudo umount /mnt/flash/
+echo "You can remove the flash drive now"
