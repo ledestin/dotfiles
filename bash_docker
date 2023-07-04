@@ -8,7 +8,7 @@ alias dc="docker container"
 alias dcl="dc ls"
 alias dcs="dc start"
 alias di="docker image"
-alias dil="di ls"
+alias dil='docker images --format "{{.Repository}}:{{.Tag}}"'
 alias dl="docker logs"
 alias drv='dr -v${PWD}:/src'
 
