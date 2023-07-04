@@ -334,6 +334,8 @@ if is_interactive_shell; then
   alias git-clean-merged-branches="git branch --merged | grep -Ev '(^\*|master)' | xargs git branch -d"
   alias gcmb="git-clean-merged-branches"
   alias gprunestale="git fetch --prune --all"
+  alias git-submodule-update-to-remote="git submodule update --remote"
+  alias gsur=git-submodule-update-to-remote
 
   gch() {
     git checkout "$(git branch --all | fzf | tr -d ‘[:space:]’)"
