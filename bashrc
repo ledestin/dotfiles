@@ -196,6 +196,9 @@ if is_interactive_shell; then
     eval "alias $character='overlord_quote $character'"
   done
 
+  # Wallpaper
+  alias print-wallpaper-and-upload='print-wallpaper | xargs upload-to-x01'
+
   if [[ "$OS" = "Darwin" ]]; then
     alias cp=gcp
     alias mv=gmv
