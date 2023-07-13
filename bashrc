@@ -171,7 +171,6 @@ if is_interactive_shell; then
 
   if [ "$OS" = Linux ]; then
     # pbcopy
-    alias pbcopy='xclip -selection clipboard'
     alias pbpaste='xclip -selection clipboard -o'
 
     # Syncplay
