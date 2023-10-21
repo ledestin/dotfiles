@@ -4,12 +4,16 @@ set -e
 
 backup() {
   export RESTIC_PASSWORD_FILE=$HOME/.restic-password-file
-  restic -r /mnt/flash/backup "$@" backup --exclude ~ledestin/.config/yarn --exclude ~ledestin/.config/BraveSoftware  --exclude ~ledestin/.config/discord --exclude ~ledestin/.config/Slack --exclude ~ledestin/.config/chromium --exclude ~ledestin/Resources/KPOP --exclude ~ledestin/Resources/MFC --exclude ~ledestin/Resources/JPOP --exclude ~ledestin/Resources/JAV --exclude ~ledestin/Resources/"Ruby Tapas" "$@" ~/Projects/ ~/Archive/ ~/Areas ~/Documents/ "$HOME/Local Sites/" ~/Resources/
+  restic -r /mnt/flash/backup "$@" backup --exclude ~ledestin/.config/yarn --exclude ~ledestin/.config/BraveSoftware  --exclude ~ledestin/.config/discord --exclude ~ledestin/.config/Slack --exclude ~ledestin/.config/chromium --exclude ~ledestin/Resources/KPOP --exclude ~ledestin/Resources/MFC --exclude ~ledestin/Resources/JPOP --exclude ~ledestin/Resources/JAV --exclude ~ledestin/Resources/"Ruby Tapas" --exclude ~ledestin/Resources/Marketing/Growthtrackers/ --exclude ~ledestin/Archive/Refactoring\ dev.to\ JavaScript\ with\ Raddevon/ "$@" ~/Documents/ "$HOME/Local Sites/" ~/Areas/ruby\ clarity/
 }
 
-flash_disk=/dev/disk/by-id/usb-USB_SanDisk_3.2Gen1_050166175a4e73805dd3a735c45023f4b48e1918c7abc0fce2d634c3074566e8de960000000000000000000088339e5d001e0b108355810741aa5df9-0:0-part1
+flash_disk=$(ls /dev/disk/by-id/usb-USB_SanDisk_3.2G*-part1)
 
-sudo mount "$flash_disk" /mnt/flash/
+if ! mount | grep -q /mnt/flash; then
+  sudo mount "$flash_disk" /mnt/flash/
+fi
+cp "$HOME/Documents/Pensieve/Perform a restore from backup drill on new laptop.md" /mnt/flash
+
 backup "$@"
 sudo umount /mnt/flash/
 echo "You can remove the flash drive now"
