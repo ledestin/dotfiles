@@ -121,7 +121,7 @@ if is_interactive_shell; then
       awk '{printf $1/1024 "MB"; $1=""; print }'
   }
 
-  alias pwgen="pwgen 12"
+  alias pwgen="pwgen 18"
 
   if [[ "$OS" = "Linux" ]]; then
     alias fd="fdfind"
