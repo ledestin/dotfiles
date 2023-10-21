@@ -325,14 +325,14 @@ if is_interactive_shell; then
   alias gc='git commit'
   alias gd='git diff'
   alias gdc='gd --cached'
-  alias gl='git log'
   alias gs='git show'
   alias gst='git st'
   alias grs='git reset'
   alias gpr='git pull --rebase'
   alias gm='git branch --merged master'
   alias git-remove-commit='git reset --soft HEAD^'
-  alias gcl="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+  alias gl="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+  alias gll='git log'
   alias git-clean-merged-branches="git branch --merged | grep -Ev '(^\*|master)' | xargs git branch -d"
   alias gcmb="git-clean-merged-branches"
   alias gprunestale="git fetch --prune --all"
