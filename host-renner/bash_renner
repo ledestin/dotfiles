@@ -32,7 +32,7 @@ alias select-porn="select_porn"
 export PERL5LIB=/home/ledestin/work/kasmvnc/KasmVNC/unix
 export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64"
 
-host_logo='👸'
+host_logo='👑'
 
 # Shuttlerock stuff.
 #export USE_MEMCACHE=1
