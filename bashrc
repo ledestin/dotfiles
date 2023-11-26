@@ -128,6 +128,8 @@ if is_interactive_shell; then
     alias open="xdg-open"
   fi
 
+  alias sysinfo="inxi -Fxxrz"
+
   # Virsh
   alias virsh="virsh -c qemu:///system"
 
