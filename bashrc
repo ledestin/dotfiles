@@ -280,8 +280,11 @@ if is_interactive_shell; then
   alias est="TZ='America/New_York' date"
   alias wakeat="date --date='+10 hours'"
 
+  # Python
+  alias pip-upgrade="pip install --upgrade"
+
   # youtube-dl(1)
-  alias youtube-dl="yt-dlp"
+  alias youtube-dl="yt-dlp --limit-rate 2M --download-archive \$HOME/yt-archive.txt"
   alias youtube-dl-best="youtube-dl -S res:1080,ext --write-sub --sub-lang en"
   alias youtube-dl-audio='youtube-dl --ignore-errors --output "%(title)s.%(ext)s" --extract-audio --audio-format mp3'
   alias youtube-dl-subs="youtube-dl --write-auto-sub --sub-lang en --skip-download"
@@ -296,6 +299,7 @@ if is_interactive_shell; then
       rmdir "$tmpdir"
     }
   fi
+  alias upgrade-yt-dlp="pip-upgrade yt-dlp"
 
   alias video-resolution="ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=s=x:p=0"
 
