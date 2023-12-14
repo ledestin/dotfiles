@@ -1,0 +1,94 @@
+#!/usr/bin/python3
+
+import dbus
+
+
+def status():
+    return spotify_properties.Get("org.mpris.MediaPlayer2.Player",
+                                  "PlaybackStatus")
+
+
+def is_paused():
+    return status() == "Paused"
+
+
+def reduce_artist():
+    global artist
+    if len(artist) > max_artist_len:
+        artist = f'{artist[0:max_artist_len - 4]}...'
+
+
+def reduce_song():
+    global song
+    if len(song) > max_song_len:
+        song = f'{song[0:max_song_len - 4]}...'
+
+
+def construct_output():
+    return f'{artist} - {song}'
+
+
+def is_output_over_limit():
+    return len(construct_output()) >= max_output_len
+
+
+no_song_playing_message = "音楽"
+
+import argparse
+
+# Create ArgumentParser object
+parser = argparse.ArgumentParser(description='Accept -l flag for long output')
+
+# Add argument for the -l flag
+parser.add_argument('-l', action='store_true', help='Enable long output')
+
+# Parse the command-line arguments
+args = parser.parse_args()
+
+# Check if the -l flag is provided
+if args.l:
+    long_output = True
+else:
+    long_output = False
+
+
+try:
+    session_bus = dbus.SessionBus()
+    spotify_bus = session_bus.get_object("org.mpris.MediaPlayer2.spotify",
+                                        "/org/mpris/MediaPlayer2")
+    spotify_properties = dbus.Interface(spotify_bus,
+                                        "org.freedesktop.DBus.Properties")
+    metadata = spotify_properties.Get("org.mpris.MediaPlayer2.Player", "Metadata")
+except dbus.exceptions.DBusException:
+    print(no_song_playing_message)
+    exit(0)
+
+if (len(metadata['xesam:artist']) == 0):
+    print(no_song_playing_message)
+    exit(0)
+
+# The property Metadata behaves like a python dict
+# for key, value in metadata.items():
+#     print(key, value)
+
+# To just print the title
+artist = metadata['xesam:artist'][0]
+song = metadata['xesam:title']
+
+if is_paused():
+    print(no_song_playing_message)
+    exit()
+
+if (long_output):
+    print(construct_output())
+    exit()
+
+max_artist_len = 15
+max_song_len = 20
+max_output_len = max_artist_len + max_song_len + 3
+if is_output_over_limit():
+	reduce_artist()
+if is_output_over_limit():
+	reduce_song()
+
+print(construct_output())
