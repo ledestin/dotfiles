@@ -17,6 +17,7 @@ email = ledestin@gmail.com
   dump = cat-file -p
   ctags = !.git/hooks/ctags
 	conflicted = !vim +Conflicted
+  oldest-ancestor = !zsh -c 'diff -u <(git rev-list --first-parent "${1:-master}") <(git rev-list --first-parent "${2:-HEAD}") | sed -ne \"s/^ //p\" | head -1' -
 [core]
 	excludesfile = ~/.gitignore_global
 [push]
