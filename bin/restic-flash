@@ -1,0 +1,9 @@
+#!/bin/bash
+
+set -e
+
+RESTIC_PASSWORD_FILE=$HOME/.restic-password-file
+export RESTIC_PASSWORD_FILE
+
+backup_repo=/media/ledestin/55dbe036-79b3-4875-865f-3f8edfcd90f6/backup
+restic -r "$backup_repo" "$@"
