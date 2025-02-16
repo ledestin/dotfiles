@@ -1,0 +1,26 @@
+#!/bin/bash
+
+set -e
+
+backing_file="$1"
+instance_name="$2"
+
+if [[ -z "$backing_file" || -z "$instance_name" ]]; then
+  echo >&2 "Usage: $(basename "$0") <backing_file> <instance_name>"
+  exit 1
+fi
+
+instance_dir="$HOME/images/$instance_name"
+new_image="$instance_dir/$instance_name-disk.qcow2"
+
+mkdir -p "$instance_dir"
+qemu-img create -f qcow2 -F qcow2 -o backing_file="$backing_file" "$new_image"
+qemu-img info "$new_image"
+
+echo
+cat <<TEXT
+Created new disk image $new_image
+
+You can resize the image with a command like this:
+qemu-img resize $new_image 5G
+TEXT
