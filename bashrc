@@ -480,6 +480,8 @@ if [ -d ~/.asdf ]; then
   PATH="$PATH:$(yarn global bin)"
 fi
 
+[ -f $HOME/.bash_credentials ] && . $HOME/.bash_credentials
+
 [ -f /usr/local/etc/profile.d/autojump.sh ] && .  /usr/local/etc/profile.d/autojump.sh
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
