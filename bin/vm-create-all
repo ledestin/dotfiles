@@ -1,0 +1,15 @@
+#!/bin/bash
+
+set -e
+
+backing_file="$1"
+instance_name="$2"
+
+if [[ -z "$backing_file" || -z "$instance_name" ]]; then
+  echo >&2 "Usage: $(basename "$0") <backing_file> <instance_name>"
+  exit 1
+fi
+
+vm-create-disk-image --resize 10G "$backing_file" "$instance_name"
+vm-create-cloud-init "$instance_name"
+vm-create "$instance_name"

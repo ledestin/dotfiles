@@ -1,0 +1,3 @@
+#!/bin/bash
+
+ruby -ne 'BEGIN { sum = 0 }; sum += $_.to_f; END { puts sum }'
