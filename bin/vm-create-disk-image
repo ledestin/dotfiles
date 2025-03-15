@@ -2,20 +2,47 @@
 
 set -e
 
+sorted_options=$(getopt -opsh --long resize: --long help -- "$@")
+eval set -- $sorted_options
+
+while : ; do
+	case "$1" in
+			--resize)
+				resize_to_size="$2"
+				shift 2
+				;;
+			-h|--help)
+				print_usage=1
+				;;
+			--)
+				shift
+				break
+				;;
+	esac
+done
+
 backing_file="$1"
 instance_name="$2"
 
 if [[ -z "$backing_file" || -z "$instance_name" ]]; then
   echo >&2 "Usage: $(basename "$0") <backing_file> <instance_name>"
+  echo >&2 "  --resize <size>G  Resize image to <size>Gb"
+  echo >&2 "  --help            Print usage"
   exit 1
 fi
 
 instance_dir="$HOME/images/$instance_name"
 new_image="$instance_dir/$instance_name-disk.qcow2"
+backing_file=$(realpath $backing_file)
 
 mkdir -p "$instance_dir"
 qemu-img create -f qcow2 -F qcow2 -o backing_file="$backing_file" "$new_image"
 qemu-img info "$new_image"
+
+if [ -n "$resize_to_size" ]; then
+  echo "Resizing image to $resize_to_size..."
+  qemu-img resize "$new_image" "$resize_to_size" || true
+fi
 
 echo
 cat <<TEXT
