@@ -20,13 +20,19 @@ PUB_KEY=$(cat ~/.ssh/id_rsa.pub)
 
 cat >user-data <<-EOF
 #cloud-config
+packages:
+  - sudo
 users:
   - name: ledestin
     ssh-authorized-keys:
       - $PUB_KEY
     sudo: ['ALL=(ALL) NOPASSWD:ALL']
     groups: sudo
-    shell: /bin/bash
+    shell: $shell
+chpasswd:
+  list: |
+    ledestin:alpine
+  expire: false
 runcmd:
   - echo "AllowUsers ledestin" >> /etc/ssh/sshd_config
   - restart ssh
@@ -37,10 +43,20 @@ create_iso() {
   genisoimage -output "$iso_image" \
     -volid cidata -joliet -rock user-data meta-data
 }
+
+is_alpine() {
+  echo "$instance_name" | grep -qi alpine
+}
+
 tmp_dir=$(mktemp -d)
 trap 'rm -r $tmp_dir' EXIT
 
 mkdir -p "$instance_dir"
+
+shell=/bin/bash
+if is_alpine; then
+  shell=/bin/sh
+fi
 
 cd "$tmp_dir"
 create_init_files
