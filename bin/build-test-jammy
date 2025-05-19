@@ -5,4 +5,5 @@ set -e
 BASE_TAG=local
 
 docker build --build-arg START_XFCE4=1 -t kasmweb/core-ubuntu-jammy:$BASE_TAG \
+  --build-arg BASE_IMAGE=ubuntu:jammy \
   -f dockerfile-kasm-core .

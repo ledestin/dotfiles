@@ -6,4 +6,5 @@ BASE_TAG=local
 
 docker build --build-arg START_XFCE4=1 -t kasmweb/core-alpine-321:$BASE_TAG \
   --build-arg BASE_IMAGE=alpine:3.21 \
+  --build-arg BUILD_ARCH=x86_64 \
   -f dockerfile-kasm-core-alpine .
