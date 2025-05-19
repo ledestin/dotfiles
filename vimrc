@@ -40,7 +40,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'luochen1990/rainbow'
   Plug 'jreybert/vimagit'
   Plug 'https://gitlab.com/calebw/vci-check.git'
-  Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
+  Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarnpkg install'  }
   Plug 'tpope/vim-abolish'
   Plug 'christoomey/vim-system-copy'
   Plug 'Trevoke/ultisnips-rspec'
