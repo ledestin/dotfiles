@@ -335,6 +335,7 @@ if is_interactive_shell; then
   alias gst='git st'
   alias grs='git reset'
   alias gpr='git pull --rebase'
+  alias git-push-skip-ci='git push -o ci.skip'
   alias gm='git branch --merged master'
   alias git-remove-commit='git reset --soft HEAD^'
   alias gl="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
