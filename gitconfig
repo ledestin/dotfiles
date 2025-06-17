@@ -31,3 +31,5 @@ email = ledestin@gmail.com
 	format = ssh
 [commit]
 	gpgsign = true
+[gpg "ssh"]
+	allowedSignersFile = /home/ledestin/.ssh/allowed_signers
