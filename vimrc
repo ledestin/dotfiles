@@ -132,6 +132,11 @@ augroup Gitlab
   autocmd FileType yaml nnoremap <buffer> <Leader>l :Vci<CR>
 augroup END
 
+augroup python_settings
+  autocmd!
+  autocmd FileType python setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
+augroup END
+
 " Main
 
 " Journaling: insert current date and copy the previous day's note.
