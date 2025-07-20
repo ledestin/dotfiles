@@ -101,7 +101,7 @@ if is_interactive_shell; then
   fi
 
   PS1='\[\033[33m\]\u\e[90m@\e[33m\h\e[37;40m$ps_logo \[\033[33m\w\033[0m\] \[\033[32m$git_branch\033[0m\]\[$txtred\]$git_dirty\[$txtrst\]\n\$'
-  MAIL="$HOME/Mail/mbox"
+  MAIL="/var/mail/$USER"
 
   # don't put duplicate lines in the history. See bash(1) for more options
   HISTCONTROL=ignoredups
