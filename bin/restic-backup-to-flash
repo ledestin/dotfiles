@@ -4,7 +4,7 @@ set -e
 
 backup() {
   export RESTIC_PASSWORD_FILE=$HOME/.restic-password-file
-  restic -r /mnt/flash/backup "$@" backup --exclude ~ledestin/.config/yarn --exclude ~ledestin/.config/BraveSoftware  --exclude ~ledestin/.config/discord --exclude ~ledestin/.config/Slack --exclude ~ledestin/.config/chromium --exclude ~ledestin/Resources/KPOP --exclude ~ledestin/Resources/MFC --exclude ~ledestin/Resources/JPOP --exclude ~ledestin/Resources/JAV --exclude ~ledestin/Resources/"Ruby Tapas" --exclude ~ledestin/Resources/Marketing/Growthtrackers/ --exclude ~ledestin/Archive/Refactoring\ dev.to\ JavaScript\ with\ Raddevon/ "$@" ~/Documents/ "$HOME/Local Sites/" ~/Areas/ruby\ clarity/ ~/Archive/Documents/
+  restic -r /mnt/flash/backup "$@" backup --exclude ~ledestin/.config/yarn --exclude ~ledestin/.config/BraveSoftware  --exclude ~ledestin/.config/discord --exclude ~ledestin/.config/Slack --exclude ~ledestin/.config/chromium --exclude ~ledestin/Resources/KPOP --exclude ~ledestin/Resources/MFC --exclude ~ledestin/Resources/JPOP --exclude ~ledestin/Resources/JAV --exclude ~ledestin/Resources/"Ruby Tapas" --exclude ~ledestin/Resources/Marketing/Growthtrackers/ --exclude ~ledestin/Archive/Refactoring\ dev.to\ JavaScript\ with\ Raddevon/ "$@" ~/Documents/ "$HOME/Local Sites/" ~/Areas/ruby\ clarity/ ~/Archive/Documents/ ~/.bin/
 }
 
 flash_disk=$(ls /dev/disk/by-id/usb-USB_SanDisk_3.2G*-part1)
