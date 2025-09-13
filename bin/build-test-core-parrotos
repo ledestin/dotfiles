@@ -1,0 +1,9 @@
+#!/bin/bash
+
+set -e
+
+BASE_TAG=local
+
+docker build --build-arg START_XFCE4=1 -t kasmweb/core-parrotos6:$BASE_TAG \
+  --build-arg BASE_IMAGE=parrotsec/core:6 --build-arg DISTRO=parrotos6 \
+  -f dockerfile-kasm-core .

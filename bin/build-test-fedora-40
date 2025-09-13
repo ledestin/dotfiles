@@ -1,0 +1,10 @@
+#!/bin/bash
+
+set -e
+
+BASE_TAG=local
+
+docker build --build-arg START_XFCE4=1 -t kasmweb/core-fedora-forty:$BASE_TAG \
+  --build-arg BASE_IMAGE=fedora:40 \
+  --build-arg DISTRO=fedora40 \
+  -f dockerfile-kasm-core-fedora .

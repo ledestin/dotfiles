@@ -1,0 +1,9 @@
+#!/bin/bash
+
+set -e
+
+BASE_TAG=local
+
+docker build --build-arg START_XFCE4=1 -t kasmweb/core-oracle-8:$BASE_TAG \
+  --build-arg BASE_IMAGE=oraclelinux:8 --build-arg DISTRO=oracle8  \
+  -f dockerfile-kasm-core-oracle .

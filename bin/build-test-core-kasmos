@@ -1,0 +1,8 @@
+#!/bin/bash
+
+set -e
+
+BASE_TAG=local
+
+docker build -t kasmweb/core-kasmos:$BASE_TAG \
+  -f dockerfile-kasm-core-kasmos .
