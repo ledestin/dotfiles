@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+
+require "date"
+
+def week_dates(monday)
+  seven_days = [monday]
+
+  6.times do
+    next_day = seven_days.last + 1
+    seven_days.push next_day
+  end
+
+  seven_days
+end
+
+def monday_from_week_number(year, week_number)
+  Date.commercial year, week_number
+end
+
+today = Date.today
+week_number = ARGV.shift&.to_i || today.cweek
+year = ARGV.shift&.to_i || today.year
+
+monday = monday_from_week_number year, week_number
+puts week_dates monday

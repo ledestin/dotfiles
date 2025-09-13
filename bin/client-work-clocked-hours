@@ -1,0 +1,19 @@
+#!/bin/bash
+
+pensieve_dir="$HOME/Documents/Pensieve/"
+
+week_number="$1"
+year="$2"
+if [[ "$1" = "-h" || "$1" = "--help" ]]; then
+  echo >&2 "Usage: $(basename "$0") [<week_number> <year>]"
+  exit 1
+fi
+
+cd "$pensieve_dir"
+
+logged_data=$(grep -A 3 "Write down workday results." $(week-dates $week_number $year | sed -e 's/$/.md/'))
+
+echo "$logged_data"
+echo "------------"
+echo "$logged_data" |
+  ruby -ne 'BEGIN { sum = 0 }; $_ =~ /-.+?([\d.]+) hour/; if $1; puts $1; sum += $1.to_f; end; END { puts "total: #{sum}" }'
